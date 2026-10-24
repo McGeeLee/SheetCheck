@@ -1,0 +1,29 @@
+{
+  "checked_at_utc": "2026-10-24T05:36:14.206944+00:00",
+  "application_version": "1.1.1",
+  "status": "PASS",
+  "scope": "Actual local in-app-browser observation at 1024 x 858; fictional built-in sample only",
+  "observed": [
+    "First-open purpose, A002 amount example, primary practice entry and four-step overview visible",
+    "Practice entry loads both previews; the two confirmation checkboxes remain unchecked and reconciliation disabled",
+    "Manual confirmations enable reconciliation; results show 180.00/189.00 and expected differences",
+    "Data-issue shortcut selects six issue rows and explains related-row isolation",
+    "Amount-difference shortcut selects A002: 50.00 versus 49.00, delta -1.00",
+    "Source selection shows orders.csv row 3 and payments.csv row 3",
+    "Generate report completes built-in readback and shows ready-to-download message and button",
+    "Reset removes results and report controls, restores the practice entry and missing-input tasks"
+  ],
+  "screenshots": [
+    "docs/v1.1.1-home.png",
+    "docs/v1.1.1-report-ready.png"
+  ],
+  "browser_downloads_performed": 0,
+  "file_uploads_performed_in_browser": 0,
+  "not_tested_here": [
+    "Mobile or other browsers",
+    "Fresh native Excel opening",
+    "Physical offline operation",
+    "Browser file-save completion"
+  ],
+  "earlier_download_evidence": "docs/m4-closeout.json (all 16 pinned files verified unchanged)"
+}

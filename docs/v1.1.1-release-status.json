@@ -1,0 +1,28 @@
+{
+  "recorded_at_utc": "2026-10-24T05:36:14.207336+00:00",
+  "application_version": "1.1.1",
+  "rules_version": "v1",
+  "report_format_version": "m2-v1",
+  "status": "COMPLETE_WITH_DOCUMENTED_SCOPE",
+  "v1_complete": true,
+  "scope": "First-use UI and guidance improvement; no reconciliation-rule, dependency or capacity changes",
+  "verification": {
+    "full_local_suite": "645 passed in 36.93s; docs/v1.1.1-test-results.txt",
+    "new_onboarding_cases": 10,
+    "existing_cases": 635,
+    "environment": "Reused .venv-v1.1, updated editable application to 1.1.1 without network; 43 locked wheel hashes, installed versions, pip check and current configuration verified in docs/v1.1.1-environment.json",
+    "browser": "docs/v1.1.1-browser-check.json",
+    "prior_evidence": "16 evidence files pinned by docs/m4-closeout.json remain unchanged"
+  },
+  "ci_enabled": false,
+  "ci_reason": "User explicitly asked to keep GitHub automatic tests disabled; docs/ci/github-actions.yml remains an inactive template",
+  "additional_browser_downloads": 0,
+  "additional_download_permission_requests": 0,
+  "not_claimed": [
+    "New clean environment installation",
+    "New offline/capacity/performance/native Excel/browser-download acceptance",
+    "Windows/Linux/Intel Mac/mobile/other browser compatibility",
+    "Successful GitHub CI execution"
+  ],
+  "release_record": "docs/v1.1.1-verification.md"
+}

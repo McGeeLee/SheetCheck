@@ -1,14 +1,24 @@
 # SheetCheck
 
-Compare order and payment exports, identify amount differences, unmatched IDs and data issues, then trace each finding to its original row. **Version 1.1.0 adds optional mapping templates; the full local suite passes 635 tests.** Templates reuse only column positions, structure and fixed rules, and require renewed confirmation. Reconciliation still uses integer minor units, a source-row ledger and mandatory safe-report auditing.
+Compare order and payment exports, identify amount differences, unmatched IDs and data issues, then trace each finding to its original row. **Version 1.1.1 adds a prominent first-use sample, an actionable checklist and guided result review.** Optional mapping templates, integer minor units, the source-row ledger and mandatory safe-report auditing remain in place.
 
-[GitHub repository](https://github.com/McGeeLee/SheetCheck) · [v1.1 verification](docs/v1.1-verification.md) · [Mapping-template guide](docs/mapping-templates.md) · [Development and CI](docs/development.md)
+[Getting started (Chinese)](docs/getting-started.md) · [GitHub repository](https://github.com/McGeeLee/SheetCheck) · [Onboarding verification](docs/v1.1.1-verification.md) · [Mapping-template guide](docs/mapping-templates.md) · [Development and CI](docs/development.md)
 
-GitHub CI is not enabled: the current push credential lacks workflow write scope. The configuration is retained as an [inactive template](docs/ci/github-actions.yml). The 635 passing tests were run locally; no additional authorization was requested and no successful GitHub CI run is claimed.
+GitHub CI remains disabled as requested. Its configuration is retained as an [inactive template](docs/ci/github-actions.yml). Passing checks in the verification records were run locally; no additional authorization was requested and no successful GitHub CI run is claimed.
 
 v1.0 remains complete within its verified scope, including the user-accepted omission of the actual download from the demonstration. The [M4 acceptance record](docs/m4-verification.md), earlier successful download and native Excel observations remain historical evidence. v1.1 does not retry recording permissions or relabel historical performance/native-software observations as new runs. Compatibility claims remain bounded by actual evidence.
 
 The project is independent of other projects in its parent directory, including Sirius. The core does not import Streamlit and remains callable through Python or the CLI. No account, database, API key or external business service is required. All bundled samples are fictional. Reconciliation differences are observations, not conclusions about debts, fraud or accounting errors.
+
+## Try it first
+
+For example, order A002 is 50.00 while the matching payment is 49.00. SheetCheck shows a difference of -1.00 and the original row in each file; it does not infer the business cause.
+
+1. Click **用虚构样例试一遍** (try the fictional sample) on the home screen; no files are needed.
+2. Check the previews, selected columns, currency and period. Tick both confirmations yourself, then click **开始核对** (reconcile).
+3. Use **先看数据问题** (review data issues) or **查看金额差异** (review amount differences), then select a result to inspect its original rows. Generate the report before downloading it.
+
+The checklist explains what is missing when reconciliation is disabled. Reading options and reusable mappings are collapsed by default. The [beginner guide](docs/getting-started.md) explains file preparation, result interpretation and recovery.
 
 ## Install and run
 

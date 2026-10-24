@@ -163,7 +163,8 @@ def _mapping_templates(workflow, mappings):
     enabled = st.checkbox("使用映射模板（可选）", key="template_enabled", on_change=_clear_template_import)
     if not enabled:
         return
-    with st.expander("保存或应用字段映射模板", expanded=True):
+    with st.container(border=True):
+        st.markdown("**保存或应用字段映射模板**")
         st.caption("模板仅保存列位置、读取结构、币种和固定核对规则；不含文件名、工作表名、表头文字、业务数据、期间或确认状态。")
         st.warning("结构相同不代表字段含义相同。模板无法发现同列数下的列顺序变化；应用后必须检查两侧预览与映射示例。")
         uploaded = st.file_uploader("上传映射模板 JSON（最多 16 KiB）", type=["json"], max_upload_size=1,
@@ -205,9 +206,97 @@ def _show_error(exc, phase):
     st.error(f"{code}：{message}")
 
 
+def _welcome():
+    st.title("订单和收款，哪里对不上？")
+    st.write("放入两张表，按相同编号逐条比较金额，找出金额不同、只出现在一张表里的记录，并查看它们来自原表哪一行。")
+    st.caption("在本机启动时，文件由这台电脑处理 · 无需注册 · 不改写原文件")
+    empty = not st.session_state.demo_sources and all(
+        st.session_state.get(f"{side}_upload_{st.session_state.generation}") is None for side in Side)
+    if empty:
+        with st.container(border=True):
+            intro, example = st.columns(2, gap="large")
+            with intro:
+                st.subheader("先试试虚构样例")
+                st.write("无需准备文件。跟着样例，找出一笔差额，再回到原表检查。")
+                st.button("用虚构样例试一遍", key="start_demo", type="primary", on_click=_load_demo)
+                st.markdown("已有文件？[直接导入 ↓](#import-files)")
+            with example:
+                st.markdown("**虚构例子：同一编号 A002**")
+                st.markdown("| 订单 | 收款 | 差额 |\n| --- | --- | --- |\n| 50.00 | 49.00 | -1.00 |")
+                st.caption("差额 = 收款减订单。这笔会标为「金额差异」，可回查原表行号。")
+    steps = (("1", "导入并选列", "找到编号和金额", "import-files"),
+             ("2", "确认范围", "同币种、同期间", "confirm-rules"),
+             ("3", "查看结果", "回到原表检查", None),
+             ("4", "下载报告", "先生成，再下载", None))
+    for column, (number, title, detail, anchor) in zip(st.columns(4), steps):
+        with column:
+            st.markdown(f"**{number} · [{title}](#{anchor})**" if anchor else f"**{number} · {title}**")
+            st.caption(detail)
+    with st.expander("我的表能用吗？准备文件前看这里"):
+        st.markdown("每张表至少有两列：**编号**（例如订单号）和**金额**。两侧列名可以不同，但编号要能对应同一笔记录。\n\n"
+                    "- 支持 CSV 和 XLSX，每份不超过 10 MiB；先导出同一币种、同一期间的数据。\n"
+                    "- 每个编号在每张表中最多出现一次；编号应是文本，保留 `0001` 这样的前导零。\n"
+                    "- 本版不自动合并重复编号，不处理分期、拆分收款、退款、手续费或换汇。\n"
+                    "- 重复编号、缺失编号、金额格式错误会进入「数据问题」；先在原表修正，再重新导入。")
+        st.caption("这里找出的是两张表的差异。差异或缺项本身不能证明欠款、欺诈或会计错误。")
+
+
+def _using_demo(workflow):
+    # A replaced side must never retain the fictional-practice banner.
+    for side in Side:
+        demo = st.session_state.demo_sources.get(side)
+        selected = workflow.selections.get(side)
+        if demo is None or selected is None or (selected.spec.filename, selected.data) != demo:
+            return False
+    return True
+
+
+def _pending_steps(workflow):
+    pending = []
+    for side in Side:
+        label = SIDE_LABELS[side]
+        if workflow.selections.get(side) is None:
+            pending.append(f"上传{label}表")
+        elif side not in workflow.sources:
+            pending.append(f"修复{label}表的读取问题：检查文件、工作表和读取选项")
+        else:
+            for suffix, field in (("id", "编号"), ("amount", "金额")):
+                if st.session_state.get(f"{side}_{suffix}") is None:
+                    pending.append(f"选择{label}{field}列")
+    if not workflow.rules.period.strip():
+        pending.append("填写核对期间")
+    if not workflow.rules.same_currency_confirmed:
+        pending.append("确认两张表的币种相同")
+    if not workflow.rules.same_period_confirmed:
+        pending.append("确认两张表的期间相同")
+    return pending
+
+
+def _show_result_view(view):
+    # Navigation changes only what is displayed, never the audited result.
+    st.session_state.result_view = view
+    st.session_state.query = ""
+    st.session_state.status_filter = BUSINESS_LABELS.copy()
+    _page_reset()
+
+
+def _session_progress(workflow):
+    if workflow.report_bytes is not None:
+        return "报告已生成，等待你下载"
+    if workflow.result is not None:
+        return "结果已生成，可以查看来源"
+    if workflow.ready:
+        return "准备好了，可以开始核对"
+    if any(workflow.selections.values()):
+        return "检查文件、选列与确认项"
+    return "等待两张表，也可以先试样例"
+
+
 def _select_input(side):
     label = SIDE_LABELS[side]
     st.subheader(f"{label}表")
+    st.caption("这里放订单记录，金额代表这笔订单应收多少。" if side == Side.ORDER
+               else "这里放收款记录，金额代表同一笔订单实际收了多少。")
     uploaded = st.file_uploader(f"上传{label}文件", type=["csv", "xlsx"], max_upload_size=10,
                                 key=f"{side}_upload_{st.session_state.generation}",
                                 on_change=_upload_changed, args=(side,))
@@ -240,16 +329,25 @@ def _select_input(side):
                                  key=key, on_change=_parse_changed, args=(side,))
         except Exception as exc:
             _show_error(exc, "IMPORT")
-    st.number_input(f"{label}表头行（CSV 为逻辑记录号）", min_value=1, max_value=50001, value=1,
-                    step=1, key=f"{side}_header", on_change=_parse_changed, args=(side,))
     encoding, delimiter = "utf-8-sig", ","
+    with st.expander(f"{label}读取选项 · 表头不在首行、乱码或挤成一列时调整"):
+        st.number_input(f"{label}表头行（CSV 为逻辑记录号）", min_value=1, max_value=50001, value=1,
+                        step=1, key=f"{side}_header", on_change=_parse_changed, args=(side,),
+                        help="写着「订单号、金额」等列名的那一行，通常是第 1 行。CSV 带引号换行时按逻辑记录计数。")
+        if Path(filename).suffix.lower() == ".csv":
+            encoding = st.selectbox(f"{label}编码", ["utf-8-sig", "utf-8", "gb18030"],
+                                    format_func=lambda value: {"utf-8-sig": "UTF-8 / UTF-8 BOM", "utf-8": "UTF-8", "gb18030": "GB18030"}[value],
+                                    key=f"{side}_encoding", on_change=_parse_changed, args=(side,),
+                                    help="中文乱码时检查编码。常见 UTF-8 文件可保留默认值；部分中文系统导出的文件使用 GB18030。")
+            delimiter = st.selectbox(f"{label}分隔符", [",", "\t", ";"],
+                                     format_func=lambda value: {",": "逗号", "\t": "制表符", ";": "分号"}[value],
+                                     key=f"{side}_delimiter", on_change=_parse_changed, args=(side,),
+                                     help="整行内容挤在同一列时，选择文件实际使用的列分隔符，再检查预览。")
     if Path(filename).suffix.lower() == ".csv":
-        encoding = st.selectbox(f"{label}编码", ["utf-8-sig", "utf-8", "gb18030"],
-                                format_func=lambda value: {"utf-8-sig": "UTF-8 / UTF-8 BOM", "utf-8": "UTF-8", "gb18030": "GB18030"}[value],
-                                key=f"{side}_encoding", on_change=_parse_changed, args=(side,))
-        delimiter = st.selectbox(f"{label}分隔符", [",", "\t", ";"],
-                                 format_func=lambda value: {",": "逗号", "\t": "制表符", ";": "分号"}[value],
-                                 key=f"{side}_delimiter", on_change=_parse_changed, args=(side,))
+        st.caption(f"读取方式：表头第 {st.session_state[f'{side}_header']} 条记录 · {encoding} · "
+                   + {",": "逗号分隔", "\t": "制表符分隔", ";": "分号分隔"}[delimiter])
+    else:
+        st.caption(f"读取方式：表头第 {st.session_state[f'{side}_header']} 行")
     return InputSelection(data, FileSpec(filename, side, sheet=sheet, header_row=int(st.session_state[f"{side}_header"]),
                                          encoding=encoding, delimiter=delimiter))
 
@@ -278,13 +376,17 @@ def _preview_mapping(side, workflow):
             return "请选择列"
         return _literal_label(source.column_labels[column - 1])
 
+    st.markdown("**告诉我，哪两列需要比较？**")
+    st.caption("编号用于找到同一笔记录，金额用于比较数值；两张表的列名可以不同。")
     identifier = st.selectbox(f"{label}编号列", options, format_func=column_label,
-                              key=key, on_change=_invalidate)
+                              key=key, on_change=_invalidate,
+                              help="例如订单号。请选两张表中含义一致的编号，不按行的先后顺序配对。")
     amounts = [option for option in options if option is None or option != identifier]
     if st.session_state.get(f"{side}_amount") not in amounts:
         st.session_state[f"{side}_amount"] = None
     amount = st.selectbox(f"{label}金额列", amounts, format_func=column_label,
-                          key=f"{side}_amount", on_change=_invalidate)
+                          key=f"{side}_amount", on_change=_invalidate,
+                          help="选择本次要比较的金额列，不能和编号选同一列。")
     if identifier is not None and amount is not None:
         examples = [f"编号 {text_value(row.cells[identifier - 1].value, 48)} ｜ 金额 {text_value(row.cells[amount - 1].value, 48)}"
                     for row in source.rows[:3]]
@@ -317,6 +419,7 @@ def _source_detail(result, item, issues):
         rows.append({name: value for name, value in details.items() if name in (
             "文件角色", "文件名", "工作表", "原始行号", "CSV物理起始行", "CSV物理结束行", "编号列号", "金额列号",
             "原始编号", "原始金额", "金额（分）", "source_id")})
+    st.caption("按下面的文件、工作表和原始行号回到源表检查。需要修改时，请修正源表并重新上传。")
     st.dataframe(rows, hide_index=True, width="stretch", key="source_detail")
     with st.expander("完整来源、原始类型与问题修复建议"):
         st.json(metadata, expanded=True)
@@ -346,7 +449,7 @@ def _results(workflow):
     if result is None:
         return
     st.divider()
-    st.header("3 · 核对结果")
+    st.header("3 · 核对结果", anchor="review-results")
     summary, counts = result.manifest.summaries, result.manifest.status_counts
     columns = st.columns(4)
     columns[0].metric("订单输入记录", summary[Side.ORDER].input_count)
@@ -367,7 +470,25 @@ def _results(workflow):
     st.caption("问题行可解析部分：订单 " + money(summary[Side.ORDER].issue_parseable_minor) + "，收款 "
                + money(summary[Side.PAYMENT].issue_parseable_minor) + "；金额不可解析行数：订单 "
                + str(summary[Side.ORDER].issue_unparseable_count) + "，收款 " + str(summary[Side.PAYMENT].issue_unparseable_count) + "。")
+    with st.container(border=True):
+        st.markdown("**接下来怎么看？**")
+        if counts[Status.DATA_ISSUE]:
+            st.write("先查看「数据问题」：这些源行尚未参与金额比较。检查原因，在原表修正后重新上传。")
+            st.button("先看数据问题", key="review_issues", on_click=_show_result_view, args=("数据问题",))
+        if counts[Status.AMOUNT_MISMATCH]:
+            st.write("再查看「金额差异」：选择一条结果，就能看到两侧原表行号和金额。")
+            st.button("查看金额差异", key="review_differences", on_click=_show_result_view, args=("金额差异",))
+        if counts[Status.ONLY_ORDER] or counts[Status.ONLY_PAYMENT]:
+            st.caption("「仅订单有 / 仅收款有」表示另一侧未找到有效配对，先检查导出期间、过滤条件和数据是否完整。")
+        if not result.records and not counts[Status.DATA_ISSUE]:
+            st.write("这次没有可核对的业务记录。检查工作表、表头行和数据范围，确认原表是否只有表头或空行。")
+        elif not any(counts[status] for status in (Status.DATA_ISSUE, Status.AMOUNT_MISMATCH,
+                                                  Status.ONLY_ORDER, Status.ONLY_PAYMENT)):
+            st.write("可继续抽查来源，再到第 4 步生成报告保存本次结果。是否包含全部业务，仍需核实原表的导出范围。")
+        st.markdown("[前往生成报告 ↓](#save-report)")
     view = st.radio("结果分类", VIEWS, horizontal=True, key="result_view", on_change=_page_reset)
+    if view == "数据问题":
+        st.caption("同一源行只计一次。重复编号不会自动合并；一侧编号关联行有问题时，该编号在两侧的相关行一起列入数据问题。")
     left, right = st.columns(2)
     query = left.text_input("搜索业务编号（区分大小写，包含匹配）", max_chars=128, key="query", on_change=_page_reset)
     selected = right.multiselect("业务状态筛选", BUSINESS_LABELS, key="status_filter", disabled=view == "数据问题", on_change=_page_reset)
@@ -394,7 +515,8 @@ def _results(workflow):
             _source_detail(result, current[selected_id], issues)
     else:
         st.info("没有符合当前筛选条件的记录。")
-    st.subheader("4 · 下载报告")
+    st.subheader("4 · 下载报告", anchor="save-report")
+    st.write("先点击「生成报告」，检查完成后会出现「下载核对报告」。生成成功不代表文件已经保存到电脑。")
     st.caption("报告包含：" + "、".join(SHEET_NAMES) + f"。数据问题 {counts[Status.DATA_ISSUE]} 行；规则 {result.manifest.rules.version}。")
     st.caption("报告包含本次完整结果，当前分类、搜索和分页不会改变报告内容。")
     if st.button("生成报告", key="prepare_report", disabled=workflow.report_bytes is not None):
@@ -404,6 +526,7 @@ def _results(workflow):
         except Exception as exc:
             _show_error(exc, "EXPORT")
     if workflow.report_bytes is not None:
+        st.success("报告已生成。下一步点击「下载核对报告」，由浏览器保存文件。")
         st.download_button("下载核对报告", data=lambda: _current_download(workflow, result.manifest.run_id),
                            file_name=workflow.report_name, mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                            key=f"download_{result.manifest.run_id}", on_click="ignore", type="primary")
@@ -416,18 +539,20 @@ def main():
     workflow = st.session_state.workflow
     with st.sidebar:
         st.title("SheetCheck")
-        st.caption("本机运行 · 一对一核对")
-        st.button("加载虚构样例", key="load_demo", on_click=_load_demo, width="stretch")
-        st.button("重新开始", key="reset", on_click=_reset, width="stretch")
+        st.caption("订单与收款 · 两张表逐笔比较")
+        st.button("加载虚构样例", key="load_demo", on_click=_load_demo, width="stretch",
+                  help="先清空本次输入和结果，再载入两张虚构样例表。")
+        st.button("重新开始", key="reset", on_click=_reset, width="stretch",
+                  help="清空本会话的输入、选择和结果；已经下载的文件不受影响。")
         st.divider()
-        st.markdown("**操作顺序**\n\n1. 导入并检查预览\n2. 选择字段、确认规则\n3. 核对并追溯来源\n4. 生成和下载报告")
+        st.markdown("**操作顺序**\n\n1. [放入两张表并选列](#import-files)\n2. [确认币种和期间](#confirm-rules)\n3. 核对并查看原表行号\n4. 生成和下载报告")
         st.caption("刷新浏览器可能丢失未下载结果。重新开始会清空本会话；已下载文件需自行管理。")
-    st.title("让每条核对结果都有来源")
-    st.write("按文本唯一编号核对订单与收款，查看一致、差额、缺项和数据问题。")
-    st.caption("仅处理同币种、同期间的一对一记录；不处理退款、手续费或拆分收款。异常不直接等于欠款、欺诈或会计错误。")
+    _welcome()
     if st.session_state.notice:
         st.info(st.session_state.notice)
-    st.header("1 · 导入与预览")
+    st.header("1 · 导入文件，选好两列", anchor="import-files")
+    st.caption("每侧各选编号列和金额列。按相同编号对应，不要求两张表的行顺序相同。")
+    practice_notice = st.empty()
     columns = st.columns(2, gap="large")
     selections = {}
     for side, column in zip(Side, columns):
@@ -439,8 +564,15 @@ def main():
     for side, column in zip(Side, columns):
         with column:
             mappings[side] = _preview_mapping(side, workflow)
-    st.header("2 · 确认核对规则")
-    st.caption("文本编号精确匹配 · 保留前导零 · 金额两位小数 · 容差 0 分 · 坏编号在两侧全部隔离")
+    if _using_demo(workflow):
+        practice_notice.info("正在练习虚构样例。检查两侧预览和编号 / 金额选择，再到第 2 步确认币种与期间。样例故意包含差异和问题行，不是操作失败。")
+    st.header("2 · 确认币种和期间", anchor="confirm-rules")
+    st.write("只比较同一币种、同一期间的记录。例如，两张表都来自同一个月；程序不会替你确认导出范围。")
+    with st.expander("这次会按什么规则核对？"):
+        st.markdown("- 编号按文本精确对应，保留前导零；每个编号在每张表中最多出现一次。\n"
+                    "- 金额按两位小数比较，差 0.01 也会标为金额差异。\n"
+                    "- 不合并重复编号；某编号关联行有问题时，两侧相关记录一起隔离。\n"
+                    "- 不处理退款、手续费、分期或拆分收款。差异不直接代表欠款、欺诈或会计错误。")
     left, right = st.columns(2)
     currency = left.selectbox("币种", ["CNY", *sorted(SUPPORTED_CURRENCIES - {"CNY"})], key="currency", on_change=_invalidate)
     period = right.text_input("核对期间", key="period", max_chars=200, placeholder="例如：2026-10-01 至 2026-10-31", on_change=_invalidate)
@@ -448,7 +580,10 @@ def main():
     confirmed_period = st.checkbox("我确认两个文件属于上述同一核对期间", key="confirm_period", on_change=_invalidate)
     workflow.configure(mappings, Rules(currency=currency, period=period, same_currency_confirmed=confirmed_currency,
                                         same_period_confirmed=confirmed_period))
-    _mapping_templates(workflow, mappings)
+    with st.expander("经常处理同一格式？复用字段映射（可选）", expanded=st.session_state.template_enabled):
+        st.caption("第一次使用可跳过。模板只帮你复用选列设置，仍需检查当前文件并重新确认。")
+        _mapping_templates(workflow, mappings)
+    readiness_notice = st.empty()
     if st.button("开始核对", key="run_reconciliation", type="primary", disabled=not workflow.ready):
         try:
             with st.spinner("正在校验、隔离问题编号并核对来源账本。"):
@@ -458,9 +593,13 @@ def main():
         except Exception as exc:
             _show_error(exc, "RECONCILE")
     if not workflow.ready:
-        st.caption("请先完成两侧导入、不同字段映射、币种和期间确认。")
+        pending = _pending_steps(workflow)
+        readiness_notice.info("开始前还需完成：\n\n" + "\n".join(f"- {item}" for item in pending))
+    elif workflow.result is None:
+        readiness_notice.success("准备好了。点击「开始核对」，查看哪些记录一致、哪些需要检查。")
     _results(workflow)
-    st.sidebar.caption(f"阶段：{workflow.stage} · 应用 {APP_VERSION} · 规则 v1")
+    st.sidebar.info("当前进度：" + _session_progress(workflow))
+    st.sidebar.caption(f"应用 {APP_VERSION} · 核对规则 v1")
 
 
 if __name__ == "__main__":
