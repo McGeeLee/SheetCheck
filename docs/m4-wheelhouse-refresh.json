@@ -1,0 +1,25 @@
+{
+  "recorded_at_utc": "2026-10-24T04:37:51.323450+00:00",
+  "status": "PASS",
+  "reason": "Historical /private/tmp/sheetcheck-m3-wheels no longer existed at final verification; all 43 wheel files were reacquired without modifying the lock.",
+  "download_command": "PIP_DISABLE_PIP_VERSION_CHECK=1 PIP_CONFIG_FILE=/dev/null .venv-m4-clean/bin/python -m pip download --no-cache-dir --only-binary=:all: --require-hashes --index-url https://pypi.org/simple -r requirements.lock --dest outputs/m4/wheelhouse",
+  "network_acquisition": true,
+  "historical_offline_install_evidence_unchanged": true,
+  "sandbox_attempt": {
+    "exit_code": 1,
+    "reason": "DNS lookup denied/unavailable in restricted command environment",
+    "log": "docs/m4-wheelhouse-refresh-sandbox.txt"
+  },
+  "approved_network_retry": {
+    "exit_code": 0,
+    "log": "docs/m4-wheelhouse-refresh.txt"
+  },
+  "wheel_count": 43,
+  "wheel_total_bytes": 89078565,
+  "lock_sha256": "83e80d555794ba4420c356115379b9fbe9d8b03173f9fe508010b7cffaedf729",
+  "validation": "43 exact wheel hashes, metadata, platform tags, installed versions, pip check and effective local configuration passed via verify_install.py",
+  "verification_evidence": [
+    "docs/m4-environment.json",
+    "docs/m4-release-environment.json"
+  ]
+}

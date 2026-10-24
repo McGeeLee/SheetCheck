@@ -1,0 +1,25 @@
+Input #0, concat, from '/var/folders/gb/5r4btw316zg1l5v_fpb61n1h0000gn/T/sheetcheck-demo-vhoofba5/ui.ffconcat':
+  Duration: N/A, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: mjpeg (Baseline), yuvj420p(pc, bt470bg/unknown/unknown), 1024x858 [SAR 1:1 DAR 512:429], 25 fps, 25 tbr, 25 tbn
+Input #1, concat, from '/var/folders/gb/5r4btw316zg1l5v_fpb61n1h0000gn/T/sheetcheck-demo-vhoofba5/captions.ffconcat':
+  Duration: N/A, start: 0.000000, bitrate: N/A
+  Stream #1:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1024x96, 25 fps, 25 tbr, 25 tbn
+Stream mapping:
+  Stream #0:0 (mjpeg) -> scale:default
+  Stream #1:0 (png) -> overlay
+  setparams:default -> Stream #0:0 (libopenh264)
+[swscaler @ 0x77ad84c000] deprecated pixel format used, make sure you did set range correctly
+[libopenh264 @ 0x77ad0a0000] [OpenH264] this = 0x0x104df4b10, Warning:layerId(0) doesn't support profile(578), change to UNSPECIFIC profile
+[libopenh264 @ 0x77ad0a0000] [OpenH264] this = 0x0x104df4b10, Warning:bEnableFrameSkip = 0,bitrate can't be controlled for RC_QUALITY_MODE,RC_BITRATE_MODE and RC_TIMESTAMP_MODE without enabling skip frame.
+Output #0, mp4, to '/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/sheetcheck-demo.mp4':
+  Metadata:
+    encoder         : Lavf61.7.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1024x960 [SAR 1:1 DAR 16:15], q=2-31, 3000 kb/s, 10 fps, 10240 tbn
+      Metadata:
+        encoder         : Lavc61.19.101 libopenh264
+      Side data:
+        cpb: bitrate max/min/avg: 3000000/0/3000000 buffer size: 0 vbv_delay: N/A
+frame=  553 fps=0.0 q=-0.0 size=     256KiB time=00:00:55.30 bitrate=  37.9kbits/s dup=486 drop=0 speed= 110x    frame= 1140 fps=1129 q=-0.0 size=     768KiB time=00:01:54.00 bitrate=  55.2kbits/s dup=987 drop=0 speed= 113x    [fc#0 @ 0x77acc07020] [vo0->#0:0 @ 0x77acc44000] More than 1000 frames duplicated
+[mp4 @ 0x77ad024a00] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x77ad004a80] video:791KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.700304%
+frame= 1206 fps=1133 q=-0.0 Lsize=     796KiB time=00:02:00.60 bitrate=  54.1kbits/s dup=1036 drop=0 speed= 113x    

@@ -1,0 +1,30 @@
+WARNING: The directory '/Users/mcgee/Library/Caches/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Looking in links: /private/tmp/sheetcheck-m1-wheels
+Processing /private/tmp/sheetcheck-m1-wheels/defusedxml-0.7.1-py2.py3-none-any.whl (from -r requirements.lock (line 2))
+Processing /private/tmp/sheetcheck-m1-wheels/et_xmlfile-2.0.0-py3-none-any.whl (from -r requirements.lock (line 3))
+Processing /private/tmp/sheetcheck-m1-wheels/iniconfig-2.3.1-py3-none-any.whl (from -r requirements.lock (line 4))
+Processing /private/tmp/sheetcheck-m1-wheels/openpyxl-3.1.5-py2.py3-none-any.whl (from -r requirements.lock (line 5))
+Processing /private/tmp/sheetcheck-m1-wheels/packaging-26.3-py3-none-any.whl (from -r requirements.lock (line 6))
+Requirement already satisfied: pip==25.0.1 in ./.venv-clean/lib/python3.12/site-packages (from -r requirements.lock (line 7)) (25.0.1)
+Processing /private/tmp/sheetcheck-m1-wheels/pluggy-1.7.0-py3-none-any.whl (from -r requirements.lock (line 8))
+Processing /private/tmp/sheetcheck-m1-wheels/pygments-2.21.0-py3-none-any.whl (from -r requirements.lock (line 9))
+Processing /private/tmp/sheetcheck-m1-wheels/pytest-8.4.2-py3-none-any.whl (from -r requirements.lock (line 10))
+Processing /private/tmp/sheetcheck-m1-wheels/setuptools-80.9.0-py3-none-any.whl (from -r requirements.lock (line 11))
+Installing collected packages: setuptools, Pygments, pluggy, packaging, iniconfig, et_xmlfile, defusedxml, pytest, openpyxl
+Successfully installed Pygments-2.21.0 defusedxml-0.7.1 et_xmlfile-2.0.0 iniconfig-2.3.1 openpyxl-3.1.5 packaging-26.3 pluggy-1.7.0 pytest-8.4.2 setuptools-80.9.0
+WARNING: The directory '/Users/mcgee/Library/Caches/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Obtaining file:///Users/mcgee/Documents/Codex%20Project/Project/SheetCheck
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: sheetcheck
+  Building editable for sheetcheck (pyproject.toml): started
+  Building editable for sheetcheck (pyproject.toml): finished with status 'done'
+  Created wheel for sheetcheck: filename=sheetcheck-0.1.0-0.editable-py3-none-any.whl size=2829 sha256=f2c4968174e8e6b266283b202ecad69291bd650ffb7c17349a20e9fe3ace71ee
+  Stored in directory: /private/var/folders/gb/5r4btw316zg1l5v_fpb61n1h0000gn/T/pip-ephem-wheel-cache-wekl25qk/wheels/3b/0e/b0/761ae08b1d194ea142e30adb496032b6995ec9121f1a029d08
+Successfully built sheetcheck
+Installing collected packages: sheetcheck
+Successfully installed sheetcheck-0.1.0
+WARNING: The directory '/Users/mcgee/Library/Caches/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+No broken requirements found.

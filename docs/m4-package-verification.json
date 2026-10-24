@@ -1,0 +1,37 @@
+{
+  "checked_at_utc": "2026-10-24T04:59:53.853624+00:00",
+  "status": "PASS",
+  "application_version": "1.0.0",
+  "package": "deliveries/SheetCheck-1.0.0.zip",
+  "package_bytes": 115219925,
+  "package_sha256": "d3f2414b6ec64b031b361a0c29d57f7c0ac49e462d0c27bec29781e7d8d5701d",
+  "manifest": "docs/m4-delivery-manifest.json",
+  "manifest_sha256": "5453fb8ebbf78ed29b4f2f8444db180e3e408bb0cb2c257d23b82efee57a53ce",
+  "manifested_files": 490,
+  "archive_members_including_manifest": 491,
+  "checks": [
+    "exact member allowlist",
+    "unique relative member names",
+    "CRC",
+    "every archived file SHA-256",
+    "fresh extraction SHA-256",
+    "hidden configuration present",
+    "source unchanged while packaging"
+  ],
+  "application_tests": "Not rerun from extraction; see the independent fresh-venv test evidence.",
+  "blueprint_v1_complete": true,
+  "release_status": "COMPLETE_WITH_DOCUMENTED_SCOPE",
+  "release_status_record": "docs/m4-release-status.json",
+  "scope": "Package integrity only. Does not erase known acceptance limitations.",
+  "archived_documentation_check": {
+    "local_links_checked": 215,
+    "missing": [],
+    "status": "PASS"
+  },
+  "archived_closeout_check": {
+    "completion_status_consistent": true,
+    "retained_evidence_files_unchanged": 16,
+    "user_accepted_recording_limitation_preserved": true,
+    "status": "PASS"
+  }
+}

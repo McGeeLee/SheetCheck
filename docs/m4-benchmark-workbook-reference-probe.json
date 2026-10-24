@@ -1,0 +1,6 @@
+{
+  "workbook_alive_when_mandatory_audit_is_called": true,
+  "worksheets_retained": 5,
+  "workbook_alive_after_gc_at_audit": true,
+  "scope": "Diagnostic only: audit replaced by a reference observer; no report delivered; does not establish report validity"
+}

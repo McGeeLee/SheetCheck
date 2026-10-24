@@ -1,0 +1,452 @@
+{
+  "measured_at_utc": "2026-10-23T17:38:56.831040+00:00",
+  "app_version": "0.3.0",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.12.14",
+  "hardware": {
+    "logical_cpu_count": 10,
+    "processor": "arm",
+    "cpu_model": "Apple M4",
+    "physical_memory_bytes": 25769803776
+  },
+  "default_limits": {
+    "max_file_bytes": 10485760,
+    "max_records": 50000,
+    "max_columns": 100,
+    "max_uncompressed_bytes": 104857600,
+    "max_zip_entries": 2000,
+    "max_compression_ratio": 200
+  },
+  "xml_depth_limit": 128,
+  "case_count": 20,
+  "passed": 20,
+  "child_timeout_seconds": 120.0,
+  "results": [
+    {
+      "case": "csv_file_exact",
+      "status": "passed",
+      "expected_error": null,
+      "actual_error": null,
+      "expected_rows_if_accepted": 81,
+      "expected_columns_if_accepted": 3,
+      "observed_rows": 81,
+      "observed_columns": 3,
+      "fixture": {
+        "file_bytes": 10485760,
+        "sha256": "9b1dc926a6b195171e9edba6caa180aeb99e94f219f13f425b9a0c5e90af87eb"
+      },
+      "fixture_seconds": 0.009308500000770437,
+      "read_seconds": 0.6211989580006048,
+      "process_peak_rss_mib": 132.96875,
+      "pid": 38075,
+      "child_wall_seconds": 0.8787619579998136
+    },
+    {
+      "case": "csv_file_over",
+      "status": "passed",
+      "expected_error": "FILE_SIZE_LIMIT",
+      "actual_error": "FILE_SIZE_LIMIT",
+      "expected_rows_if_accepted": 81,
+      "expected_columns_if_accepted": 3,
+      "observed_rows": null,
+      "observed_columns": null,
+      "fixture": {
+        "file_bytes": 10485761,
+        "sha256": "7dc7b8a3880d0366cb679df39ad6ae19fc7f6e91def5db983d68a150f6c4beb5"
+      },
+      "fixture_seconds": 0.01256716699936078,
+      "read_seconds": 7.220900079119019e-05,
+      "process_peak_rss_mib": 82.875,
+      "pid": 38080,
+      "child_wall_seconds": 0.2932009169999219
+    },
+    {
+      "case": "csv_rows_exact",
+      "status": "passed",
+      "expected_error": null,
+      "actual_error": null,
+      "expected_rows_if_accepted": 50000,
+      "expected_columns_if_accepted": 2,
+      "observed_rows": 50000,
+      "observed_columns": 2,
+      "fixture": {
+        "file_bytes": 200010,
+        "sha256": "967e96e38f93f848376b0a8fa1b6675d40c2eaca8b7a51d7b9bb000ebd428ac7"
+      },
+      "fixture_seconds": 0.0001631659979466349,
+      "read_seconds": 0.33827066700177966,
+      "process_peak_rss_mib": 68.859375,
+      "pid": 38083,
+      "child_wall_seconds": 0.5868190840010357
+    },
+    {
+      "case": "csv_rows_over",
+      "status": "passed",
+      "expected_error": "RECORD_LIMIT",
+      "actual_error": "RECORD_LIMIT",
+      "expected_rows_if_accepted": 50001,
+      "expected_columns_if_accepted": 2,
+      "observed_rows": null,
+      "observed_columns": null,
+      "fixture": {
+        "file_bytes": 200014,
+        "sha256": "f1c9770415cc2932649cfc716e9c256960cb43f3f23a1145e237b5f4e4884d9e"
+      },
+      "fixture_seconds": 0.00019366700144018978,
+      "read_seconds": 0.4734302079996269,
+      "process_peak_rss_mib": 68.453125,
+      "pid": 38084,
+      "child_wall_seconds": 0.7137779170006979
+    },
+    {
+      "case": "csv_columns_exact",
+      "status": "passed",
+      "expected_error": null,
+      "actual_error": null,
+      "expected_rows_if_accepted": 1,
+      "expected_columns_if_accepted": 100,
+      "observed_rows": 1,
+      "observed_columns": 100,
+      "fixture": {
+        "file_bytes": 1300,
+        "sha256": "6d1863e18f4a81555031ed7716f53e78f307a46cc0460d9a439f8bbc67144603"
+      },
+      "fixture_seconds": 9.475000115344301e-05,
+      "read_seconds": 0.0005116249994898681,
+      "process_peak_rss_mib": 42.5625,
+      "pid": 38089,
+      "child_wall_seconds": 0.3716830410012335
+    },
+    {
+      "case": "csv_columns_over",
+      "status": "passed",
+      "expected_error": "COLUMN_LIMIT",
+      "actual_error": "COLUMN_LIMIT",
+      "expected_rows_if_accepted": 1,
+      "expected_columns_if_accepted": 101,
+      "observed_rows": null,
+      "observed_columns": null,
+      "fixture": {
+        "file_bytes": 1313,
+        "sha256": "2dcb716d2d22105cf44d1a218cb3b545e3bf02158dc679c1742ce76e2680586d"
+      },
+      "fixture_seconds": 0.00014029199883225374,
+      "read_seconds": 0.00035020900031668134,
+      "process_peak_rss_mib": 42.703125,
+      "pid": 38090,
+      "child_wall_seconds": 0.8162835000002815
+    },
+    {
+      "case": "xlsx_file_exact",
+      "status": "passed",
+      "expected_error": null,
+      "actual_error": null,
+      "expected_rows_if_accepted": 1,
+      "expected_columns_if_accepted": 2,
+      "observed_rows": 1,
+      "observed_columns": 2,
+      "fixture": {
+        "zip_entries": 10,
+        "total_uncompressed_bytes": 10497483,
+        "max_member_compression_ratio": 6.533505154639175,
+        "file_bytes": 10485760,
+        "sha256": "a9bc1df73a0d6555c0266a47609b8d98b1aa6b856a71172dc437a724ef3e00aa"
+      },
+      "fixture_seconds": 0.02875958399818046,
+      "read_seconds": 0.01673845900222659,
+      "process_peak_rss_mib": 56.046875,
+      "pid": 38092,
+      "child_wall_seconds": 0.46366508299979614
+    },
+    {
+      "case": "xlsx_file_over",
+      "status": "passed",
+      "expected_error": "FILE_SIZE_LIMIT",
+      "actual_error": "FILE_SIZE_LIMIT",
+      "expected_rows_if_accepted": 1,
+      "expected_columns_if_accepted": 2,
+      "observed_rows": null,
+      "observed_columns": null,
+      "fixture": {
+        "zip_entries": 10,
+        "total_uncompressed_bytes": 10497483,
+        "max_member_compression_ratio": 6.533505154639175,
+        "file_bytes": 10485761,
+        "sha256": "172ebe740f0be06fe09524a3ed3573bf47bce7eaff9c36891cf8342bdfb00b00"
+      },
+      "fixture_seconds": 0.020268500000383938,
+      "read_seconds": 0.00012333399718045257,
+      "process_peak_rss_mib": 65.109375,
+      "pid": 38095,
+      "child_wall_seconds": 0.3739562080008909
+    },
+    {
+      "case": "xlsx_rows_exact",
+      "status": "passed",
+      "expected_error": null,
+      "actual_error": null,
+      "expected_rows_if_accepted": 50000,
+      "expected_columns_if_accepted": 2,
+      "observed_rows": 50000,
+      "observed_columns": 2,
+      "fixture": {
+        "zip_entries": 9,
+        "total_uncompressed_bytes": 6483263,
+        "max_member_compression_ratio": 12.462155386539385,
+        "file_bytes": 523464,
+        "sha256": "90dd53c10cec833f5e4c158b8239941b45dfd208ae0320553e65cef393f9314f"
+      },
+      "fixture_seconds": 0.9773180830015917,
+      "read_seconds": 3.2740622499986785,
+      "process_peak_rss_mib": 76.078125,
+      "pid": 38100,
+      "child_wall_seconds": 4.502849125001376
+    },
+    {
+      "case": "xlsx_rows_over",
+      "status": "passed",
+      "expected_error": "RECORD_LIMIT",
+      "actual_error": "RECORD_LIMIT",
+      "expected_rows_if_accepted": 50001,
+      "expected_columns_if_accepted": 2,
+      "observed_rows": null,
+      "observed_columns": null,
+      "fixture": {
+        "zip_entries": 9,
+        "total_uncompressed_bytes": 6483393,
+        "max_member_compression_ratio": 12.462117723228824,
+        "file_bytes": 523480,
+        "sha256": "0edc5482ee18616af90f8a5931694b88446e71b1fd14e0352b6f2f37829e5ad5"
+      },
+      "fixture_seconds": 1.023290208002436,
+      "read_seconds": 2.0268602919968544,
+      "process_peak_rss_mib": 43.953125,
+      "pid": 38114,
+      "child_wall_seconds": 3.3172009579975565
+    },
+    {
+      "case": "xlsx_columns_exact",
+      "status": "passed",
+      "expected_error": null,
+      "actual_error": null,
+      "expected_rows_if_accepted": 1,
+      "expected_columns_if_accepted": 100,
+      "observed_rows": 1,
+      "observed_columns": 100,
+      "fixture": {
+        "zip_entries": 9,
+        "total_uncompressed_bytes": 26527,
+        "max_member_compression_ratio": 9.196850393700787,
+        "file_bytes": 5655,
+        "sha256": "f99d42f419eed3e85dfb4e70a49dc1f3bc77dcd463079795be7f010f35ef5c03"
+      },
+      "fixture_seconds": 0.01000404200021876,
+      "read_seconds": 0.016197624998312676,
+      "process_peak_rss_mib": 43.40625,
+      "pid": 38130,
+      "child_wall_seconds": 0.34119933300098637
+    },
+    {
+      "case": "xlsx_columns_over",
+      "status": "passed",
+      "expected_error": "COLUMN_LIMIT",
+      "actual_error": "COLUMN_LIMIT",
+      "expected_rows_if_accepted": 1,
+      "expected_columns_if_accepted": 101,
+      "observed_rows": null,
+      "observed_columns": null,
+      "fixture": {
+        "zip_entries": 9,
+        "total_uncompressed_bytes": 26628,
+        "max_member_compression_ratio": 9.228695652173913,
+        "file_bytes": 5662,
+        "sha256": "aa01911392929899c67de376cd0093b6218b5e2b86c484fe0fc8b9b08d4534ae"
+      },
+      "fixture_seconds": 0.011777749998145737,
+      "read_seconds": 0.007976582997798687,
+      "process_peak_rss_mib": 43.28125,
+      "pid": 38131,
+      "child_wall_seconds": 0.46166208400245523
+    },
+    {
+      "case": "xlsx_expanded_exact",
+      "status": "passed",
+      "expected_error": null,
+      "actual_error": null,
+      "expected_rows_if_accepted": 1,
+      "expected_columns_if_accepted": 2,
+      "observed_rows": 1,
+      "observed_columns": 2,
+      "fixture": {
+        "zip_entries": 10,
+        "total_uncompressed_bytes": 104857600,
+        "max_member_compression_ratio": 171.00021040476005,
+        "file_bytes": 618067,
+        "sha256": "5afc52df26b33dd5b0959d87d2958051d4321d78b8d006bc150b3d1aa7f1daac"
+      },
+      "fixture_seconds": 0.4060040000003937,
+      "read_seconds": 0.41142458299873397,
+      "process_peak_rss_mib": 45.828125,
+      "pid": 38139,
+      "child_wall_seconds": 1.1730915000007371
+    },
+    {
+      "case": "xlsx_expanded_over",
+      "status": "passed",
+      "expected_error": "XLSX_UNCOMPRESSED_LIMIT",
+      "actual_error": "XLSX_UNCOMPRESSED_LIMIT",
+      "expected_rows_if_accepted": 1,
+      "expected_columns_if_accepted": 2,
+      "observed_rows": null,
+      "observed_columns": null,
+      "fixture": {
+        "zip_entries": 10,
+        "total_uncompressed_bytes": 104857601,
+        "max_member_compression_ratio": 171.00021203580468,
+        "file_bytes": 618068,
+        "sha256": "555d5ae407f9f27e87e88228bdbc7f43c9be79fdfec00bff703459e7dab113ea"
+      },
+      "fixture_seconds": 0.3358982499994454,
+      "read_seconds": 0.0007017919997451827,
+      "process_peak_rss_mib": 45.6875,
+      "pid": 38140,
+      "child_wall_seconds": 0.5806572080000478
+    },
+    {
+      "case": "xlsx_entries_exact",
+      "status": "passed",
+      "expected_error": null,
+      "actual_error": null,
+      "expected_rows_if_accepted": 1,
+      "expected_columns_if_accepted": 2,
+      "observed_rows": 1,
+      "observed_columns": 2,
+      "fixture": {
+        "zip_entries": 2000,
+        "total_uncompressed_bytes": 34606,
+        "max_member_compression_ratio": 6.533505154639175,
+        "file_bytes": 265667,
+        "sha256": "f8fd068c225e8e3fde199bb7fe7a039fd6c6f155ebfc6348e3d59f3923a088cd"
+      },
+      "fixture_seconds": 0.19294174999959068,
+      "read_seconds": 0.08232587499878719,
+      "process_peak_rss_mib": 46.265625,
+      "pid": 38141,
+      "child_wall_seconds": 0.5392762909978046
+    },
+    {
+      "case": "xlsx_entries_over",
+      "status": "passed",
+      "expected_error": "XLSX_ZIP_ENTRY_LIMIT",
+      "actual_error": "XLSX_ZIP_ENTRY_LIMIT",
+      "expected_rows_if_accepted": 1,
+      "expected_columns_if_accepted": 2,
+      "observed_rows": null,
+      "observed_columns": null,
+      "fixture": {
+        "zip_entries": 2001,
+        "total_uncompressed_bytes": 34615,
+        "max_member_compression_ratio": 6.533505154639175,
+        "file_bytes": 265798,
+        "sha256": "e7dff9e906d950e73ee6410d3ba8b8bdd24ab7c0e506077c87e4de29499b3853"
+      },
+      "fixture_seconds": 0.04141166699992027,
+      "read_seconds": 0.00488091599981999,
+      "process_peak_rss_mib": 44.4375,
+      "pid": 38142,
+      "child_wall_seconds": 0.3092982500020298
+    },
+    {
+      "case": "xlsx_ratio_exact",
+      "status": "passed",
+      "expected_error": null,
+      "actual_error": null,
+      "expected_rows_if_accepted": 1,
+      "expected_columns_if_accepted": 2,
+      "observed_rows": 1,
+      "observed_columns": 2,
+      "fixture": {
+        "zip_entries": 10,
+        "total_uncompressed_bytes": 21087,
+        "max_member_compression_ratio": 200.0,
+        "file_bytes": 4980,
+        "sha256": "0cfdf88892403d8ef29ee428025a9fbf23aa6e591a5b74359b6ac10364e85b19"
+      },
+      "fixture_seconds": 0.005608833002042957,
+      "read_seconds": 0.004635958997823764,
+      "process_peak_rss_mib": 43.015625,
+      "pid": 38143,
+      "child_wall_seconds": 0.19846504099768936
+    },
+    {
+      "case": "xlsx_ratio_over",
+      "status": "passed",
+      "expected_error": "XLSX_COMPRESSION_RATIO",
+      "actual_error": "XLSX_COMPRESSION_RATIO",
+      "expected_rows_if_accepted": 1,
+      "expected_columns_if_accepted": 2,
+      "observed_rows": null,
+      "observed_columns": null,
+      "fixture": {
+        "zip_entries": 10,
+        "total_uncompressed_bytes": 21088,
+        "max_member_compression_ratio": 200.04545454545453,
+        "file_bytes": 4980,
+        "sha256": "c4179aa447c891ec137d1f10e43066624e2b07f619aaea6cadb5fda3b80bfb1f"
+      },
+      "fixture_seconds": 0.0059634159988490865,
+      "read_seconds": 0.00022379100118996575,
+      "process_peak_rss_mib": 42.828125,
+      "pid": 38144,
+      "child_wall_seconds": 0.20086637499844073
+    },
+    {
+      "case": "xlsx_depth_exact",
+      "status": "passed",
+      "expected_error": null,
+      "actual_error": null,
+      "expected_rows_if_accepted": 1,
+      "expected_columns_if_accepted": 2,
+      "observed_rows": 1,
+      "observed_columns": 2,
+      "fixture": {
+        "constructed_xml_depth": 128,
+        "zip_entries": 10,
+        "total_uncompressed_bytes": 17583,
+        "max_member_compression_ratio": 64.0,
+        "file_bytes": 4972,
+        "sha256": "11c59a87f47007e7b06e09c9ec77ed6600ae3d539b0d2abc15e3e014597f4664"
+      },
+      "fixture_seconds": 0.006090582999604521,
+      "read_seconds": 0.004023792000225512,
+      "process_peak_rss_mib": 43.21875,
+      "pid": 38145,
+      "child_wall_seconds": 0.18985670800248045
+    },
+    {
+      "case": "xlsx_depth_over",
+      "status": "passed",
+      "expected_error": "XLSX_XML_DEPTH",
+      "actual_error": "XLSX_XML_DEPTH",
+      "expected_rows_if_accepted": 1,
+      "expected_columns_if_accepted": 2,
+      "observed_rows": null,
+      "observed_columns": null,
+      "fixture": {
+        "constructed_xml_depth": 129,
+        "zip_entries": 10,
+        "total_uncompressed_bytes": 17590,
+        "max_member_compression_ratio": 64.5,
+        "file_bytes": 4972,
+        "sha256": "4335be785be3f9e87ff5ea65fd3e63ed1e0814b6f09eee6aae4cf32a2d740b72"
+      },
+      "fixture_seconds": 0.006386375000147382,
+      "read_seconds": 0.0016401249995396938,
+      "process_peak_rss_mib": 43.15625,
+      "pid": 38146,
+      "child_wall_seconds": 0.22268783299659844
+    }
+  ],
+  "measurement": "Fresh sequential child per real-default boundary. No lowered limits. Fixture generation is included in process peak RSS, excluded from read_seconds. 100 MiB expanded test uses a streaming-generated unselected XML part. Each dimension is isolated; this does not prove all maxima simultaneously."
+}

@@ -1,0 +1,140 @@
+Collecting altair==6.3.0 (from -r requirements.lock (line 4))
+  Downloading altair-6.3.0-py3-none-any.whl (797 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 797.2/797.2 kB 4.3 MB/s eta 0:00:00
+Collecting anyio==4.15.1 (from -r requirements.lock (line 5))
+  Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+Collecting attrs==26.1.0 (from -r requirements.lock (line 6))
+  Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+Collecting certifi==2026.10.23 (from -r requirements.lock (line 7))
+  Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Collecting charset-normalizer==3.5.2 (from -r requirements.lock (line 8))
+  Downloading charset_normalizer-3.5.2-cp312-cp312-macosx_10_13_universal2.whl (367 kB)
+Collecting click==8.5.0 (from -r requirements.lock (line 9))
+  Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Collecting defusedxml==0.7.1 (from -r requirements.lock (line 10))
+  Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Collecting et_xmlfile==2.0.0 (from -r requirements.lock (line 11))
+  Downloading et_xmlfile-2.0.0-py3-none-any.whl (18 kB)
+Collecting h11==0.16.0 (from -r requirements.lock (line 12))
+  Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Collecting idna==3.20 (from -r requirements.lock (line 13))
+  Downloading idna-3.20-py3-none-any.whl (69 kB)
+Collecting iniconfig==2.3.1 (from -r requirements.lock (line 14))
+  Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Collecting itsdangerous==2.2.0 (from -r requirements.lock (line 15))
+  Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Collecting Jinja2==3.1.6 (from -r requirements.lock (line 16))
+  Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Collecting jsonschema==4.26.0 (from -r requirements.lock (line 17))
+  Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+Collecting jsonschema-specifications==2025.9.1 (from -r requirements.lock (line 18))
+  Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Collecting MarkupSafe==3.0.4 (from -r requirements.lock (line 19))
+  Downloading markupsafe-3.0.4-cp312-cp312-macosx_11_0_arm64.whl (12 kB)
+Collecting narwhals==2.27.1 (from -r requirements.lock (line 20))
+  Downloading narwhals-2.27.1-py3-none-any.whl (483 kB)
+Collecting numpy==2.5.4 (from -r requirements.lock (line 21))
+  Downloading numpy-2.5.4-cp312-cp312-macosx_14_0_arm64.whl (5.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 8.0 MB/s eta 0:00:00
+Collecting openpyxl==3.1.5 (from -r requirements.lock (line 22))
+  Downloading openpyxl-3.1.5-py2.py3-none-any.whl (250 kB)
+Collecting packaging==26.3 (from -r requirements.lock (line 23))
+  Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Collecting pandas==3.1.0 (from -r requirements.lock (line 24))
+  Downloading pandas-3.1.0-cp312-cp312-macosx_11_0_arm64.whl (11.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.2/11.2 MB 6.8 MB/s eta 0:00:00
+Collecting pillow==12.3.0 (from -r requirements.lock (line 25))
+  Downloading pillow-12.3.0-cp312-cp312-macosx_11_0_arm64.whl (4.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 MB 8.0 MB/s eta 0:00:00
+Collecting pip==25.0.1 (from -r requirements.lock (line 26))
+  Downloading pip-25.0.1-py3-none-any.whl (1.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 4.8 MB/s eta 0:00:00
+Collecting pluggy==1.7.0 (from -r requirements.lock (line 27))
+  Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+Collecting protobuf==7.36.2 (from -r requirements.lock (line 28))
+  Downloading protobuf-7.36.2-cp310-abi3-macosx_10_9_universal2.whl (456 kB)
+Collecting pyarrow==26.0.0 (from -r requirements.lock (line 29))
+  Downloading pyarrow-26.0.0-cp312-cp312-macosx_12_0_arm64.whl (36.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 36.3/36.3 MB 5.6 MB/s eta 0:00:00
+Collecting pydeck==0.9.3 (from -r requirements.lock (line 30))
+  Downloading pydeck-0.9.3-py2.py3-none-any.whl (11.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.4/11.4 MB 9.2 MB/s eta 0:00:00
+Collecting Pygments==2.21.0 (from -r requirements.lock (line 31))
+  Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 6.0 MB/s eta 0:00:00
+Collecting pytest==8.4.2 (from -r requirements.lock (line 32))
+  Downloading pytest-8.4.2-py3-none-any.whl (365 kB)
+Collecting python-dateutil==3.0.0 (from -r requirements.lock (line 33))
+  Downloading python_dateutil-3.0.0-py2.py3-none-any.whl (94 kB)
+Collecting python-multipart==0.0.32 (from -r requirements.lock (line 34))
+  Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
+Collecting referencing==0.37.0 (from -r requirements.lock (line 35))
+  Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+Collecting requests==2.34.2 (from -r requirements.lock (line 36))
+  Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Collecting rpds-py==2026.9.1 (from -r requirements.lock (line 37))
+  Downloading rpds_py-2026.9.1-cp312-cp312-macosx_11_0_arm64.whl (341 kB)
+Collecting setuptools==80.9.0 (from -r requirements.lock (line 38))
+  Downloading setuptools-80.9.0-py3-none-any.whl (1.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 3.5 MB/s eta 0:00:00
+Collecting six==1.17.0 (from -r requirements.lock (line 39))
+  Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Collecting starlette==1.9.0 (from -r requirements.lock (line 40))
+  Downloading starlette-1.9.0-py3-none-any.whl (80 kB)
+Collecting streamlit==1.66.0 (from -r requirements.lock (line 41))
+  Downloading streamlit-1.66.0-py3-none-any.whl (10.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.4/10.4 MB 3.8 MB/s eta 0:00:00
+Collecting typing_extensions==4.16.0 (from -r requirements.lock (line 42))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Collecting tzdata==2026.5 (from -r requirements.lock (line 43))
+  Downloading tzdata-2026.5-py2.py3-none-any.whl (347 kB)
+Collecting urllib3==2.8.0 (from -r requirements.lock (line 44))
+  Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Collecting uvicorn==0.54.0 (from -r requirements.lock (line 45))
+  Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+Collecting websockets==17.3 (from -r requirements.lock (line 46))
+  Downloading websockets-17.3-cp312-cp312-macosx_11_0_arm64.whl (216 kB)
+Saved ./outputs/m4/wheelhouse/altair-6.3.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/anyio-4.15.1-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/attrs-26.1.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/certifi-2026.10.23-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/charset_normalizer-3.5.2-cp312-cp312-macosx_10_13_universal2.whl
+Saved ./outputs/m4/wheelhouse/click-8.5.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/defusedxml-0.7.1-py2.py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/et_xmlfile-2.0.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/h11-0.16.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/idna-3.20-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/iniconfig-2.3.1-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/itsdangerous-2.2.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/jinja2-3.1.6-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/jsonschema-4.26.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/jsonschema_specifications-2025.9.1-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/markupsafe-3.0.4-cp312-cp312-macosx_11_0_arm64.whl
+Saved ./outputs/m4/wheelhouse/narwhals-2.27.1-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/numpy-2.5.4-cp312-cp312-macosx_14_0_arm64.whl
+Saved ./outputs/m4/wheelhouse/openpyxl-3.1.5-py2.py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/packaging-26.3-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/pandas-3.1.0-cp312-cp312-macosx_11_0_arm64.whl
+Saved ./outputs/m4/wheelhouse/pillow-12.3.0-cp312-cp312-macosx_11_0_arm64.whl
+Saved ./outputs/m4/wheelhouse/pip-25.0.1-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/pluggy-1.7.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/protobuf-7.36.2-cp310-abi3-macosx_10_9_universal2.whl
+Saved ./outputs/m4/wheelhouse/pyarrow-26.0.0-cp312-cp312-macosx_12_0_arm64.whl
+Saved ./outputs/m4/wheelhouse/pydeck-0.9.3-py2.py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/pygments-2.21.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/pytest-8.4.2-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/python_dateutil-3.0.0-py2.py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/python_multipart-0.0.32-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/referencing-0.37.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/requests-2.34.2-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/rpds_py-2026.9.1-cp312-cp312-macosx_11_0_arm64.whl
+Saved ./outputs/m4/wheelhouse/setuptools-80.9.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/six-1.17.0-py2.py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/starlette-1.9.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/streamlit-1.66.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/typing_extensions-4.16.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/tzdata-2026.5-py2.py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/urllib3-2.8.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/uvicorn-0.54.0-py3-none-any.whl
+Saved ./outputs/m4/wheelhouse/websockets-17.3-cp312-cp312-macosx_11_0_arm64.whl
+Successfully downloaded altair anyio attrs certifi charset-normalizer click defusedxml et_xmlfile h11 idna iniconfig itsdangerous Jinja2 jsonschema jsonschema-specifications MarkupSafe narwhals numpy openpyxl packaging pandas pillow pip pluggy protobuf pyarrow pydeck Pygments pytest python-dateutil python-multipart referencing requests rpds-py setuptools six starlette streamlit typing_extensions tzdata urllib3 uvicorn websockets

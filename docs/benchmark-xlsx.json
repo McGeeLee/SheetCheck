@@ -1,0 +1,38 @@
+{
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.12.14",
+  "format": "xlsx",
+  "rows_per_side": 10000,
+  "repeats": 3,
+  "trials": [
+    {
+      "read_seconds": 0.7375312500007567,
+      "core_including_audit_seconds": 0.26871024999854853,
+      "process_peak_rss_mib": 59.03125,
+      "input_bytes_per_side": 108450,
+      "business_records": 10000,
+      "ledger_rows": 20000
+    },
+    {
+      "read_seconds": 0.7506671670016658,
+      "core_including_audit_seconds": 0.29756066700065276,
+      "process_peak_rss_mib": 59.46875,
+      "input_bytes_per_side": 108451,
+      "business_records": 10000,
+      "ledger_rows": 20000
+    },
+    {
+      "read_seconds": 0.8079057920003834,
+      "core_including_audit_seconds": 0.264799041000515,
+      "process_peak_rss_mib": 59.0,
+      "input_bytes_per_side": 108454,
+      "business_records": 10000,
+      "ledger_rows": 20000
+    }
+  ],
+  "median_core_seconds": 0.26871024999854853,
+  "max_process_peak_rss_mib": 59.46875,
+  "xlsx_export": "not implemented (M2)",
+  "measurement": "fresh child process per trial; fixture creation excluded from timing, included in peak RSS"
+}

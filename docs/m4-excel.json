@@ -1,0 +1,18 @@
+{
+  "application": "Microsoft Excel for Mac",
+  "version": "16.114",
+  "build": "16.114.26101123",
+  "report": "outputs/m4/sheetcheck_20261023T172102Z_11d5df5da13342789b9206f52bcf004a.xlsx",
+  "sha256_after_close": "a90cb4b8c24fd9082b2f4b897de64b4b0be4d995f24e057771d06a6fbde98a87",
+  "opened_without_repair_link_macro_prompt": true,
+  "observed": [
+    "5 sheets visible",
+    "A002 order 50.00, payment 49.00, difference -1.00 / -100 cents",
+    "A007 actual zero, missing sides blank",
+    "source ledger A002 both roles and shared result_id",
+    "A005 duplicate plus blocked issues in ledger"
+  ],
+  "autosave": "off",
+  "file_saved_or_edited": false,
+  "scope": "One synthetic mixed CSV/XLSX report; not Windows Excel, WPS or LibreOffice compatibility"
+}

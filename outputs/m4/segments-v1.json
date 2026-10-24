@@ -1,0 +1,32 @@
+[
+  {
+    "source_start_ms": 1792816468135,
+    "source_end_ms": 1792816488561,
+    "label": "加载虚构样例"
+  },
+  {
+    "source_start_ms": 1792816505853,
+    "source_end_ms": 1792816526521,
+    "label": "确认字段映射与规则"
+  },
+  {
+    "source_start_ms": 1792816538978,
+    "source_end_ms": 1792816559478,
+    "label": "查看 A002 差额"
+  },
+  {
+    "source_start_ms": 1792816578581,
+    "source_end_ms": 1792816598186,
+    "label": "检查 A005 两侧隔离"
+  },
+  {
+    "source_start_ms": 1792816612894,
+    "source_end_ms": 1792816632543,
+    "label": "定位 A002 原始行"
+  },
+  {
+    "source_start_ms": 1792816647745,
+    "source_end_ms": 1792816667532,
+    "label": "生成审计报告并展示下载入口"
+  }
+]

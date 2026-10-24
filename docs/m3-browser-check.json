@@ -1,0 +1,40 @@
+{
+  "source": "actual final local browser download",
+  "app_version": "0.3.0",
+  "run_id": "186c9e15e8344e3e837c0462652027a7",
+  "downloaded_report": "outputs/m3/sheetcheck_20261023T170434Z_186c9e15e8344e3e837c0462652027a7.xlsx",
+  "bytes": 19212,
+  "sha256": "d712e9178a2989e3897c0a0faa3fa2d807c7741e06e839872a54225eb793da26",
+  "audit": "passed against recomputed source CSVs and report run metadata",
+  "active_ui_filter": "A002",
+  "full_report_verified": true,
+  "data_rows_by_sheet": {
+    "运行说明": 79,
+    "业务结果": 5,
+    "异常明细": 3,
+    "数据问题": 6,
+    "源行账本": 14
+  },
+  "earlier_sample_action_until_first_download_click_seconds": 78.013,
+  "timing_scope": "earlier browser smoke before concurrency hardening; action-to-first-download-click, not transfer time",
+  "input_change_browser_check": "period changed; old results and download removed; MAPPED",
+  "reset_browser_check": "uploads, period, confirmations, results and report cleared; EMPTY",
+  "timed_flow": {
+    "source": "actual final browser flow after reset",
+    "action_to_download_click_seconds": 29.393,
+    "action_to_download_file_seconds": 43.982,
+    "actions": [
+      "load fictional sample",
+      "confirm currency and period",
+      "reconcile",
+      "generate report",
+      "download"
+    ],
+    "run_id": "ab96661759b7470db433059a0765f2c8",
+    "downloaded_report": "outputs/m3/sheetcheck_20261023T170902Z_ab96661759b7470db433059a0765f2c8.xlsx",
+    "bytes": 19214,
+    "sha256": "27353b6d4ede9f37a1901889ef02f739e256117aebe7d7b0b74fdb0eada18c9f",
+    "audit": "passed against recomputed source CSVs and report run metadata",
+    "timing_scope": "single automated UI run on acceptance machine; not a human usability study or capacity benchmark"
+  }
+}

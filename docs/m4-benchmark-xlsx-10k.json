@@ -1,0 +1,141 @@
+{
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "measured_at_utc": "2026-10-23T17:28:50.513346+00:00",
+  "app_version": "0.3.0",
+  "rules_version": "v1",
+  "dependencies": {
+    "openpyxl": "3.1.5",
+    "defusedxml": "0.7.1",
+    "streamlit": "1.66.0"
+  },
+  "hardware": {
+    "logical_cpu_count": 10,
+    "processor": "arm",
+    "cpu_model": "Apple M4",
+    "physical_memory_bytes": 25769803776
+  },
+  "python": "3.12.14",
+  "format": "xlsx",
+  "variant": "mixed",
+  "rows_per_side": 10000,
+  "repeats": 3,
+  "successful_trials": 3,
+  "trials": [
+    {
+      "status": "passed",
+      "pid": 35641,
+      "read_seconds": 5.9738013749993115,
+      "core_including_audit_seconds": 3.0938155830008327,
+      "export_including_builtin_readback_audit_seconds": 96.11419229199964,
+      "additional_standalone_readback_audit_seconds": 41.02550324999902,
+      "process_peak_rss_mib": 378.875,
+      "cumulative_peak_rss_mib": {
+        "after_fixture": 42.59375,
+        "after_read": 52.03125,
+        "after_core": 66.5625,
+        "after_export_with_builtin_audit": 378.875,
+        "after_additional_audit": 378.875
+      },
+      "input_bytes": {
+        "order": 110194,
+        "payment": 111984
+      },
+      "report_bytes": 5556639,
+      "report_sha256": "c1db400962f2c1ef81607b80ae04b1981a514b9ce5e8c2a561a5594c346060d1",
+      "business_records": 7000,
+      "ledger_rows": 20000,
+      "status_counts": {
+        "EXACT_MATCH": 3000,
+        "AMOUNT_MISMATCH": 1000,
+        "ONLY_ORDER": 1000,
+        "ONLY_PAYMENT": 2000,
+        "DATA_ISSUE": 7000,
+        "SKIPPED_EMPTY": 2000
+      },
+      "trial": 1,
+      "child_wall_seconds": 150.2855239169985
+    },
+    {
+      "status": "passed",
+      "pid": 36125,
+      "read_seconds": 3.402834624997922,
+      "core_including_audit_seconds": 2.6205309169999964,
+      "export_including_builtin_readback_audit_seconds": 59.88395429100274,
+      "additional_standalone_readback_audit_seconds": 21.133224500001234,
+      "process_peak_rss_mib": 410.359375,
+      "cumulative_peak_rss_mib": {
+        "after_fixture": 43.3125,
+        "after_read": 52.421875,
+        "after_core": 66.40625,
+        "after_export_with_builtin_audit": 410.359375,
+        "after_additional_audit": 410.359375
+      },
+      "input_bytes": {
+        "order": 110195,
+        "payment": 111982
+      },
+      "report_bytes": 5557080,
+      "report_sha256": "e262e5f8b9f9a4b161f61e3117831bfe285d71019bc20d5f92bd23c7a64303aa",
+      "business_records": 7000,
+      "ledger_rows": 20000,
+      "status_counts": {
+        "EXACT_MATCH": 3000,
+        "AMOUNT_MISMATCH": 1000,
+        "ONLY_ORDER": 1000,
+        "ONLY_PAYMENT": 2000,
+        "DATA_ISSUE": 7000,
+        "SKIPPED_EMPTY": 2000
+      },
+      "trial": 2,
+      "child_wall_seconds": 88.45691970799817
+    },
+    {
+      "status": "passed",
+      "pid": 36283,
+      "read_seconds": 3.8038964580009633,
+      "core_including_audit_seconds": 1.152578707999055,
+      "export_including_builtin_readback_audit_seconds": 59.28179462499975,
+      "additional_standalone_readback_audit_seconds": 31.757611834000272,
+      "process_peak_rss_mib": 413.203125,
+      "cumulative_peak_rss_mib": {
+        "after_fixture": 43.046875,
+        "after_read": 53.015625,
+        "after_core": 68.4375,
+        "after_export_with_builtin_audit": 413.203125,
+        "after_additional_audit": 413.203125
+      },
+      "input_bytes": {
+        "order": 110191,
+        "payment": 111984
+      },
+      "report_bytes": 5556423,
+      "report_sha256": "36f8a01262cba8f4180b93d7fcd85e45b7d5d2e3529c53c926604aabe2e24aa4",
+      "business_records": 7000,
+      "ledger_rows": 20000,
+      "status_counts": {
+        "EXACT_MATCH": 3000,
+        "AMOUNT_MISMATCH": 1000,
+        "ONLY_ORDER": 1000,
+        "ONLY_PAYMENT": 2000,
+        "DATA_ISSUE": 7000,
+        "SKIPPED_EMPTY": 2000
+      },
+      "trial": 3,
+      "child_wall_seconds": 97.55642758300019
+    }
+  ],
+  "child_timeout_seconds": 300.0,
+  "measurement": "Fresh sequential child process per trial. Fixture construction excluded from timings and included in whole-process peak RSS. Export includes its mandatory readback audit; standalone audit is a separate additional pass. Stage RSS values are cumulative process high-water marks, not per-stage deltas. All data synthetic; report bytes remain in memory.",
+  "median_read_seconds": 3.8038964580009633,
+  "median_core_seconds": 2.6205309169999964,
+  "median_export_including_builtin_audit_seconds": 59.88395429100274,
+  "median_additional_standalone_audit_seconds": 31.757611834000272,
+  "max_process_peak_rss_mib": 413.203125,
+  "target_assessment": {
+    "scope": "Blueprint suggested 10000 rows per side; other scales are observations only",
+    "applicable": true,
+    "all_successful_trials_core_within_3_seconds": false,
+    "all_successful_trials_whole_process_within_512_mib": true
+  }
+}

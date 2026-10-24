@@ -1,0 +1,7 @@
+{
+  "observed_at_utc": "2026-10-23T17:38:39.920369+00:00",
+  "reason": "CSV 50k full export and both readbacks passed in about nine minutes; cancelled optional pre-fix XLSX 50k extension to fix confirmed workbook retention defect and avoid duplicate high-pressure work",
+  "action": "SIGTERM to exact owned XLSX 50k benchmark child",
+  "terminated_pid": 37680,
+  "functional_result": "not established; cancelled after child started; not a timeout or a product correctness failure"
+}

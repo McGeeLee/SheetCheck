@@ -1,0 +1,18 @@
+WARNING: The directory '/Users/mcgee/Library/Caches/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Obtaining file:///Users/mcgee/Documents/Codex%20Project/Project/SheetCheck
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: sheetcheck
+  Building editable for sheetcheck (pyproject.toml): started
+  Building editable for sheetcheck (pyproject.toml): finished with status 'done'
+  Created wheel for sheetcheck: filename=sheetcheck-1.0.0-0.editable-py3-none-any.whl size=2849 sha256=991c5b798b3604cb3c6f9f40efcd33d5d6bab366e07637fb205fb1cbd2e72449
+  Stored in directory: /private/var/folders/gb/5r4btw316zg1l5v_fpb61n1h0000gn/T/pip-ephem-wheel-cache-xqggpb2q/wheels/3b/0e/b0/761ae08b1d194ea142e30adb496032b6995ec9121f1a029d08
+Successfully built sheetcheck
+Installing collected packages: sheetcheck
+  Attempting uninstall: sheetcheck
+    Found existing installation: sheetcheck 0.3.0
+    Uninstalling sheetcheck-0.3.0:
+      Successfully uninstalled sheetcheck-0.3.0
+Successfully installed sheetcheck-1.0.0

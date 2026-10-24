@@ -1,0 +1,77 @@
+{
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "measured_at_utc": "2026-10-24T04:30:37.130085+00:00",
+  "app_version": "0.3.0",
+  "rules_version": "v1",
+  "dependencies": {
+    "openpyxl": "3.1.5",
+    "defusedxml": "0.7.1",
+    "streamlit": "1.66.0"
+  },
+  "hardware": {
+    "logical_cpu_count": 10,
+    "processor": "arm"
+  },
+  "python": "3.12.14",
+  "format": "xlsx",
+  "variant": "mixed",
+  "rows_per_side": 10000,
+  "repeats": 1,
+  "successful_trials": 1,
+  "trials": [
+    {
+      "status": "passed",
+      "pid": 2585,
+      "read_seconds": 0.6827967919999764,
+      "core_including_audit_seconds": 0.2660187920000112,
+      "export_including_builtin_readback_audit_seconds": 16.867814832999954,
+      "additional_standalone_readback_audit_seconds": 7.267633499999988,
+      "process_peak_rss_mib": 429.59375,
+      "cumulative_peak_rss_mib": {
+        "after_fixture": 43.0,
+        "after_read": 55.953125,
+        "after_core": 69.359375,
+        "after_export_with_builtin_audit": 429.59375,
+        "after_additional_audit": 429.59375
+      },
+      "stage_process_cpu_seconds": {
+        "read": 0.6800380000000001,
+        "core_including_audit": 0.264157,
+        "export_including_builtin_readback_audit": 16.638909,
+        "additional_standalone_readback_audit": 7.139948999999998
+      },
+      "input_bytes": {
+        "order": 110191,
+        "payment": 111983
+      },
+      "report_bytes": 5557204,
+      "report_sha256": "b0b36a66016472dd408a16a7951d98ad246669f6dab5898869876e8f81e1ab7e",
+      "business_records": 7000,
+      "ledger_rows": 20000,
+      "status_counts": {
+        "EXACT_MATCH": 3000,
+        "AMOUNT_MISMATCH": 1000,
+        "ONLY_ORDER": 1000,
+        "ONLY_PAYMENT": 2000,
+        "DATA_ISSUE": 7000,
+        "SKIPPED_EMPTY": 2000
+      },
+      "trial": 1,
+      "child_wall_seconds": 25.442553625000016
+    }
+  ],
+  "child_timeout_seconds": 300.0,
+  "measurement": "Fresh sequential child process per trial. Fixture construction excluded from timings and included in whole-process peak RSS. Export includes its mandatory readback audit; standalone audit is a separate additional pass. Stage RSS values are cumulative process high-water marks, not per-stage deltas. All data synthetic; report bytes remain in memory.",
+  "median_read_seconds": 0.6827967919999764,
+  "median_core_seconds": 0.2660187920000112,
+  "median_export_including_builtin_audit_seconds": 16.867814832999954,
+  "median_additional_standalone_audit_seconds": 7.267633499999988,
+  "max_process_peak_rss_mib": 429.59375,
+  "target_assessment": {
+    "scope": "Blueprint suggested 10000 rows per side; other scales are observations only",
+    "applicable": true,
+    "all_successful_trials_core_within_3_seconds": true,
+    "all_successful_trials_whole_process_within_512_mib": true
+  }
+}

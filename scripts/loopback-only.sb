@@ -1,0 +1,8 @@
+; M4 acceptance only. macOS sandbox-exec is deprecated and is not a product dependency.
+; Keep the rest of the process permissions unchanged; deny non-loopback networking.
+(version 1)
+(allow default)
+(deny network*)
+(allow network-bind (local ip "localhost:*"))
+(allow network-inbound (local ip "localhost:*"))
+(allow network-outbound (remote ip "localhost:*"))

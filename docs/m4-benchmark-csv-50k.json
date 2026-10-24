@@ -1,0 +1,73 @@
+{
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "measured_at_utc": "2026-10-23T17:38:02.559704+00:00",
+  "app_version": "0.3.0",
+  "rules_version": "v1",
+  "dependencies": {
+    "openpyxl": "3.1.5",
+    "defusedxml": "0.7.1",
+    "streamlit": "1.66.0"
+  },
+  "hardware": {
+    "logical_cpu_count": 10,
+    "processor": "arm",
+    "cpu_model": "Apple M4",
+    "physical_memory_bytes": 25769803776
+  },
+  "python": "3.12.14",
+  "format": "csv",
+  "variant": "mixed",
+  "rows_per_side": 50000,
+  "repeats": 1,
+  "successful_trials": 1,
+  "trials": [
+    {
+      "status": "passed",
+      "pid": 36432,
+      "read_seconds": 1.2818616249969637,
+      "core_including_audit_seconds": 8.605287583999598,
+      "export_including_builtin_readback_audit_seconds": 411.06878020899967,
+      "additional_standalone_readback_audit_seconds": 129.50561708399982,
+      "process_peak_rss_mib": 1681.390625,
+      "cumulative_peak_rss_mib": {
+        "after_fixture": 54.453125,
+        "after_read": 120.09375,
+        "after_core": 172.0,
+        "after_export_with_builtin_audit": 1681.390625,
+        "after_additional_audit": 1681.390625
+      },
+      "input_bytes": {
+        "order": 1248900,
+        "payment": 1248900
+      },
+      "report_bytes": 28775829,
+      "report_sha256": "a92651bf9aa0fe9bf02788c46639cfb9e731007e888893b5b5a9d3fa76f1a0a4",
+      "business_records": 35000,
+      "ledger_rows": 100000,
+      "status_counts": {
+        "EXACT_MATCH": 15000,
+        "AMOUNT_MISMATCH": 5000,
+        "ONLY_ORDER": 5000,
+        "ONLY_PAYMENT": 10000,
+        "DATA_ISSUE": 35000,
+        "SKIPPED_EMPTY": 10000
+      },
+      "trial": 1,
+      "child_wall_seconds": 551.4166321659977
+    }
+  ],
+  "child_timeout_seconds": 600.0,
+  "measurement": "Fresh sequential child process per trial. Fixture construction excluded from timings and included in whole-process peak RSS. Export includes its mandatory readback audit; standalone audit is a separate additional pass. Stage RSS values are cumulative process high-water marks, not per-stage deltas. All data synthetic; report bytes remain in memory.",
+  "median_read_seconds": 1.2818616249969637,
+  "median_core_seconds": 8.605287583999598,
+  "median_export_including_builtin_audit_seconds": 411.06878020899967,
+  "median_additional_standalone_audit_seconds": 129.50561708399982,
+  "max_process_peak_rss_mib": 1681.390625,
+  "target_assessment": {
+    "scope": "Blueprint suggested 10000 rows per side; other scales are observations only",
+    "applicable": false,
+    "all_successful_trials_core_within_3_seconds": false,
+    "all_successful_trials_whole_process_within_512_mib": false
+  }
+}

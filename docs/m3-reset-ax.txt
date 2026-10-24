@@ -1,0 +1,43 @@
+Browser tab: 1, Title: "SheetCheck · 两表核对", URL: "http://127.0.0.1:8501/#3".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 213-225, 227-236, 238-243, 245-297
+~					31 text 阶段：EMPTY · 应用 0.3.0 · 规则 v1
+~				212 heading 1 · 导入与预览, Value: 2, ID: 1
++					213 text 1 · 导入与预览
++					214 link Description: Link to heading, Value: 127.0.0.1:8501/#1
++				215 heading 订单表, Value: 3, ID: 806daf90
++					216 text 订单表
++					217 link Description: Link to heading, Value: 127.0.0.1:8501/#806daf90
++				218 container
++					219 container 上传订单文件
++						220 button file upload
++						221 button Upload
++							222 text Upload
++						223 text 10MB per file
++						224 text  • CSV, XLSX
++				225 text 选择一个 CSV 或 XLSX 文件，每份不超过 10 MiB。
+~				226 heading 收款表, Value: 3, ID: f360125
++					227 text 收款表
++					228 link Description: Link to heading, Value: 127.0.0.1:8501/#f360125
++				229 container
++					230 container 上传收款文件
++						231 button file upload
++						232 button Upload
++							233 text Upload
++						234 text 10MB per file
++						235 text  • CSV, XLSX
++				236 text 选择一个 CSV 或 XLSX 文件，每份不超过 10 MiB。
+~				237 heading 2 · 确认核对规则, Value: 2
++					238 text 2 · 确认核对规则
++					239 link Description: Link to heading, Value: 127.0.0.1:8501/#2
++				240 text 文本编号精确匹配 · 保留前导零 · 金额两位小数 · 容差 0 分 · 坏编号在两侧全部隔离
++				241 container
++					242 combo box (collapsed, settable) Description: 币种, Value: CNY, ID: react-aria9688150165-:rdf:, Secondary Actions: Expand
++					243 pop up button (collapsed) Description: Open, ID: react-aria9688150165-:rdb:, Secondary Actions: Expand
+~				244 container
++					245 text field (settable) Description: 核对期间, ID: :rdo:
+~					205 checkbox (settable, integer) Description: 我确认两个文件属于同一币种, Value: 0
+~					208 checkbox (settable, integer) Description: 我确认两个文件属于上述同一核对期间, Value: 0
+~				210 button (disabled) 开始核对
++				246 text 请先完成两侧导入、不同字段映射、币种和期间确认。
+The focused UI element is 1 AXWebArea SheetCheck · 两表核对, URL: 127.0.0.1:8501/#3

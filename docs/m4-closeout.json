@@ -1,0 +1,97 @@
+{
+  "recorded_at_utc": "2026-10-24T04:58:12.462457+00:00",
+  "accepted_on": "2026-10-24",
+  "timezone": "Asia/Singapore",
+  "application_version": "1.0.0",
+  "status": "COMPLETE_WITH_DOCUMENTED_SCOPE",
+  "v1_complete": true,
+  "authority": "Direct user instruction in this project conversation",
+  "user_instruction_zh": "下载录像不用再补了，保留此前成功下载的证据，把限制写清楚，按已验证的范围完成 v1 收尾，不要再弹权限确认了。",
+  "scope": "Verified local macOS arm64 / CPython 3.12 environment, existing functional/security/capacity/performance evidence, final 1.0.0 regression and report audit; prior 0.3.0 browser-download/native-Excel evidence remains separately identified. The omitted new download recording is accepted, not represented as performed.",
+  "previous_release_status_sha256": "2b4d07dfb2f9af20694910084ae765ed38a07e2d578070d849296da6c9aa2dae",
+  "scope_change": "Only the requirement to re-record the download was waived. Compatibility and measurement claims were not broadened; historical missing or failed measurements were not relabelled as passed.",
+  "work_this_closeout": "Update completion metadata, README/release documentation and package receipt; rebuild and verify the local delivery archive. No product behavior, rules, limits, test oracle or report format changes.",
+  "additional_browser_downloads": 0,
+  "additional_permission_requests": 0,
+  "application_tests": "Existing 502-test evidence retained; no claim of a new application-suite run for this documentation and packaging closeout.",
+  "retained_evidence_files": {
+    "docs/m4-offline-result.json": {
+      "sha256": "b1989e6bfc6c0ab2dea831a1ac79e582c3cccbae8860203ce5e725a8411b9621",
+      "bytes": 1117
+    },
+    "docs/m4-network-events.jsonl": {
+      "sha256": "b3e9558269f0ac46081329ae5d5cb3cf2b183879b4a11c80979bd022242871e9",
+      "bytes": 28018
+    },
+    "docs/m4-excel.json": {
+      "sha256": "1d31430a157243392a011b2a5c12c730cbcc88c28cd38cfe5432130ab2caac6e",
+      "bytes": 761
+    },
+    "docs/m4-offline.png": {
+      "sha256": "606e4bf5d487e9c3a7d7b3e9b5c8435cbb18bd69ff7fde55076fb14847dbaf56",
+      "bytes": 55479
+    },
+    "docs/m4-excel-results.png": {
+      "sha256": "db8c8f90f726ed02cce56b9e585f1769a5b2e7958bdbf18d478dde328833acfa",
+      "bytes": 591846
+    },
+    "docs/m4-excel-ledger.png": {
+      "sha256": "dd875e4301b8e179c42ab5006718741744d98d45bb5aee2e4194990cd799face",
+      "bytes": 809802
+    },
+    "docs/m4-video-verification.json": {
+      "sha256": "de5f37ac45945b766e0793689f74731feaa3bd9b6e0ce14837fa1049884fa02c",
+      "bytes": 6465
+    },
+    "outputs/m4/sheetcheck_20261023T172102Z_11d5df5da13342789b9206f52bcf004a.xlsx": {
+      "sha256": "a90cb4b8c24fd9082b2f4b897de64b4b0be4d995f24e057771d06a6fbde98a87",
+      "bytes": 19249
+    },
+    "outputs/m4/sheetcheck-demo.mp4": {
+      "sha256": "294470181cfca5a588c5b8afcda2b9881b583711a286167e937f787cf031ccac",
+      "bytes": 815318
+    },
+    "outputs/m4/sheetcheck-demo.vtt": {
+      "sha256": "f8e867c6730156af9f7737de0ed6f1c95f265aa3cd5a282fadfe66f2d06d97b6",
+      "bytes": 880
+    },
+    "docs/m4-final-test-summary.json": {
+      "sha256": "38eca3def61e400b88e049e6b044b281fcd3e861d754f073121b36acfa87157d",
+      "bytes": 801
+    },
+    "docs/m4-test-results.txt": {
+      "sha256": "5dd485364c5a0a8cc6a260b561c6b19979eed6c2adc12e0dec89d66ae5d752a3",
+      "bytes": 581
+    },
+    "docs/m4-release-test-results.txt": {
+      "sha256": "3652b14e5385e8f373445a0aceeecb6fefab0d15f1dc7a53446a58e560a0d18f",
+      "bytes": 581
+    },
+    "docs/m4-capacity-results.json": {
+      "sha256": "e3864decdce1d7bcc08d6241c6ba76dc761f98176d3ebad486ac624b1534f3c2",
+      "bytes": 15311
+    },
+    "docs/m4-benchmark-xlsx-10k-final.json": {
+      "sha256": "b651b81d0ef9950cf2c916479f3a581e9a251ee194eed36650ee058ddc87ab29",
+      "bytes": 5612
+    },
+    "docs/m4-benchmark-xlsx-50k-final.json": {
+      "sha256": "a54dea987346a1e1bcbc4babb3049945ca0dab3244989474a088e243497e2fe5",
+      "bytes": 2848
+    }
+  },
+  "release_record": "docs/m4-release-status.json",
+  "package_integrity_receipt": "docs/m4-package-verification.json (external to the archive to avoid a hash cycle)",
+  "closeout_consistency_check": {
+    "checked_at_utc": "2026-10-24T04:59:43.496159+00:00",
+    "status": "PASS",
+    "retained_evidence_files_unchanged": 16,
+    "previous_source_snapshot_sha256": "4783d430f3b85d58f5fbf6b30a096d3bd868e327b49b19092c9683dce3fe0a11",
+    "snapshot_changed_files": [
+      "scripts/build_delivery.py"
+    ],
+    "product_tests_samples_config_and_lock_unchanged": true,
+    "new_application_test_run_required": false,
+    "reason": "Only the delivery packager completion metadata and release documents changed; actual package execution validates the packager."
+  }
+}

@@ -1,0 +1,31 @@
+# Run from the project directory. Source files stay in the local session.
+[server]
+address = "127.0.0.1"
+port = 8501
+headless = true
+maxUploadSize = 10
+enableCORS = true
+enableXsrfProtection = true
+allowedHosts = ["127.0.0.1", "localhost"]
+enableStaticServing = false
+fileWatcherType = "none"
+
+[browser]
+serverAddress = "127.0.0.1"
+gatherUsageStats = false
+
+[client]
+showErrorDetails = "none"
+toolbarMode = "minimal"
+# The audited XLSX download is the app's supported export path.
+disableDataExport = true
+
+[logger]
+level = "error"
+
+[theme]
+base = "light"
+primaryColor = "#0F766E"
+font = "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+headingFont = "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+codeFont = "SFMono-Regular, Consolas, monospace"

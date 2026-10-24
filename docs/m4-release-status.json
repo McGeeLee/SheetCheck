@@ -1,0 +1,82 @@
+{
+  "application_version": "1.0.0",
+  "rules_version": "v1",
+  "report_format_version": "m2-v1",
+  "status": "COMPLETE_WITH_DOCUMENTED_SCOPE",
+  "software_delivery_ready": true,
+  "v1_complete": true,
+  "reason": "On 2026-10-24 the user explicitly waived re-recording the download step and authorized closing v1 within the verified scope, retaining the prior successful download evidence and all documented limitations.",
+  "verified": {
+    "fresh_install": "43 exact hash wheels, no-index clean virtual environment; docs/m4-release-install.json",
+    "regression": "502 passed in each of two environments, same suite, not additive; docs/m4-final-test-summary.json",
+    "sample_and_report": "Final 1.0.0 CLI export, independent recomputation, five-sheet audit and unchanged sources; outputs/m4/final/acceptance.json",
+    "capacity": "20/20 actual default boundaries; docs/m4-capacity-results.json",
+    "logs_and_export_security": "Covered by final 502 tests, including 32 M4 canary cases; docs/m4-log-security.md",
+    "offline_workflow": "Earlier 0.3.0 real upload-to-download flow with application-scope OS/CSP external network restriction; docs/m4-offline-result.json",
+    "native_excel": "One earlier 0.3.0 report opened in Excel for Mac 16.114; docs/m4-excel.json",
+    "video": "1.0.0 actual screenshot sequence, 120.600 seconds, full decode and seven visual checks; docs/m4-video-verification.json",
+    "performance_current": "Final 1.0.0 XLSX 10k three repetitions satisfy both suggested targets; XLSX 50k one full reconciliation/export/two-audit run passed. Historical target miss and cancellation remain separate records."
+  },
+  "not_claimed": [
+    "Whole-computer physical offline or packet-capture verification",
+    "Windows, Linux, Intel Mac, other Python versions, WPS or LibreOffice compatibility",
+    "All maximum input dimension combinations or concurrent-session performance",
+    "Immediate secure erasure, in-page preemptive cancellation, or a runtime wall-clock limit",
+    "Native Excel re-opening of the final 1.0.0 CLI report",
+    "A fresh install/test run from the extracted ZIP on another machine"
+  ],
+  "release_record": "docs/m4-verification.md",
+  "delivery_record": "docs/m4-delivery.md",
+  "performance_record": "docs/m4-capacity.md",
+  "recorded_at_utc": "2026-10-24T04:58:12.462457+00:00",
+  "performance_final": {
+    "10k": {
+      "evidence": "docs/m4-benchmark-xlsx-10k-final.json",
+      "application_version": "1.0.0",
+      "rows_per_side": 10000,
+      "successful_trials": 3,
+      "median_core_seconds": 0.2513011670000651,
+      "median_export_including_builtin_audit_seconds": 15.550321582999914,
+      "median_additional_standalone_audit_seconds": 6.6821905409999545,
+      "max_process_peak_rss_mib": 430.0,
+      "suggested_10k_targets_applicable": true
+    },
+    "50k": {
+      "evidence": "docs/m4-benchmark-xlsx-50k-final.json",
+      "application_version": "1.0.0",
+      "rows_per_side": 50000,
+      "successful_trials": 1,
+      "median_core_seconds": 1.4725173750000522,
+      "median_export_including_builtin_audit_seconds": 85.94618154099999,
+      "median_additional_standalone_audit_seconds": 35.16975116699996,
+      "max_process_peak_rss_mib": 1951.328125,
+      "suggested_10k_targets_applicable": false
+    }
+  },
+  "completion_scope": "Verified local macOS arm64 / CPython 3.12 environment, existing functional/security/capacity/performance evidence, final 1.0.0 regression and report audit; prior 0.3.0 browser-download/native-Excel evidence remains separately identified. The omitted new download recording is accepted, not represented as performed.",
+  "accepted_limitations": [
+    {
+      "id": "DEMO_ACTUAL_DOWNLOAD",
+      "observation": "NOT_RECORDED",
+      "disposition": "USER_ACCEPTED_NO_RERECORDING_REQUIRED",
+      "accepted_on": "2026-10-24",
+      "timezone": "Asia/Singapore",
+      "detail": "The user explicitly requested no additional download recording or permission prompts. The final video shows report generation and the download button. Earlier successful browser download, independent readback and native Excel evidence are retained separately.",
+      "evidence": [
+        "docs/m4-offline-result.json",
+        "docs/m4-excel.json",
+        "docs/m4-video-verification.json"
+      ],
+      "authorization_record": "docs/m4-closeout.json"
+    }
+  ],
+  "historical_observations": [
+    {
+      "id": "PERFORMANCE_HISTORY",
+      "status": "RECORDED_TARGET_MISS",
+      "detail": "One original 10k XLSX core run took 3.094 seconds, above the suggested 3 seconds. Retained historical observations and later repetitions are reported separately in docs/m4-capacity.md."
+    }
+  ],
+  "open_items": [],
+  "completion_record": "docs/m4-closeout.json"
+}

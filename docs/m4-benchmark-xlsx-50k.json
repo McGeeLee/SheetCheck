@@ -1,0 +1,35 @@
+{
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "measured_at_utc": "2026-10-23T17:38:39.948336+00:00",
+  "app_version": "0.3.0",
+  "rules_version": "v1",
+  "dependencies": {
+    "openpyxl": "3.1.5",
+    "defusedxml": "0.7.1",
+    "streamlit": "1.66.0"
+  },
+  "hardware": {
+    "logical_cpu_count": 10,
+    "processor": "arm",
+    "cpu_model": "Apple M4",
+    "physical_memory_bytes": 25769803776
+  },
+  "python": "3.12.14",
+  "format": "xlsx",
+  "variant": "mixed",
+  "rows_per_side": 50000,
+  "repeats": 1,
+  "successful_trials": 0,
+  "trials": [
+    {
+      "status": "failed",
+      "returncode": -15,
+      "stderr": "",
+      "trial": 1,
+      "child_wall_seconds": 36.912040416998934
+    }
+  ],
+  "child_timeout_seconds": 600.0,
+  "measurement": "Fresh sequential child process per trial. Fixture construction excluded from timings and included in whole-process peak RSS. Export includes its mandatory readback audit; standalone audit is a separate additional pass. Stage RSS values are cumulative process high-water marks, not per-stage deltas. All data synthetic; report bytes remain in memory."
+}

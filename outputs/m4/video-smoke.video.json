@@ -1,0 +1,1101 @@
+{
+  "created_at_utc": "2026-10-24T04:34:05.721584+00:00",
+  "mode": "encoded",
+  "source_kind": "actual UI screenshots supplied by recording operator",
+  "frame_manifest": "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/demo-frames/frames.json",
+  "frame_manifest_sha256": "89576e44c1bdc503517a2ac7c6952993e1a5bdb2aa08cf0dffc7d23809fbe9a8",
+  "caption_source": "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/video-smoke-captions.json",
+  "caption_source_sha256": "eba6089a81b5464baef04e4d15cc1a463f6010397910a0ff764f93c6d81d18d4",
+  "segment_source": "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/video-smoke-segments.json",
+  "segment_source_sha256": "843cca7f75809db57ce0214f3f677da2f3425ce99c142c2ef2b6452d02526762",
+  "source_frame_count": 106,
+  "source_width": 1280,
+  "source_height": 720,
+  "capture_average_fps": 0.5104620410703173,
+  "capture_median_gap_ms": 757,
+  "capture_max_gap_ms": 81433,
+  "timeline_duration_seconds": 2.0,
+  "source_to_output_segments": [
+    {
+      "source_start_ms": 1792776970805,
+      "source_end_ms": 1792776972805,
+      "output_start_ms": 0,
+      "output_end_ms": 2000,
+      "label": "编码工具两秒验证"
+    }
+  ],
+  "frame_intervals": [
+    {
+      "frame_index": 0,
+      "duration_ms": 748,
+      "source_start_ms": 1792776970805,
+      "source_end_ms": 1792776971553,
+      "output_start_ms": 0,
+      "output_end_ms": 748
+    },
+    {
+      "frame_index": 1,
+      "duration_ms": 836,
+      "source_start_ms": 1792776971553,
+      "source_end_ms": 1792776972389,
+      "output_start_ms": 748,
+      "output_end_ms": 1584
+    },
+    {
+      "frame_index": 2,
+      "duration_ms": 416,
+      "source_start_ms": 1792776972389,
+      "source_end_ms": 1792776972805,
+      "output_start_ms": 1584,
+      "output_end_ms": 2000
+    }
+  ],
+  "captions": [
+    {
+      "start": 0,
+      "end": 2,
+      "text": "编码工具验证：真实页面截图，中文字幕。"
+    }
+  ],
+  "recording_boundary": "Original capture timing preserved within selected intervals; no playback acceleration. Last captured frame may be held for explicitly recorded tail_ms. Screenshot recording does not contain motion between captures.",
+  "tail_ms": 500,
+  "output_fps": 10,
+  "ui_processing": "Aspect-preserving scale and letterbox; color range converted to limited-range video; no crop or reconstructed UI",
+  "caption_processing": "Pillow creates a separate bottom strip; not part of the captured UI",
+  "caption_font": "/System/Library/Fonts/STHeiti Medium.ttc",
+  "caption_font_sha256": "2d37f927fb4c24a2ba4d318b903a607f6b7ad4e5f365c26aba6aaccb84038beb",
+  "caption_strip_pixels": 96,
+  "output_width": 1280,
+  "output_height": 800,
+  "audio": "none",
+  "vtt": "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/video-smoke.vtt",
+  "vtt_sha256": "a79f69295066049672a27082f8770ee89eea37ff068706dce38e83699d762374",
+  "source_frames": [
+    {
+      "file": "frame-000001.png",
+      "captured_at_ms": 1792776970805,
+      "sha256": "f51386af88045f9bbe4b14501b9be4caa68b788fe39e3c8d0e74e404665bd29e",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000002.png",
+      "captured_at_ms": 1792776971553,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000003.png",
+      "captured_at_ms": 1792776972389,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000004.png",
+      "captured_at_ms": 1792776973176,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000005.png",
+      "captured_at_ms": 1792776974033,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000006.png",
+      "captured_at_ms": 1792776974948,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000007.png",
+      "captured_at_ms": 1792776975756,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000008.png",
+      "captured_at_ms": 1792776976562,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000009.png",
+      "captured_at_ms": 1792776977336,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000010.png",
+      "captured_at_ms": 1792776978181,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000011.png",
+      "captured_at_ms": 1792776978992,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000012.png",
+      "captured_at_ms": 1792776979795,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000013.png",
+      "captured_at_ms": 1792776980592,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000014.png",
+      "captured_at_ms": 1792776981325,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000015.png",
+      "captured_at_ms": 1792776982108,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000016.png",
+      "captured_at_ms": 1792776982862,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000017.png",
+      "captured_at_ms": 1792776983617,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000018.png",
+      "captured_at_ms": 1792776984356,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000019.png",
+      "captured_at_ms": 1792776985126,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000020.png",
+      "captured_at_ms": 1792776985868,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000021.png",
+      "captured_at_ms": 1792776986616,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000022.png",
+      "captured_at_ms": 1792776987383,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000023.png",
+      "captured_at_ms": 1792776988137,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000024.png",
+      "captured_at_ms": 1792776988886,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000025.png",
+      "captured_at_ms": 1792776989617,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000026.png",
+      "captured_at_ms": 1792776990367,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000027.png",
+      "captured_at_ms": 1792777009599,
+      "sha256": "8bf967896800fdaba282b7f17d11a74492da0411b4694eeb680f68d8b9cea951",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000028.png",
+      "captured_at_ms": 1792777010585,
+      "sha256": "a90c812451ac604822858b10cdfdb4fee84ed9f497c12209b1d0014828e82c68",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000029.png",
+      "captured_at_ms": 1792777011416,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000030.png",
+      "captured_at_ms": 1792777012171,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000031.png",
+      "captured_at_ms": 1792777012901,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000032.png",
+      "captured_at_ms": 1792777013687,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000033.png",
+      "captured_at_ms": 1792777014486,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000034.png",
+      "captured_at_ms": 1792777015258,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000035.png",
+      "captured_at_ms": 1792777016028,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000036.png",
+      "captured_at_ms": 1792777016792,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000037.png",
+      "captured_at_ms": 1792777017521,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000038.png",
+      "captured_at_ms": 1792777018253,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000039.png",
+      "captured_at_ms": 1792777018981,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000040.png",
+      "captured_at_ms": 1792777019787,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000041.png",
+      "captured_at_ms": 1792777020556,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000042.png",
+      "captured_at_ms": 1792777021323,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000043.png",
+      "captured_at_ms": 1792777022064,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000044.png",
+      "captured_at_ms": 1792777022796,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000045.png",
+      "captured_at_ms": 1792777023530,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000046.png",
+      "captured_at_ms": 1792777024308,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000047.png",
+      "captured_at_ms": 1792777025046,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000048.png",
+      "captured_at_ms": 1792777025828,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000049.png",
+      "captured_at_ms": 1792777026804,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000050.png",
+      "captured_at_ms": 1792777027546,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000051.png",
+      "captured_at_ms": 1792777028311,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000052.png",
+      "captured_at_ms": 1792777029098,
+      "sha256": "2631b575bb9a60edac484b9832c650127214ffda315322ad79792328ef876cf5",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000053.png",
+      "captured_at_ms": 1792777110531,
+      "sha256": "3278772e3e2620dbdb593dea7cd393a71e60b131ea3d886ea21d9e06a2798fbc",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000054.png",
+      "captured_at_ms": 1792777111611,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000055.png",
+      "captured_at_ms": 1792777112344,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000056.png",
+      "captured_at_ms": 1792777113134,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000057.png",
+      "captured_at_ms": 1792777113884,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000058.png",
+      "captured_at_ms": 1792777114640,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000059.png",
+      "captured_at_ms": 1792777115391,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000060.png",
+      "captured_at_ms": 1792777116148,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000061.png",
+      "captured_at_ms": 1792777116898,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000062.png",
+      "captured_at_ms": 1792777117638,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000063.png",
+      "captured_at_ms": 1792777118406,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000064.png",
+      "captured_at_ms": 1792777119158,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000065.png",
+      "captured_at_ms": 1792777119907,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000066.png",
+      "captured_at_ms": 1792777120661,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000067.png",
+      "captured_at_ms": 1792777121388,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000068.png",
+      "captured_at_ms": 1792777122125,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000069.png",
+      "captured_at_ms": 1792777122920,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000070.png",
+      "captured_at_ms": 1792777123679,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000071.png",
+      "captured_at_ms": 1792777124428,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000072.png",
+      "captured_at_ms": 1792777125178,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000073.png",
+      "captured_at_ms": 1792777125927,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000074.png",
+      "captured_at_ms": 1792777126682,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000075.png",
+      "captured_at_ms": 1792777127405,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000076.png",
+      "captured_at_ms": 1792777128138,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000077.png",
+      "captured_at_ms": 1792777128918,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000078.png",
+      "captured_at_ms": 1792777129690,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000079.png",
+      "captured_at_ms": 1792777130429,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000080.png",
+      "captured_at_ms": 1792777155781,
+      "sha256": "c110eadb0f1df4751e36b7dee5bc77ce8a24c1259c451f5855e1f8e6d73c8b9f",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000081.png",
+      "captured_at_ms": 1792777157343,
+      "sha256": "a4850008a3c39080ca4e4749d76b62fe62f30db5b17aed3e840fcd9097294fd9",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000082.png",
+      "captured_at_ms": 1792777158170,
+      "sha256": "a4850008a3c39080ca4e4749d76b62fe62f30db5b17aed3e840fcd9097294fd9",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000083.png",
+      "captured_at_ms": 1792777158993,
+      "sha256": "2de12ad7dd874cec8ee01fc6f74f9a688ddd37a79fa5d0179f80a727feac7d26",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000084.png",
+      "captured_at_ms": 1792777159755,
+      "sha256": "2de12ad7dd874cec8ee01fc6f74f9a688ddd37a79fa5d0179f80a727feac7d26",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000085.png",
+      "captured_at_ms": 1792777160534,
+      "sha256": "4c8eaf4e7000644945e8dc938b6888bb385141ba2a70aa6508fe87f0a857fcea",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000086.png",
+      "captured_at_ms": 1792777161277,
+      "sha256": "a4850008a3c39080ca4e4749d76b62fe62f30db5b17aed3e840fcd9097294fd9",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000087.png",
+      "captured_at_ms": 1792777162074,
+      "sha256": "8f2ff04f9b7234cc13fb2f900209cf5def737a7f903043f3503ab6bc9dde61ee",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000088.png",
+      "captured_at_ms": 1792777162882,
+      "sha256": "2de12ad7dd874cec8ee01fc6f74f9a688ddd37a79fa5d0179f80a727feac7d26",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000089.png",
+      "captured_at_ms": 1792777163710,
+      "sha256": "2de12ad7dd874cec8ee01fc6f74f9a688ddd37a79fa5d0179f80a727feac7d26",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000090.png",
+      "captured_at_ms": 1792777164455,
+      "sha256": "4b268f5159678bfb1ca6f279d5b43e7a95c4940b2f0607ca3a18273d2c346f90",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000091.png",
+      "captured_at_ms": 1792777165223,
+      "sha256": "a4850008a3c39080ca4e4749d76b62fe62f30db5b17aed3e840fcd9097294fd9",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000092.png",
+      "captured_at_ms": 1792777165993,
+      "sha256": "ded726987ae4527180d37a11c53cc91330142289d1cd6227e00389f366873136",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000093.png",
+      "captured_at_ms": 1792777166740,
+      "sha256": "2de12ad7dd874cec8ee01fc6f74f9a688ddd37a79fa5d0179f80a727feac7d26",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000094.png",
+      "captured_at_ms": 1792777167466,
+      "sha256": "ea5dbd9cdcb2a20ef82b15c3dee28335afd9cc57343adca7506d430084cd5ee8",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000095.png",
+      "captured_at_ms": 1792777168249,
+      "sha256": "a4850008a3c39080ca4e4749d76b62fe62f30db5b17aed3e840fcd9097294fd9",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000096.png",
+      "captured_at_ms": 1792777169002,
+      "sha256": "647560b660f816c94932e9f8e504bc400b8a85fd63615e7b8aa41cfb910ae548",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000097.png",
+      "captured_at_ms": 1792777169727,
+      "sha256": "2de12ad7dd874cec8ee01fc6f74f9a688ddd37a79fa5d0179f80a727feac7d26",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000098.png",
+      "captured_at_ms": 1792777170473,
+      "sha256": "5227e31e0c8af2a835611bb7c38071fb7af87e58352ec3865ea9a129dce7e53d",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000099.png",
+      "captured_at_ms": 1792777171259,
+      "sha256": "a4850008a3c39080ca4e4749d76b62fe62f30db5b17aed3e840fcd9097294fd9",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000100.png",
+      "captured_at_ms": 1792777172008,
+      "sha256": "de733908b775edf6ecabbfa30df4112d777ca63ebc1611790aa6bb0935b9ca03",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000101.png",
+      "captured_at_ms": 1792777172760,
+      "sha256": "2de12ad7dd874cec8ee01fc6f74f9a688ddd37a79fa5d0179f80a727feac7d26",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000102.png",
+      "captured_at_ms": 1792777173501,
+      "sha256": "664c4d08a6f872e193b052efe186a23cfb3e08df5f5b9d410ffc815abb7da533",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000103.png",
+      "captured_at_ms": 1792777174268,
+      "sha256": "a4850008a3c39080ca4e4749d76b62fe62f30db5b17aed3e840fcd9097294fd9",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000104.png",
+      "captured_at_ms": 1792777175016,
+      "sha256": "de733908b775edf6ecabbfa30df4112d777ca63ebc1611790aa6bb0935b9ca03",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000105.png",
+      "captured_at_ms": 1792777175772,
+      "sha256": "2de12ad7dd874cec8ee01fc6f74f9a688ddd37a79fa5d0179f80a727feac7d26",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    },
+    {
+      "file": "frame-000106.png",
+      "captured_at_ms": 1792777176501,
+      "sha256": "0f7124983ea9f246578a60e3d28f40af8154e6d2641fed3b34e754baf07208cb",
+      "width": 1280,
+      "height": 720,
+      "image_format": "JPEG"
+    }
+  ],
+  "encoding_tools": {
+    "ffmpeg": {
+      "path": "/private/tmp/sheetcheck-m4-ffmpeg/ffmpeg",
+      "sha256": "99c28a9a61cd92d2fe6e6f835ff27df483eadb99f94575ee4d8baec7f4e45fc9"
+    },
+    "ffprobe": {
+      "path": "/private/tmp/sheetcheck-m4-ffmpeg/ffprobe",
+      "sha256": "59963c0b1ee7a073d837e6d0f12702a62685fb0ac4a82894b86ad29a1c9155b4"
+    }
+  },
+  "encoder_command_argv": [
+    "/private/tmp/sheetcheck-m4-ffmpeg/ffmpeg",
+    "-hide_banner",
+    "-nostdin",
+    "-y",
+    "-f",
+    "concat",
+    "-safe",
+    "1",
+    "-i",
+    "/var/folders/gb/5r4btw316zg1l5v_fpb61n1h0000gn/T/sheetcheck-demo-ijs6vi0w/ui.ffconcat",
+    "-f",
+    "concat",
+    "-safe",
+    "1",
+    "-i",
+    "/var/folders/gb/5r4btw316zg1l5v_fpb61n1h0000gn/T/sheetcheck-demo-ijs6vi0w/captions.ffconcat",
+    "-filter_complex",
+    "[0:v]scale=1280:704:force_original_aspect_ratio=decrease:force_divisible_by=2:in_range=auto:out_range=tv,pad=1280:704:(ow-iw)/2:(oh-ih)/2:color=0x0B1320,pad=1280:800:0:0:color=0x0B1320,setsar=1[ui];[ui][1:v]overlay=0:704:shortest=1,format=yuv420p,setparams=range=limited[v]",
+    "-map",
+    "[v]",
+    "-an",
+    "-t",
+    "2.000000",
+    "-r",
+    "10",
+    "-c:v",
+    "libopenh264",
+    "-b:v",
+    "3000k",
+    "-pix_fmt",
+    "yuv420p",
+    "-color_range",
+    "tv",
+    "-movflags",
+    "+faststart",
+    "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/video-smoke.mp4"
+  ],
+  "validation": "PASS",
+  "ffprobe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "Constrained Baseline",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "width": 1280,
+        "height": 800,
+        "coded_width": 1280,
+        "coded_height": 800,
+        "closed_captions": 0,
+        "film_grain": 0,
+        "has_b_frames": 0,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "8:5",
+        "pix_fmt": "yuv420p",
+        "level": 32,
+        "color_range": "tv",
+        "color_space": "bt470bg",
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "refs": 1,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "10/1",
+        "avg_frame_rate": "10/1",
+        "time_base": "1/10240",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 20480,
+        "duration": "2.000000",
+        "bit_rate": "255984",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "20",
+        "extradata_size": 34,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]",
+          "encoder": "Lavc61.19.101 libopenh264"
+        }
+      }
+    ],
+    "format": {
+      "filename": "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/video-smoke.mp4",
+      "nb_streams": 1,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "2.000000",
+      "size": "64922",
+      "bit_rate": "259688",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf61.7.100"
+      }
+    }
+  },
+  "keyframes": [
+    {
+      "time_seconds": 0.06,
+      "path": "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/video-smoke-keyframes/frame-01.png",
+      "sha256": "7ad2bbb25476ec04615339b4fbd349f564612d4b0b84954074681735f87222a3"
+    },
+    {
+      "time_seconds": 0.36,
+      "path": "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/video-smoke-keyframes/frame-02.png",
+      "sha256": "9954277e7dcc7454258a0030809ca8a337e6a43f28c803f2b113814affa80f26"
+    },
+    {
+      "time_seconds": 0.66,
+      "path": "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/video-smoke-keyframes/frame-03.png",
+      "sha256": "ca53f3544712f61e518ab416eb3334f9734c31c5736875db5827ad738d73b1e9"
+    },
+    {
+      "time_seconds": 0.96,
+      "path": "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/video-smoke-keyframes/frame-04.png",
+      "sha256": "4b9e5d3080e7aca01aadc87f8ca631e43301afc2bdac7dfcbb8856a7421aaa2b"
+    },
+    {
+      "time_seconds": 1.26,
+      "path": "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/video-smoke-keyframes/frame-05.png",
+      "sha256": "4b9e5d3080e7aca01aadc87f8ca631e43301afc2bdac7dfcbb8856a7421aaa2b"
+    },
+    {
+      "time_seconds": 1.56,
+      "path": "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/video-smoke-keyframes/frame-06.png",
+      "sha256": "4b9e5d3080e7aca01aadc87f8ca631e43301afc2bdac7dfcbb8856a7421aaa2b"
+    },
+    {
+      "time_seconds": 1.86,
+      "path": "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/video-smoke-keyframes/frame-07.png",
+      "sha256": "4b9e5d3080e7aca01aadc87f8ca631e43301afc2bdac7dfcbb8856a7421aaa2b"
+    }
+  ],
+  "output": "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/video-smoke.mp4",
+  "output_sha256": "59a31755856e53aa159b2046ca3b29ff402d2222909c786c25ee6f37ef6960ae",
+  "output_bytes": 64922
+}

@@ -1,0 +1,81 @@
+{
+  "recorded_at_utc": "2026-10-24 04:47:53 UTC",
+  "scope": "Final application 1.0.0, .venv-m4-release; no unrelated processes stopped. Root limited work to documentation/scripts while measurements run. Desktop not isolated.",
+  "preflight_related_processes": [
+    " 2898  1540   14:17   0.4 128448 .venv-m4-clean/bin/python -m streamlit run app.py --server.address 127.0.0.1 --server.port 8501"
+  ],
+  "preflight_hardware_and_memory": "Apple M4\n25769803776\n10\nMach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                    74477.\nPages active:                                 563727.\nPages inactive:                               559532.\nPages speculative:                              3991.\nPages throttled:                                   0.\nPages wired down:                             168733.\nPages purgeable:                                8800.\n\"Translation faults\":                       16031164.\nPages copy-on-write:                          664242.\nPages zero filled:                          21644147.\nPages reactivated:                            756523.\nPages purged:                                  95628.\nFile-backed pages:                            347400.\nAnonymous pages:                              779850.\nPages stored in compressor:                   306293.\nPages occupied by compressor:                 163691.\nDecompressions:                               128689.\nCompressions:                                 505963.\nPageins:                                     2400784.\nPageouts:                                        107.\nSwapins:                                           0.\nSwapouts:                                          0.\nvm.swapusage: total = 0.00M  used = 0.00M  free = 0.00M  (encrypted)\n",
+  "version_and_source": {
+    "app": "1.0.0",
+    "installed": "1.0.0",
+    "source_sha256": {
+      "sheetcheck/report.py": "f21774f70f73720a9186e41cbc52724d5df389224e1e682f7502cfba9b88e128",
+      "scripts/benchmark_export.py": "48852eb81891a6e5afc6d265cc99ec2dedb3f59580dfc5d98317e2298ffc65f6"
+    }
+  },
+  "commands": [
+    ".venv-m4-release/bin/python scripts/benchmark_export.py --format xlsx --rows 10000 --repeats 3 --timeout 300",
+    ".venv-m4-release/bin/python scripts/benchmark_export.py --format xlsx --rows 50000 --repeats 1 --timeout 900"
+  ],
+  "measurement": "Existing script, unmodified; sequential fresh subprocesses. CPU and wall time per stage; cumulative whole-process peak RSS. System vm_stat/swap are machine-wide snapshots, not benchmark-only consumption.",
+  "historical_evidence_preserved": [
+    "m4-benchmark-xlsx-10k.json",
+    "m4-benchmark-xlsx-10k-postfix.json",
+    "m4-benchmark-xlsx-50k.json",
+    "m4-benchmark-xlsx-50k-cancellation.json"
+  ],
+  "during_50k_snapshot": {
+    "observed_at_utc": "2026-10-24T04:50:19.594187+00:00",
+    "child_pid": 3603,
+    "child_elapsed_observed": "00:50",
+    "child_cpu_percent": 98.8,
+    "child_rss_kib": 1911616,
+    "vm_stat_page_size_bytes": 16384,
+    "vm_stat_pages_free": 11480,
+    "vm_stat_pages_inactive": 573678,
+    "vm_stat_pages_occupied_by_compressor": 189162,
+    "vm_stat_pageouts": 107,
+    "vm_stat_swapins": 0,
+    "vm_stat_swapouts": 0,
+    "swap_usage": "total=0.00M used=0.00M free=0.00M",
+    "action": "Continued the running benchmark. Other user processes were not stopped. RSS is a live sample, not the eventual peak; system counters are machine-wide."
+  },
+  "after_50k_snapshot": {
+    "observed_at_utc": "2026-10-24T04:52:57.872330+00:00",
+    "vm_stat_page_size_bytes": 16384,
+    "vm_stat_pages_free": 106746,
+    "vm_stat_pages_inactive": 515210,
+    "vm_stat_pages_occupied_by_compressor": 187435,
+    "vm_stat_pageouts": 107,
+    "vm_stat_swapins": 0,
+    "vm_stat_swapouts": 0,
+    "swap_usage": "total=0.00M used=0.00M free=0.00M",
+    "qualification": "Machine-wide snapshot only. Swap usage and pageout counter unchanged from preflight; this does not establish a universal memory bound or prove that no memory compression occurred."
+  },
+  "completed_results": {
+    "m4-benchmark-xlsx-10k-final.json": {
+      "sha256": "b651b81d0ef9950cf2c916479f3a581e9a251ee194eed36650ee058ddc87ab29",
+      "app_version": "1.0.0",
+      "successful_trials": 3,
+      "requested_trials": 3,
+      "status": "passed",
+      "maximum_peak_rss_mib": 430.0,
+      "core_seconds": [
+        0.24698412499992628,
+        0.2542726669998956,
+        0.2513011670000651
+      ]
+    },
+    "m4-benchmark-xlsx-50k-final.json": {
+      "sha256": "a54dea987346a1e1bcbc4babb3049945ca0dab3244989474a088e243497e2fe5",
+      "app_version": "1.0.0",
+      "successful_trials": 1,
+      "requested_trials": 1,
+      "status": "passed",
+      "maximum_peak_rss_mib": 1951.328125,
+      "core_seconds": [
+        1.4725173750000522
+      ]
+    }
+  }
+}

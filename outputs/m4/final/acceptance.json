@@ -1,0 +1,74 @@
+{
+  "checked_at_utc": "2026-10-24T04:34:17.579652+00:00",
+  "status": "PASS",
+  "application_version": "1.0.0",
+  "command": [
+    "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/.venv-m4-clean/bin/python",
+    "-m",
+    "sheetcheck",
+    "--demo",
+    "--export-dir",
+    "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/final"
+  ],
+  "cli_exit_code": 0,
+  "scope": "Actual fictional CLI export, independent source re-read, hand-written oracle, full JSON equality and XLSX audit",
+  "report": "outputs/m4/final/sheetcheck_20261024T043417Z_a4accde15b7d46d8bbb024912cccf547.xlsx",
+  "report_bytes": 19204,
+  "report_sha256": "48bf5cb88b25eb122a1fe609e7bbb06724b215c7c052c8328e50c4f84b1b51dd",
+  "json": "outputs/m4/final/cli-demo.json",
+  "json_sha256": "720a43374160d3ebe4afcbedef2fc76bd55ad97c6b7fa31af3504bfe58618ee1",
+  "fingerprint": "d81314d2002615686ccf8a35b5e3d58c0a0906870ab49ce8c1d07100537109bd",
+  "run_id": "a4accde15b7d46d8bbb024912cccf547",
+  "data_rows_by_sheet": {
+    "运行说明": 79,
+    "业务结果": 5,
+    "异常明细": 3,
+    "数据问题": 6,
+    "源行账本": 14
+  },
+  "status_counts": {
+    "EXACT_MATCH": 2,
+    "AMOUNT_MISMATCH": 1,
+    "ONLY_ORDER": 1,
+    "ONLY_PAYMENT": 1,
+    "DATA_ISSUE": 6,
+    "SKIPPED_EMPTY": 0
+  },
+  "summaries": {
+    "order": {
+      "input_count": 8,
+      "business_count": 4,
+      "data_issue_count": 4,
+      "skipped_empty_count": 0,
+      "valid_total_minor": 18000,
+      "issue_parseable_minor": 3500,
+      "issue_unparseable_count": 1
+    },
+    "payment": {
+      "input_count": 6,
+      "business_count": 4,
+      "data_issue_count": 2,
+      "skipped_empty_count": 0,
+      "valid_total_minor": 18900,
+      "issue_parseable_minor": 4200,
+      "issue_unparseable_count": 0
+    }
+  },
+  "manual_checks": {
+    "ledger_rows": 14,
+    "business_source_rows": 8,
+    "business_result_rows": 5,
+    "valid_difference_minor": 900,
+    "paired_delta_minor": -100,
+    "only_payment_minor": 4000,
+    "only_order_minor": 3000
+  },
+  "protected_input_and_oracle_hashes": {
+    "samples/orders.csv": "128c9d25c4229f3e02d9986bcdee3d8a6112cc73a148f706b0dcffcd3a405426",
+    "samples/payments.csv": "ec3efe057a259551208f23a90077fe4a027a996e65b1a8f3a08e9fd375455464",
+    "samples/expected.json": "41ea264b54cde61af5e35852a51f65490392509cc32a8595624f383dfb3a3004"
+  },
+  "source_files_unchanged": true,
+  "no_formula_hyperlink_external_link_or_macro": true,
+  "source_reconciliation_and_full_report_audit": "PASS"
+}

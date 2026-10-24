@@ -1,0 +1,161 @@
+{
+  "checked_at_utc": "2026-10-24T04:39:46.132830+00:00",
+  "status": "PASS_WITH_RECORDED_DOWNLOAD_LIMITATION",
+  "app_version_visible_in_recording": "1.0.0",
+  "output": "outputs/m4/sheetcheck-demo.mp4",
+  "output_sha256": "294470181cfca5a588c5b8afcda2b9881b583711a286167e937f787cf031ccac",
+  "output_bytes": 815318,
+  "encoder_validation": "PASS",
+  "codec": "h264",
+  "pixel_format": "yuv420p",
+  "color_range": "tv",
+  "dimensions": [
+    1024,
+    960
+  ],
+  "output_fps": "10/1",
+  "output_frame_count": 1206,
+  "audio_stream_count": 0,
+  "selected_source_duration_seconds": 120.635,
+  "encoded_duration_seconds": 120.6,
+  "duration_quantization_note": "120.635 seconds of selected source intervals encoded to 120.600 seconds at 10 fps; 0.035 seconds difference is below one output frame, without time acceleration.",
+  "source_frame_count": 176,
+  "source_image_dimensions": [
+    1024,
+    858
+  ],
+  "source_image_encodings": [
+    "JPEG"
+  ],
+  "source_capture_window_seconds": 199.397,
+  "source_average_fps_including_cut_gaps": 0.8776461030005467,
+  "capture_average_fps_within_selected_segments": 1.409209599204211,
+  "capture_median_gap_within_selected_segments_ms": 707.0,
+  "capture_max_gap_within_selected_segments_ms": 1228,
+  "selected_capture_interval_count": 170,
+  "timing_note": "Six chronological genuine screenshot clips, joined with explicit cuts. Original timing preserved inside clips. No accelerated playback; 10 output fps duplicates screenshots and does not imply 10 fps capture. Motion between screenshot captures is not recorded.",
+  "image_processing": "Entire 1024x858 captured UI preserved inside 1024x864 UI region by aspect-preserving scale/pad; separate 96-pixel caption footer. No crop or reconstruction; limited-range video conversion.",
+  "source_manifest": "outputs/m4/demo-v1-frames/frames.json",
+  "source_manifest_sha256": "865de3d5eb0d6eb782ad1c7590fa3448a25dbcd0739dbb2dac0dd0b60a132d01",
+  "segments": "outputs/m4/segments-v1.json",
+  "segment_sha256": "86e0620f518d28c1cb24c8eea3d09243b62ad36d506a04feebaac28a434319d3",
+  "captions": "outputs/m4/captions-v1.json",
+  "caption_sha256": "4310e07083acd9b8c4a778a3430708c4d412b1a6256e02d0bd4955831b6fb899",
+  "webvtt": "outputs/m4/sheetcheck-demo.vtt",
+  "source_to_output_segments": [
+    {
+      "source_start_ms": 1792816468135,
+      "source_end_ms": 1792816488561,
+      "output_start_ms": 0,
+      "output_end_ms": 20426,
+      "label": "加载虚构样例"
+    },
+    {
+      "source_start_ms": 1792816505853,
+      "source_end_ms": 1792816526521,
+      "output_start_ms": 20426,
+      "output_end_ms": 41094,
+      "label": "确认字段映射与规则"
+    },
+    {
+      "source_start_ms": 1792816538978,
+      "source_end_ms": 1792816559478,
+      "output_start_ms": 41094,
+      "output_end_ms": 61594,
+      "label": "查看 A002 差额"
+    },
+    {
+      "source_start_ms": 1792816578581,
+      "source_end_ms": 1792816598186,
+      "output_start_ms": 61594,
+      "output_end_ms": 81199,
+      "label": "检查 A005 两侧隔离"
+    },
+    {
+      "source_start_ms": 1792816612894,
+      "source_end_ms": 1792816632543,
+      "output_start_ms": 81199,
+      "output_end_ms": 100848,
+      "label": "定位 A002 原始行"
+    },
+    {
+      "source_start_ms": 1792816647745,
+      "source_end_ms": 1792816667532,
+      "output_start_ms": 100848,
+      "output_end_ms": 120635,
+      "label": "生成审计报告并展示下载入口"
+    }
+  ],
+  "full_decode": {
+    "command": [
+      "/private/tmp/sheetcheck-m4-ffmpeg/ffmpeg",
+      "-v",
+      "error",
+      "-nostdin",
+      "-i",
+      "outputs/m4/sheetcheck-demo.mp4",
+      "-f",
+      "null",
+      "-"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "status": "PASS"
+  },
+  "visual_review": [
+    {
+      "frame": "outputs/m4/sheetcheck-demo-keyframes/frame-01.png",
+      "time_seconds": 3.61905,
+      "observation": "虚构样例、CSV 预览和应用 1.0.0 可见；UI 与字幕分区完整。",
+      "status": "PASS"
+    },
+    {
+      "frame": "outputs/m4/sheetcheck-demo-keyframes/frame-02.png",
+      "time_seconds": 21.7143,
+      "observation": "字段映射第 1 列 id、第 2 列 amount；同币种与同期间确认已勾选。",
+      "status": "PASS"
+    },
+    {
+      "frame": "outputs/m4/sheetcheck-demo-keyframes/frame-03.png",
+      "time_seconds": 39.80955,
+      "observation": "映射与确认仍清晰可见；字幕未截断。",
+      "status": "PASS"
+    },
+    {
+      "frame": "outputs/m4/sheetcheck-demo-keyframes/frame-04.png",
+      "time_seconds": 57.9048,
+      "observation": "A002 订单 50.00、收款 49.00、差额 −1.00 清晰可见。",
+      "status": "PASS"
+    },
+    {
+      "frame": "outputs/m4/sheetcheck-demo-keyframes/frame-05.png",
+      "time_seconds": 76.00005,
+      "observation": "A005 订单 2 行与收款 1 行处于数据问题列表。",
+      "status": "PASS"
+    },
+    {
+      "frame": "outputs/m4/sheetcheck-demo-keyframes/frame-06.png",
+      "time_seconds": 94.09530000000001,
+      "observation": "A002 两侧 CSV 来源详情均显示原始行号 3。",
+      "status": "PASS"
+    },
+    {
+      "frame": "outputs/m4/sheetcheck-demo-keyframes/frame-07.png",
+      "time_seconds": 112.19055000000002,
+      "observation": "生成后状态 EXPORTED，回读审计通过与下载入口可见；字幕明确本片未下载。",
+      "status": "PASS"
+    }
+  ],
+  "download_recording_limitation": {
+    "current_recording": "Report generated and built-in readback audit passed; download button shown but not clicked. This video does not prove a new browser download.",
+    "reason": "User reported repeated approval-loop interruptions on download attempts. This recording deliberately did not trigger another download attempt.",
+    "caption_start_seconds": 110.848,
+    "caption": "本片仅展示下载入口；此前真实下载报告已完成回读与 Excel 检查。",
+    "prior_download_evidence": "docs/m4-offline-result.json",
+    "prior_excel_evidence": "docs/m4-excel.json",
+    "prior_report_app_version": "0.3.0",
+    "prior_report": "outputs/m4/sheetcheck_20261023T172102Z_11d5df5da13342789b9206f52bcf004a.xlsx",
+    "prior_report_sha256": "a90cb4b8c24fd9082b2f4b897de64b4b0be4d995f24e057771d06a6fbde98a87",
+    "scope": "Earlier real mixed CSV/XLSX download, independent recomputation/readback and native Excel for Mac 16.114 check are separate evidence, not depicted as part of this new recording."
+  }
+}

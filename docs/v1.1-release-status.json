@@ -1,0 +1,43 @@
+{
+  "recorded_at_utc": "2026-10-24T05:14:46.336447+00:00",
+  "application_version": "1.1.0",
+  "rules_version": "v1",
+  "report_format_version": "m2-v1",
+  "status": "COMPLETE_WITH_DOCUMENTED_SCOPE",
+  "software_delivery_ready": true,
+  "v1_complete": true,
+  "scope": "Optional mapping templates on the completed v1 baseline; local macOS arm64 functional regression and report export/readback. Historical M4 measurements retain their original versions and limits.",
+  "verified": {
+    "fresh_install": "43 exact locked wheels, no-index clean virtual environment; docs/v1.1-environment.json",
+    "regression": "635 passed in 37.87s; docs/v1.1-test-results.txt",
+    "mapping_core": "116 new tests; strict config-only JSON, two-sided structural matching and malformed-input rejection",
+    "mapping_ui": "17 new AppTest cases; explicit application, atomic failure, result invalidation, renewed confirmation, reset and log redaction",
+    "sample_and_report": "Actual 1.1.0 CLI export, independent source recomputation, five-sheet audit and unchanged sources; outputs/v1.1/final/acceptance.json",
+    "historical_evidence": "All 16 evidence files pinned by docs/m4-closeout.json are unchanged"
+  },
+  "github": {
+    "repository": "https://github.com/McGeeLee/SheetCheck",
+    "visibility": "private",
+    "branch": "main",
+    "ci_results": "https://github.com/McGeeLee/SheetCheck/actions",
+    "ci_evidence_rule": "The actual run and head commit in GitHub Actions are authoritative. This static local record is not evidence of a successful remote run.",
+    "ci_workflow_template": "docs/ci/github-actions.yml",
+    "ci_enabled": false,
+    "ci_run_status": "NOT_RUN",
+    "ci_limitation": "GitHub refused the initial workflow push because the existing OAuth credential lacks workflow scope. No additional authorization was requested; source delivery retains the configuration outside .github/workflows/."
+  },
+  "not_claimed": [
+    "A new browser download or download recording; the user waived it and prior evidence is preserved",
+    "A new native Excel, application-offline, capacity or performance run for 1.1.0",
+    "Whole-computer physical offline verification or new Windows/Linux/Intel Mac/WPS/LibreOffice acceptance",
+    "Semantic equivalence of input columns merely because a mapping template matches the structure",
+    "Business data upload to GitHub, bundled wheels in Git, or public cloud application hosting",
+    "A successful GitHub CI run; the configuration is an inactive template because the current credential cannot write workflows"
+  ],
+  "additional_browser_downloads": 0,
+  "additional_download_permission_requests": 0,
+  "release_record": "docs/v1.1-verification.md",
+  "historical_completion_record": "docs/m4-closeout.json",
+  "package_integrity_receipt": "docs/v1.1-package-verification.json (external to the archive)",
+  "open_application_items": []
+}

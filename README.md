@@ -1,0 +1,193 @@
+# SheetCheck
+
+把订单表与收款表放进来，找出金额不一致、仅一侧存在和无法核对的记录，并回到每条原始数据。**当前版本 1.1.0：新增可选字段映射模板，完整本地回归 635 项通过。** 模板仅复用列位置、结构和固定规则，应用后必须重新确认；核对仍使用整数分、逐源行账本和强制安全回读。
+
+[GitHub 仓库](https://github.com/McGeeLee/SheetCheck) · [v1.1 验证记录](docs/v1.1-verification.md) · [模板使用说明](docs/mapping-templates.md) · [开发与回归测试](docs/development.md)
+
+GitHub 自动测试尚未启用：现有推送凭据缺少工作流写入权限，配置保留为 [待启用模板](docs/ci/github-actions.yml)。635 项通过指本地实测；没有申请额外权限，也不宣称 GitHub CI 已通过。
+
+v1.0 已在已验证范围内完成，用户接受演示未录实际下载的限制；[M4 总验收](docs/m4-verification.md)、原始成功下载和 Excel 观察继续作为历史证据保留。v1.1 不重触发下载录像权限，也不把历史性能或原生软件测试改称新版重新执行。兼容声明仍以实际记录为准。
+
+本目录独立于父目录现有项目和 Sirius。页面使用 Streamlit；核对内核不导入 Streamlit，仍可单独通过 Python API 或 CLI 运行。不需要数据库、账户、API 密钥或外部业务服务。全部样例均为虚构数据。核对差额或缺项不构成欠款、欺诈或会计错误判断。
+
+## 安装与复算
+
+已实际安装验证：macOS 27.0.1 / Apple arm64，CPython 3.12.14，Streamlit 1.66.0。项目暂限定 Python 3.12；当前锁文件含 43 个运行、测试和构建依赖的精确 wheel 哈希，其中原生 wheel 针对 macOS arm64。其他系统或架构需要另外生成并验证锁文件，不能直接承诺兼容。第一次取得依赖需要网络，或事先准备通过同一锁文件哈希校验的本地 wheelhouse；应用使用本机 HTTP 服务，不调用外部业务 API。请在此目录执行：
+
+```sh
+python3.12 -m venv .venv
+.venv/bin/python -m pip install --require-hashes -r requirements.lock
+.venv/bin/python -m pip install --no-build-isolation --no-deps -e '.[ui,test]'
+.venv/bin/python -m pip check
+.venv/bin/python -m pytest -q
+.venv/bin/python -m streamlit run app.py --server.address 127.0.0.1
+```
+
+`python3.12` 需先存在；系统自带 Python 3.9 不能运行本项目。打开 `http://127.0.0.1:8501` 使用页面，在启动终端按 Ctrl+C 停止服务。必须从项目目录启动，以加载 `.streamlit/config.toml`。不要改为 `0.0.0.0` 或部署到远程机器；上传文件会交给运行 Streamlit 的服务器，只有本机回环服务才是这里描述的本机处理。
+
+M4 先使用全新 `.venv-m4-clean` 安装并复验 43 个 wheel 的哈希、元数据与平台标签。最终 1.0.0 在该环境运行 **502 项测试通过，27.40 秒**。此前的临时 wheelhouse `/private/tmp/sheetcheck-m3-wheels` 后来已不存在，因此又联网按锁文件取得 43 个 wheel，保存至 `outputs/m4/wheelhouse`，再以 `--no-index --require-hashes` 在新建 `.venv-m4-release` 中离线安装；`pip check`、版本与实际配置检查通过，完整回归 **502 项通过，33.88 秒**。两次执行的是同一套测试，不能相加为 1004 项。
+
+见 [最终安装与交付说明](docs/m4-delivery.md)、[依赖重新下载记录](docs/m4-wheelhouse-refresh.json)、[release 环境清单](docs/m4-release-environment.json)、[clean 测试输出](docs/m4-test-results.txt) 和 [release 测试输出](docs/m4-release-test-results.txt)。联网准备依赖、离线安装和业务断外网流程分别记账，不宣称整个交付过程没有网络。历史 0.3.0 证据保留其测量版本；不把旧实测改写成 1.0.0 重测。这里不宣称所用依赖是最新组合。
+
+不启动页面也能复算虚构样例：
+
+```sh
+.venv/bin/python -m sheetcheck --demo
+```
+
+要保存此次明确请求的 JSON 结果，可自行使用 `> sample-result.json`。未重定向、未指定 `--export-dir` 时，CLI 只输出 JSON。内核和报告 API 全程使用内存缓冲，不创建工作表临时文件。JSON 与 Excel 报告包含映射字段原值，请按原账表的敏感程度保存，勿提交真实数据到 Git。
+
+## 页面完整流程
+
+1. 点击侧栏“加载虚构样例”，检查左右订单表和收款表。页面每侧只预览前 20 条源记录，保留编号文本和源位置；较长字段会注明显示已缩短。
+2. 检查“编号列”“金额列”。选择项含列号和原表头，重复或空表头仍可区分；编号和金额不能选择同一列。自己的 XLSX 需选择工作表和表头行，CSV 可调整编码、分隔符及表头逻辑记录号。
+3. 选择币种、填写期间，分别勾选同币种与同期间确认，再点击“开始核对”。样例也需要手动确认；程序不能代替你判断业务覆盖范围。
+4. 查看汇总，并切换全部业务结果、金额差异、仅订单有、仅收款有或数据问题。支持区分大小写的编号包含搜索及业务状态筛选；每页最多 100 条。更改分类、搜索或筛选会回到第一页，无匹配时显示空结果说明。
+5. 在“查看来源详情（当前页）”中选择一条，回查两侧文件、工作表、源行、CSV 物理行范围、映射列和原值。展开完整来源可查看 source_id、result_id、SHA-256、原始类型和修复建议。
+6. 点击“生成报告”，待导出和回读审计完成，再点击“下载核对报告”。报告包含本次完整结果，当前分类、搜索与分页不裁剪报告。
+
+替换或删除任一文件，或更改工作表、表头、编码、分隔符、字段映射、币种、期间及任一确认项，都会让旧结果和旧报告失效。需要以当前设置重新核对和生成报告；旧操作晚到也不能覆盖新状态。已经由浏览器接收或保存的文件不能被页面撤回。
+
+“重新开始”清空当前会话的上传选择、样例、映射、确认、筛选、分页、结果和报告。刷新浏览器可能丢失未下载结果。清空只是释放会话引用，不是对内存、交换区或已下载文件进行安全擦除。操作及错误恢复详见 [页面使用指南](docs/m3-workflow.md)。
+
+默认上传内容、解析表、核对结果和待下载报告只保存在当前会话内存，不跨会话缓存，也不自动写入项目目录。页面只在你主动下载后由浏览器保存报告。使用统计和表格默认 CSV 导出已关闭，报告统一通过已审计的 XLSX 下载。CORS/XSRF 保持启用，界面使用系统字体，不引入第三方组件或远程字体。M4 另以服务进程 OS 回环限制和页面 CSP 完成应用范围断外网流程，包含实际上传、映射、核对、下载和独立回读。整台 Mac 未物理断网，未生成完整 pcap；默认产品启动不自动启用验收夹具的网络策略。范围及控制证据见 [断网验收](docs/m4-offline.md)。
+
+## 复用字段映射模板
+
+在规则区域勾选“使用映射模板（可选）”。完成两侧字段选择后，可点击“保存当前映射模板”取得小型 JSON；换表时先选好文件、工作表和读取参数，再上传 JSON 并点击“应用到当前两份文件”。仅上传不会改变当前映射。
+
+模板不含文件名、工作表名、表头文字、编号、金额、期间或确认状态；不默认落盘业务内容。两侧结构都匹配才应用，且即使映射相同，也会撤销旧结果和报告、清空期间及确认。相同列数无法证明列含义或顺序未变，必须检查预览与映射示例后再确认。详细边界见 [映射模板](docs/mapping-templates.md)。
+
+## 导出 Excel 报告
+
+以下命令明确保存虚构样例报告；目标目录必须已存在。也可以在下方自己的文件命令末尾添加 `--export-dir reports`。
+
+```sh
+mkdir -p reports
+.venv/bin/python -m sheetcheck --demo --export-dir reports
+```
+
+导出先检查内核不变量，写出后重新打开并逐项核验，全部通过才保存为 `sheetcheck_UTC时间_runid.xlsx`；文件名不取自输入文件。已有同名文件或符号链接不会被覆盖。导出或保存失败时，退出码为 2，不输出成功 JSON；Ctrl+C 为 130。成功导出的诊断 stderr 仅记录固定 `code=EXPORTED stage=EXPORT version=...`，不记录完整文件名。异常日志不回显编号、金额、原始行或路径；业务 JSON、页面与报告仍按设计保留来源原值。实际 canary 与失败路径测试见 [日志脱敏及安全复验](docs/m4-log-security.md)。
+
+| 页签 | 内容 |
+| --- | --- |
+| 运行说明 | 输入 SHA-256、文件名、sheet、表头、列映射、版本、规则、时间、计数、金额与覆盖风险 |
+| 业务结果 | 全部配对和单侧结果，两侧金额、差额及源位置 |
+| 异常明细 | 金额差异、仅订单有、仅收款有 |
+| 数据问题 | 每条问题源行一行，全部问题码与修复建议 |
+| 源行账本 | 每条输入记录恰好一行，包括空行跳过项、原始值与类型 |
+
+用 `source_id` 从结果定位账本，再按文件、工作表、行号和映射列回查源文件；CSV 同时保留逻辑记录号和物理起止行。`result_id` 连接同一业务结果。各页重复引用同一身份不能重复汇总。
+
+编号、原始金额和文件名均为显式文本，危险前缀使用可逆的 `SC_ESC:` 加 JSON 字符串编码。原始空字符串为 `SC_ESC:""`；不存在的一侧金额和差额保持空单元格，真实零保留 `0` 分及 `0.00`。金额显示为两位小数字符串，分值为整数；汇总达到 16 位整数时改存精确文本并注明，避免 Excel 15 位数字精度丢失。报告不含公式、超链接、外部链接或宏。
+
+协议与边界见 [M2 报告契约](docs/m2-report-contract.md)，实际样例、测试和性能见 [M2 验收记录](docs/m2-verification.md)。
+
+## 人工验收答案
+
+预期答案在 `samples/expected.json`，依据蓝图手工编写，未由引擎生成。M2 实际运行输出在 `docs/m2-sample-actual.json`；M1 历史输出 `docs/sample-actual.json` 单独保留。
+
+| 结论 | 编号 / 数量 |
+| --- | --- |
+| EXACT_MATCH | A001、A007，共 2 对 |
+| AMOUNT_MISMATCH | A002，收款减订单 = -100 分 |
+| ONLY_ORDER | A003，3000 分 |
+| ONLY_PAYMENT | A004，4000 分 |
+| DATA_ISSUE | 订单 4 行，收款 2 行 |
+| 逐源行账本 | 14 行：参与业务 8 行，问题 6 行 |
+
+可核对订单 `10000 + 5000 + 3000 + 0 = 18000` 分；收款 `10000 + 4900 + 4000 + 0 = 18900` 分。差额恒等式为 `18900 - 18000 = -100 + 4000 - 3000 = 900` 分。问题行的**可解析部分**：订单 3500 分，收款 4200 分；订单另有一行金额无法解析。
+
+CSV 与对应 XLSX 使用相同业务预期，源位置与指纹随文件变化。测试还包含 12 组随机行乱序、列重映射、源行和汇总篡改检测。源账本每行仅出现一次，多问题码保存在同一行。
+
+## 核对自己的文件
+
+列号从 1 开始。必须明确确认币种和期间；期间是用户声明，程序不能判断实际业务覆盖范围。
+
+```sh
+.venv/bin/python -m sheetcheck \
+  --order-file samples/orders.xlsx --order-sheet 数据 \
+  --payment-file samples/payments.xlsx --payment-sheet 数据 \
+  --order-id 1 --order-amount 2 --payment-id 1 --payment-amount 2 \
+  --currency CNY --period synthetic \
+  --confirm-same-currency --confirm-same-period
+```
+
+CSV 可分别指定 `--order-encoding gb18030`、`--order-delimiter semicolon`（还支持 `comma` / `tab`）；收款参数相同前缀为 `payment`。表头参数为 `--order-header` / `--payment-header`。CSV 表头位置使用**逻辑记录号**；账本同时保存物理起止行，不能用索引加 2 推算含引号换行的位置。
+
+单工作表 XLSX 可省略 sheet；多工作表必须明确选择。重复/空表头通过 `SourceTable.column_labels` 展示“列号＋原表头”，映射存列号。隐藏行参加；XLSX 的尾部纯格式范围不参加，中间全空行保留为 `SKIPPED_EMPTY`。结果保留输入哈希、参数、规则版本、源行和整数分；只有时间及随机 run_id 会随运行改变。
+
+## 核心 API
+
+```python
+from sheetcheck import (FileSpec, Mapping, Rules, Side, read_source, validate,
+                        reconcile, assert_invariants, export_xlsx, audit_xlsx)
+
+rules = Rules(currency="CNY", period="synthetic",
+              same_currency_confirmed=True, same_period_confirmed=True)
+orders = validate(read_source(order_bytes, FileSpec("orders.csv", Side.ORDER)), Mapping(1, 2), rules)
+payments = validate(read_source(payment_bytes, FileSpec("payments.csv", Side.PAYMENT)), Mapping(1, 2), rules)
+result = reconcile(orders, payments, rules)  # returns only after invariant checks
+assert_invariants(result)
+report_bytes = export_xlsx(result)  # 返回前已完成 ZIP/XML 检查和逐单元格回读
+audit_xlsx(report_bytes, result)    # 可选：对保留的字节再独立回读一次
+```
+
+核心 API 接收字节，不接受任意磁盘路径，不改源文件；`export_xlsx` 返回字节，不保存文件。CLI 仅读取显式提供的两个文件，仅在指定 `--export-dir` 时保存报告。文件级错误抛 `InputError`、完整性/回读审计错误抛 `IntegrityError`、写出错误抛 `ExportError`；行级错误仍生成带问题明细的核对结果。错误码与修复提示不会拼接编号、金额或文件路径。Ctrl+C 可取消同步处理；不会输出部分成功 JSON。本阶段没有自动墙钟超时，实际资源边界和后续限制见下。
+
+## 固定规则与边界
+
+- 文本编号区分大小写，不修剪、不补零、不归一化；`00123`、`123`、`NA`、`NULL` 都按原文本处理。首尾空白、控制/格式/代理字符、超 128 字符是问题。XLSX 数字、日期、布尔值、错误值不能作有效编号。
+- 文本金额语法为 `[0-9]+(\.[0-9]{1,2})?`；可修剪两端空白并记 `AMOUNT_TRIMMED`。零有效；`1.230`、负数、货币符号、科学计数法、千分位、NaN 等拒绝。使用 Decimal 从字符串解析，再转整数分；容差固定 0，单笔上限 999999999.99。
+- 任一侧重复或任何关联行出错，将该**原样文本编号**在两侧全部隔离。坏金额参加编号计数。不可识别编号仅隔离本行，并保留缺项覆盖风险提示。单侧记录缺失一方和差额为 `null`，不伪造 0。
+- 本阶段币种选择为 CNY / USD / EUR / GBP / HKD / SGD / AUD / CAD / NZD / CHF，均按两位小数处理；这是比蓝图更窄的显式支持范围。其他币种不推断、不换算。
+- 默认每文件 10 MiB、50,000 条数据记录、100 列；XLSX 解压累计 100 MiB、最多 2,000 个 ZIP 条目、单条目压缩比不超过 200、XML 嵌套最多 128。前言也不允许无限增长。任何超限拒绝，不截断后计算。CSV 单字段还受 131,072 字符解析器限制。
+- 映射列/映射表头涉及公式（含数组/数据表区域）或合并区域时拒绝。公式缓存不参与核对。无关公式不执行，CLI 不输出无关列。拒绝损坏、加密、宏、外链及活动内容文件。改变 Excel 显示格式不能恢复已损坏编号或数值精度。
+
+详细规则在 [docs/rules-v1.md](docs/rules-v1.md)，原蓝图保存在 [docs/blueprint-v1.txt](docs/blueprint-v1.txt)，阶段证据见 [docs/m0-m1-verification.md](docs/m0-m1-verification.md)。
+
+## M4 验收范围与性能
+
+| 项目 | 已完成的证据与适用范围 |
+| --- | --- |
+| 干净安装 | macOS 27.0.1 / Apple arm64 / CPython 3.12.14；43 个锁定依赖，独立环境离线安装与元数据校验。1.0.0 在两个环境各通过 502 项回归，见 [安装交付说明](docs/m4-delivery.md) |
+| 应用范围断外网 | OS 限制服务进程只用回环网络，页面 CSP 限制外部资源；IPv4/IPv6 拒绝控制、浏览器图片阻断控制及完整上传到下载流程通过。不是整机物理断网或全系统流量证明，见 [断网记录](docs/m4-offline.md) |
+| 日志与报告安全 | 固定诊断码、canary 脱敏、意外异常与延迟下载错误包装、内存业务流程、公式注入和坏文件回归，见 [安全记录](docs/m4-log-security.md) |
+| 默认容量边界 | 20 个真实阈值案例全部符合预期：CSV/XLSX 的 10 MiB、50k 行、100 列，以及 XLSX 解压 100 MiB、2000 ZIP 条目、200:1、128 层。逐维度测试不等于所有最大值组合压力通过 |
+| 原生 Excel | Excel for Mac **16.114（16.114.26101123）** 打开一份由 0.3.0 生成的虚构混合输入报告，检查 A002 差额、A007 零/缺失值与 A005 隔离及源行，未编辑或保存，文件哈希不变。仅限该 Excel 版本及该报告，见 [Excel 记录](docs/m4-excel.json) |
+
+性能验收机为 Apple M4、10 个逻辑 CPU、24 GiB 内存；每侧为 2 列虚构混合负载，每轮新子进程。读取、核心、导出含强制回读、额外回读分别计时，内存是子进程全程累计峰值，不包含页面服务与浏览器。
+
+- 修复前每侧 10k：CSV 三轮核心中位数 **0.761 秒**、峰值最大 **405.17 MiB**，建议目标全部达到；XLSX 三轮核心 **3.094 / 2.621 / 1.153 秒**、峰值最大 **413.20 MiB**，第一轮超过建议的 3 秒，原始未达记录保留。
+- 发现写出工作簿被局部变量与循环引用保留后，增加独立写出作用域及回收，仍执行原有强制回读。0.3.0 修复后首次 XLSX 10k 单轮核心 **0.266 秒**、峰值 **429.59 MiB**，该历史观察单独保留。
+- 最终 **1.0.0** 在 `.venv-m4-release` 顺序完成 XLSX 10k 三轮：核心 **0.247 / 0.254 / 0.251 秒**、峰值最高 **430.00 MiB**，均达到 3 秒 / 512 MiB 建议目标。读取中位数 **0.677 秒**，导出含回读 **15.550 秒**，额外回读 **6.682 秒**。
+- 最终 **1.0.0 XLSX 每侧 50k** 一轮完整通过：读取 **3.505 秒**、核心 **1.473 秒**、导出含回读 **85.946 秒**、额外回读 **35.170 秒**、峰值 **1951.33 MiB**；35k 条业务结果、100k 行源账本及两次回读通过，未触发 900 秒超时。50k 不适用 10k 的 512 MiB 建议目标。
+- 修复前 CSV 50k 的 **8.605 / 411.069 / 129.506 秒**（核心 / 导出含回读 / 额外回读）与 **1681.39 MiB**，以及早期 XLSX 50k 为修复而主动取消的记录仍保留。它们不被改写为最终版本成绩；最终 XLSX 50k 的新通过结果另存。
+
+最终 CPU/墙钟数据继续表明耗时主要在导出和回读。不同日期、格式与负载不是受控 A/B 实验，不能把速度差异全部归因于修复，且没有测得普遍的峰值内存下降。**最终 10k 三轮达标，不等于全部历史性能测量都通过**；原始 3.094 秒未达项保留。全部命令、逐轮原始数据、瓶颈分析、历史取消与最终补测见 [容量与性能验收](docs/m4-capacity.md)、[最终 10k](docs/m4-benchmark-xlsx-10k-final.json) 和 [最终 50k](docs/m4-benchmark-xlsx-50k-final.json)。
+
+## 演示与交付入口
+
+下图为 M4 应用范围断网验收中的实际页面（0.3.0 开发快照），对应报告已经实际下载、独立复算并通过 `audit_xlsx`：
+
+![M4 本地核对与报告下载页面](docs/m4-offline.png)
+
+[观看两分钟演示](outputs/m4/sheetcheck-demo.mp4) · [下载字幕](outputs/m4/sheetcheck-demo.vtt) · [视频校验记录](docs/m4-video-verification.json)
+
+成片 **120.600 秒、1024×960、H.264 / yuv420p，无音轨**，完整解码及 7 张关键帧视觉检查通过。视频由 6 段按时间顺序的真实页面截图片段剪辑而成，段内保持原时间；输出 10 fps 通过重复截图形成，不代表连续 10 fps 录屏，也不能用成片时长代替性能测量。MP4 的 SHA-256 为 `294470181cfca5a588c5b8afcda2b9881b583711a286167e937f787cf031ccac`。
+
+2026-10-24（Asia/Singapore），用户明确批准不再补录下载，保留此前成功下载的证据、写清限制，并按已验证范围完成 v1 收尾。该录制限制已接受，不再作为完成阻塞；不再重复触发下载权限确认。
+
+本片显示应用 1.0.0 的虚构样例、映射、A002 差额、A005 隔离、源行追溯和生成报告后的下载入口。因自动化工具此前反复触发下载授权循环，本次录制没有点击下载按钮，字幕已明确说明；这属于录制限制，不能据此断言产品下载失败。早期 **0.3.0** 的真实混合输入页面下载、独立复算/回读和 Excel for Mac 检查是独立证据，见 [断网下载记录](docs/m4-offline.md)；它们没有被伪装成此次视频中的新下载。最终 1.0.0 CLI 样例也已独立核验，结果见总验收。
+
+[交付包获取、重建与复现说明](docs/m4-delivery.md) · [M4 总验收](docs/m4-verification.md) · [版本变更](CHANGELOG.md) · [机器可读交付状态](docs/m4-release-status.json)
+
+交付说明汇集安装、启动、停止、样例、依赖准备与证据入口。历史 [M3 页面验收](docs/m3-verification.md)、M2 与 M0—M1 记录保持原版本、原测试数，不与最终全量测试数相加。
+
+## 兼容边界与未执行项
+
+未在 Windows、Linux、Intel Mac、其他 Python 版本，或 Windows Excel、WPS、LibreOffice 执行验收；不声明全平台兼容。尚未覆盖最大字段、宽表、共享字符串、样式和并发会话的全部组合压力。普通 10k 测量和单维度 100 MiB XML 接受/拒绝测试，不证明所有输入在所有机器上低于 512 MiB。安全解析会拒绝部分含外部超链接/活动内容的合法工作簿，请从可信来源导出普通值表。
+
+报告单字段转义后超过 32,767 个 UTF-16 单位会中止，不能静默截断；因此有些能读入的长 CSV 字段不能导出 Excel。输出 ZIP 限 128 MiB、展开 XML 限 512 MiB，这些是拒绝阈值，不是进程内存保证。报告使用锁定 openpyxl 3.1.5 的内部写入接口避免磁盘临时文件，升级依赖前必须重新运行导出及无文件访问测试。
+
+技术依据：[Python Decimal](https://docs.python.org/3/library/decimal.html)、[Python csv](https://docs.python.org/3/library/csv.html)、[openpyxl 公式与数组区域](https://openpyxl.readthedocs.io/en/stable/simple_formulae.html)。

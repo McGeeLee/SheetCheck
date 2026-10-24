@@ -1,0 +1,706 @@
+[
+  {
+    "file": "frame-000001.png",
+    "captured_at_ms": 1792816468135
+  },
+  {
+    "file": "frame-000002.png",
+    "captured_at_ms": 1792816468879
+  },
+  {
+    "file": "frame-000003.png",
+    "captured_at_ms": 1792816469590
+  },
+  {
+    "file": "frame-000004.png",
+    "captured_at_ms": 1792816470302
+  },
+  {
+    "file": "frame-000005.png",
+    "captured_at_ms": 1792816471000
+  },
+  {
+    "file": "frame-000006.png",
+    "captured_at_ms": 1792816471708
+  },
+  {
+    "file": "frame-000007.png",
+    "captured_at_ms": 1792816472417
+  },
+  {
+    "file": "frame-000008.png",
+    "captured_at_ms": 1792816473123
+  },
+  {
+    "file": "frame-000009.png",
+    "captured_at_ms": 1792816473804
+  },
+  {
+    "file": "frame-000010.png",
+    "captured_at_ms": 1792816474486
+  },
+  {
+    "file": "frame-000011.png",
+    "captured_at_ms": 1792816475170
+  },
+  {
+    "file": "frame-000012.png",
+    "captured_at_ms": 1792816475852
+  },
+  {
+    "file": "frame-000013.png",
+    "captured_at_ms": 1792816476539
+  },
+  {
+    "file": "frame-000014.png",
+    "captured_at_ms": 1792816477249
+  },
+  {
+    "file": "frame-000015.png",
+    "captured_at_ms": 1792816477953
+  },
+  {
+    "file": "frame-000016.png",
+    "captured_at_ms": 1792816478677
+  },
+  {
+    "file": "frame-000017.png",
+    "captured_at_ms": 1792816479391
+  },
+  {
+    "file": "frame-000018.png",
+    "captured_at_ms": 1792816480096
+  },
+  {
+    "file": "frame-000019.png",
+    "captured_at_ms": 1792816480804
+  },
+  {
+    "file": "frame-000020.png",
+    "captured_at_ms": 1792816481512
+  },
+  {
+    "file": "frame-000021.png",
+    "captured_at_ms": 1792816482219
+  },
+  {
+    "file": "frame-000022.png",
+    "captured_at_ms": 1792816482927
+  },
+  {
+    "file": "frame-000023.png",
+    "captured_at_ms": 1792816483602
+  },
+  {
+    "file": "frame-000024.png",
+    "captured_at_ms": 1792816484324
+  },
+  {
+    "file": "frame-000025.png",
+    "captured_at_ms": 1792816485003
+  },
+  {
+    "file": "frame-000026.png",
+    "captured_at_ms": 1792816485754
+  },
+  {
+    "file": "frame-000027.png",
+    "captured_at_ms": 1792816486433
+  },
+  {
+    "file": "frame-000028.png",
+    "captured_at_ms": 1792816487171
+  },
+  {
+    "file": "frame-000029.png",
+    "captured_at_ms": 1792816487878
+  },
+  {
+    "file": "frame-000030.png",
+    "captured_at_ms": 1792816488561
+  },
+  {
+    "file": "frame-000031.png",
+    "captured_at_ms": 1792816505853
+  },
+  {
+    "file": "frame-000032.png",
+    "captured_at_ms": 1792816506859
+  },
+  {
+    "file": "frame-000033.png",
+    "captured_at_ms": 1792816507568
+  },
+  {
+    "file": "frame-000034.png",
+    "captured_at_ms": 1792816508264
+  },
+  {
+    "file": "frame-000035.png",
+    "captured_at_ms": 1792816508979
+  },
+  {
+    "file": "frame-000036.png",
+    "captured_at_ms": 1792816509659
+  },
+  {
+    "file": "frame-000037.png",
+    "captured_at_ms": 1792816510392
+  },
+  {
+    "file": "frame-000038.png",
+    "captured_at_ms": 1792816511099
+  },
+  {
+    "file": "frame-000039.png",
+    "captured_at_ms": 1792816511804
+  },
+  {
+    "file": "frame-000040.png",
+    "captured_at_ms": 1792816512512
+  },
+  {
+    "file": "frame-000041.png",
+    "captured_at_ms": 1792816513191
+  },
+  {
+    "file": "frame-000042.png",
+    "captured_at_ms": 1792816513902
+  },
+  {
+    "file": "frame-000043.png",
+    "captured_at_ms": 1792816514586
+  },
+  {
+    "file": "frame-000044.png",
+    "captured_at_ms": 1792816515341
+  },
+  {
+    "file": "frame-000045.png",
+    "captured_at_ms": 1792816516018
+  },
+  {
+    "file": "frame-000046.png",
+    "captured_at_ms": 1792816516699
+  },
+  {
+    "file": "frame-000047.png",
+    "captured_at_ms": 1792816517375
+  },
+  {
+    "file": "frame-000048.png",
+    "captured_at_ms": 1792816518063
+  },
+  {
+    "file": "frame-000049.png",
+    "captured_at_ms": 1792816518771
+  },
+  {
+    "file": "frame-000050.png",
+    "captured_at_ms": 1792816519459
+  },
+  {
+    "file": "frame-000051.png",
+    "captured_at_ms": 1792816520188
+  },
+  {
+    "file": "frame-000052.png",
+    "captured_at_ms": 1792816520894
+  },
+  {
+    "file": "frame-000053.png",
+    "captured_at_ms": 1792816521602
+  },
+  {
+    "file": "frame-000054.png",
+    "captured_at_ms": 1792816522309
+  },
+  {
+    "file": "frame-000055.png",
+    "captured_at_ms": 1792816523016
+  },
+  {
+    "file": "frame-000056.png",
+    "captured_at_ms": 1792816523724
+  },
+  {
+    "file": "frame-000057.png",
+    "captured_at_ms": 1792816524402
+  },
+  {
+    "file": "frame-000058.png",
+    "captured_at_ms": 1792816525138
+  },
+  {
+    "file": "frame-000059.png",
+    "captured_at_ms": 1792816525845
+  },
+  {
+    "file": "frame-000060.png",
+    "captured_at_ms": 1792816526521
+  },
+  {
+    "file": "frame-000061.png",
+    "captured_at_ms": 1792816538978
+  },
+  {
+    "file": "frame-000062.png",
+    "captured_at_ms": 1792816539650
+  },
+  {
+    "file": "frame-000063.png",
+    "captured_at_ms": 1792816540393
+  },
+  {
+    "file": "frame-000064.png",
+    "captured_at_ms": 1792816541100
+  },
+  {
+    "file": "frame-000065.png",
+    "captured_at_ms": 1792816541802
+  },
+  {
+    "file": "frame-000066.png",
+    "captured_at_ms": 1792816542510
+  },
+  {
+    "file": "frame-000067.png",
+    "captured_at_ms": 1792816543203
+  },
+  {
+    "file": "frame-000068.png",
+    "captured_at_ms": 1792816543923
+  },
+  {
+    "file": "frame-000069.png",
+    "captured_at_ms": 1792816544630
+  },
+  {
+    "file": "frame-000070.png",
+    "captured_at_ms": 1792816545315
+  },
+  {
+    "file": "frame-000071.png",
+    "captured_at_ms": 1792816546043
+  },
+  {
+    "file": "frame-000072.png",
+    "captured_at_ms": 1792816546728
+  },
+  {
+    "file": "frame-000073.png",
+    "captured_at_ms": 1792816547451
+  },
+  {
+    "file": "frame-000074.png",
+    "captured_at_ms": 1792816548159
+  },
+  {
+    "file": "frame-000075.png",
+    "captured_at_ms": 1792816548844
+  },
+  {
+    "file": "frame-000076.png",
+    "captured_at_ms": 1792816549568
+  },
+  {
+    "file": "frame-000077.png",
+    "captured_at_ms": 1792816550283
+  },
+  {
+    "file": "frame-000078.png",
+    "captured_at_ms": 1792816550990
+  },
+  {
+    "file": "frame-000079.png",
+    "captured_at_ms": 1792816551697
+  },
+  {
+    "file": "frame-000080.png",
+    "captured_at_ms": 1792816552404
+  },
+  {
+    "file": "frame-000081.png",
+    "captured_at_ms": 1792816553094
+  },
+  {
+    "file": "frame-000082.png",
+    "captured_at_ms": 1792816553780
+  },
+  {
+    "file": "frame-000083.png",
+    "captured_at_ms": 1792816554525
+  },
+  {
+    "file": "frame-000084.png",
+    "captured_at_ms": 1792816555235
+  },
+  {
+    "file": "frame-000085.png",
+    "captured_at_ms": 1792816555944
+  },
+  {
+    "file": "frame-000086.png",
+    "captured_at_ms": 1792816556649
+  },
+  {
+    "file": "frame-000087.png",
+    "captured_at_ms": 1792816557358
+  },
+  {
+    "file": "frame-000088.png",
+    "captured_at_ms": 1792816558065
+  },
+  {
+    "file": "frame-000089.png",
+    "captured_at_ms": 1792816558769
+  },
+  {
+    "file": "frame-000090.png",
+    "captured_at_ms": 1792816559478
+  },
+  {
+    "file": "frame-000091.png",
+    "captured_at_ms": 1792816578581
+  },
+  {
+    "file": "frame-000092.png",
+    "captured_at_ms": 1792816579285
+  },
+  {
+    "file": "frame-000093.png",
+    "captured_at_ms": 1792816579974
+  },
+  {
+    "file": "frame-000094.png",
+    "captured_at_ms": 1792816580652
+  },
+  {
+    "file": "frame-000095.png",
+    "captured_at_ms": 1792816581404
+  },
+  {
+    "file": "frame-000096.png",
+    "captured_at_ms": 1792816582114
+  },
+  {
+    "file": "frame-000097.png",
+    "captured_at_ms": 1792816582820
+  },
+  {
+    "file": "frame-000098.png",
+    "captured_at_ms": 1792816583528
+  },
+  {
+    "file": "frame-000099.png",
+    "captured_at_ms": 1792816584236
+  },
+  {
+    "file": "frame-000100.png",
+    "captured_at_ms": 1792816584945
+  },
+  {
+    "file": "frame-000101.png",
+    "captured_at_ms": 1792816585655
+  },
+  {
+    "file": "frame-000102.png",
+    "captured_at_ms": 1792816586359
+  },
+  {
+    "file": "frame-000103.png",
+    "captured_at_ms": 1792816587069
+  },
+  {
+    "file": "frame-000104.png",
+    "captured_at_ms": 1792816587778
+  },
+  {
+    "file": "frame-000105.png",
+    "captured_at_ms": 1792816588474
+  },
+  {
+    "file": "frame-000106.png",
+    "captured_at_ms": 1792816589195
+  },
+  {
+    "file": "frame-000107.png",
+    "captured_at_ms": 1792816589889
+  },
+  {
+    "file": "frame-000108.png",
+    "captured_at_ms": 1792816590562
+  },
+  {
+    "file": "frame-000109.png",
+    "captured_at_ms": 1792816591235
+  },
+  {
+    "file": "frame-000110.png",
+    "captured_at_ms": 1792816591924
+  },
+  {
+    "file": "frame-000111.png",
+    "captured_at_ms": 1792816592631
+  },
+  {
+    "file": "frame-000112.png",
+    "captured_at_ms": 1792816593341
+  },
+  {
+    "file": "frame-000113.png",
+    "captured_at_ms": 1792816594032
+  },
+  {
+    "file": "frame-000114.png",
+    "captured_at_ms": 1792816594715
+  },
+  {
+    "file": "frame-000115.png",
+    "captured_at_ms": 1792816595387
+  },
+  {
+    "file": "frame-000116.png",
+    "captured_at_ms": 1792816596091
+  },
+  {
+    "file": "frame-000117.png",
+    "captured_at_ms": 1792816596794
+  },
+  {
+    "file": "frame-000118.png",
+    "captured_at_ms": 1792816597504
+  },
+  {
+    "file": "frame-000119.png",
+    "captured_at_ms": 1792816598186
+  },
+  {
+    "file": "frame-000120.png",
+    "captured_at_ms": 1792816612894
+  },
+  {
+    "file": "frame-000121.png",
+    "captured_at_ms": 1792816613896
+  },
+  {
+    "file": "frame-000122.png",
+    "captured_at_ms": 1792816614618
+  },
+  {
+    "file": "frame-000123.png",
+    "captured_at_ms": 1792816615325
+  },
+  {
+    "file": "frame-000124.png",
+    "captured_at_ms": 1792816615988
+  },
+  {
+    "file": "frame-000125.png",
+    "captured_at_ms": 1792816616656
+  },
+  {
+    "file": "frame-000126.png",
+    "captured_at_ms": 1792816617340
+  },
+  {
+    "file": "frame-000127.png",
+    "captured_at_ms": 1792816618047
+  },
+  {
+    "file": "frame-000128.png",
+    "captured_at_ms": 1792816618714
+  },
+  {
+    "file": "frame-000129.png",
+    "captured_at_ms": 1792816619417
+  },
+  {
+    "file": "frame-000130.png",
+    "captured_at_ms": 1792816620167
+  },
+  {
+    "file": "frame-000131.png",
+    "captured_at_ms": 1792816620871
+  },
+  {
+    "file": "frame-000132.png",
+    "captured_at_ms": 1792816621570
+  },
+  {
+    "file": "frame-000133.png",
+    "captured_at_ms": 1792816622283
+  },
+  {
+    "file": "frame-000134.png",
+    "captured_at_ms": 1792816622948
+  },
+  {
+    "file": "frame-000135.png",
+    "captured_at_ms": 1792816623630
+  },
+  {
+    "file": "frame-000136.png",
+    "captured_at_ms": 1792816624304
+  },
+  {
+    "file": "frame-000137.png",
+    "captured_at_ms": 1792816624975
+  },
+  {
+    "file": "frame-000138.png",
+    "captured_at_ms": 1792816625660
+  },
+  {
+    "file": "frame-000139.png",
+    "captured_at_ms": 1792816626421
+  },
+  {
+    "file": "frame-000140.png",
+    "captured_at_ms": 1792816627128
+  },
+  {
+    "file": "frame-000141.png",
+    "captured_at_ms": 1792816628356
+  },
+  {
+    "file": "frame-000142.png",
+    "captured_at_ms": 1792816629062
+  },
+  {
+    "file": "frame-000143.png",
+    "captured_at_ms": 1792816629763
+  },
+  {
+    "file": "frame-000144.png",
+    "captured_at_ms": 1792816630471
+  },
+  {
+    "file": "frame-000145.png",
+    "captured_at_ms": 1792816631155
+  },
+  {
+    "file": "frame-000146.png",
+    "captured_at_ms": 1792816631880
+  },
+  {
+    "file": "frame-000147.png",
+    "captured_at_ms": 1792816632543
+  },
+  {
+    "file": "frame-000148.png",
+    "captured_at_ms": 1792816647745
+  },
+  {
+    "file": "frame-000149.png",
+    "captured_at_ms": 1792816648445
+  },
+  {
+    "file": "frame-000150.png",
+    "captured_at_ms": 1792816649155
+  },
+  {
+    "file": "frame-000151.png",
+    "captured_at_ms": 1792816649850
+  },
+  {
+    "file": "frame-000152.png",
+    "captured_at_ms": 1792816650565
+  },
+  {
+    "file": "frame-000153.png",
+    "captured_at_ms": 1792816651273
+  },
+  {
+    "file": "frame-000154.png",
+    "captured_at_ms": 1792816651981
+  },
+  {
+    "file": "frame-000155.png",
+    "captured_at_ms": 1792816652685
+  },
+  {
+    "file": "frame-000156.png",
+    "captured_at_ms": 1792816653364
+  },
+  {
+    "file": "frame-000157.png",
+    "captured_at_ms": 1792816654097
+  },
+  {
+    "file": "frame-000158.png",
+    "captured_at_ms": 1792816654773
+  },
+  {
+    "file": "frame-000159.png",
+    "captured_at_ms": 1792816655511
+  },
+  {
+    "file": "frame-000160.png",
+    "captured_at_ms": 1792816656220
+  },
+  {
+    "file": "frame-000161.png",
+    "captured_at_ms": 1792816656925
+  },
+  {
+    "file": "frame-000162.png",
+    "captured_at_ms": 1792816657629
+  },
+  {
+    "file": "frame-000163.png",
+    "captured_at_ms": 1792816658336
+  },
+  {
+    "file": "frame-000164.png",
+    "captured_at_ms": 1792816659043
+  },
+  {
+    "file": "frame-000165.png",
+    "captured_at_ms": 1792816659747
+  },
+  {
+    "file": "frame-000166.png",
+    "captured_at_ms": 1792816660455
+  },
+  {
+    "file": "frame-000167.png",
+    "captured_at_ms": 1792816661133
+  },
+  {
+    "file": "frame-000168.png",
+    "captured_at_ms": 1792816661872
+  },
+  {
+    "file": "frame-000169.png",
+    "captured_at_ms": 1792816662577
+  },
+  {
+    "file": "frame-000170.png",
+    "captured_at_ms": 1792816663286
+  },
+  {
+    "file": "frame-000171.png",
+    "captured_at_ms": 1792816663999
+  },
+  {
+    "file": "frame-000172.png",
+    "captured_at_ms": 1792816664707
+  },
+  {
+    "file": "frame-000173.png",
+    "captured_at_ms": 1792816665411
+  },
+  {
+    "file": "frame-000174.png",
+    "captured_at_ms": 1792816666120
+  },
+  {
+    "file": "frame-000175.png",
+    "captured_at_ms": 1792816666826
+  },
+  {
+    "file": "frame-000176.png",
+    "captured_at_ms": 1792816667532
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "recorded_at_utc": "2026-10-24T04:37:51.323450+00:00",
+  "application_version": "1.0.0",
+  "tests": [
+    {
+      "command": ".venv-m4-clean/bin/python -m pytest -q",
+      "exit_code": 0,
+      "passed": 502,
+      "seconds": 27.4,
+      "raw_output": "docs/m4-test-results.txt",
+      "raw_output_sha256": "5dd485364c5a0a8cc6a260b561c6b19979eed6c2adc12e0dec89d66ae5d752a3"
+    },
+    {
+      "command": ".venv-m4-release/bin/python -m pytest -q",
+      "exit_code": 0,
+      "passed": 502,
+      "seconds": 33.88,
+      "raw_output": "docs/m4-release-test-results.txt",
+      "raw_output_sha256": "3652b14e5385e8f373445a0aceeecb6fefab0d15f1dc7a53446a58e560a0d18f"
+    }
+  ],
+  "scope": "Two complete runs over the same suite in separate environments; these counts must not be added together."
+}

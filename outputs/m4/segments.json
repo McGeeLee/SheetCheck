@@ -1,0 +1,22 @@
+[
+  {
+    "source_start_ms": 1792776970805,
+    "source_end_ms": 1792776990367,
+    "label": "加载虚构样例"
+  },
+  {
+    "source_start_ms": 1792777009599,
+    "source_end_ms": 1792777029098,
+    "label": "字段映射与规则确认"
+  },
+  {
+    "source_start_ms": 1792777110531,
+    "source_end_ms": 1792777130429,
+    "label": "核对与差额"
+  },
+  {
+    "source_start_ms": 1792777155781,
+    "source_end_ms": 1792777176501,
+    "label": "检查 A005 两侧隔离"
+  }
+]

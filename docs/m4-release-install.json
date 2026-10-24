@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "fresh_venv": "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/.venv-m4-release",
+  "steps": [
+    {
+      "command": [
+        "/Users/mcgee/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "-m",
+        "venv",
+        "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/.venv-m4-release"
+      ],
+      "started_at_utc": "2026-10-24T04:36:30.386474+00:00",
+      "finished_at_utc": "2026-10-24T04:36:31.480555+00:00",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/.venv-m4-release/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-cache-dir",
+        "--find-links",
+        "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/wheelhouse",
+        "--require-hashes",
+        "-r",
+        "requirements.lock"
+      ],
+      "started_at_utc": "2026-10-24T04:36:31.480637+00:00",
+      "finished_at_utc": "2026-10-24T04:36:39.607895+00:00",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/.venv-m4-release/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-cache-dir",
+        "--no-build-isolation",
+        "--no-deps",
+        "-e",
+        ".[ui,test]"
+      ],
+      "started_at_utc": "2026-10-24T04:36:39.607966+00:00",
+      "finished_at_utc": "2026-10-24T04:36:40.101288+00:00",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/.venv-m4-release/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "started_at_utc": "2026-10-24T04:36:40.101359+00:00",
+      "finished_at_utc": "2026-10-24T04:36:40.244352+00:00",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "/Users/mcgee/Documents/Codex Project/Project/SheetCheck/.venv-m4-release/bin/python",
+        "scripts/verify_install.py",
+        "--wheelhouse",
+        "outputs/m4/wheelhouse",
+        "--output",
+        "docs/m4-release-environment.json"
+      ],
+      "started_at_utc": "2026-10-24T04:36:40.244424+00:00",
+      "finished_at_utc": "2026-10-24T04:36:42.259729+00:00",
+      "returncode": 0
+    }
+  ],
+  "lock_sha256": "83e80d555794ba4420c356115379b9fbe9d8b03173f9fe508010b7cffaedf729",
+  "scope": "Fresh virtual environment, local exact hash wheel installation, effective config and version verification"
+}

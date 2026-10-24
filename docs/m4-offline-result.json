@@ -1,0 +1,32 @@
+{
+  "app_version": "0.3.0",
+  "network_scope": "OS-enforced server loopback only; test-only CSP restricts page subresources and connections. Entire Mac remains connected.",
+  "input_formats": [
+    "orders.csv",
+    "payments.xlsx"
+  ],
+  "period": "M4 虚构断网验收",
+  "report": "outputs/m4/sheetcheck_20261023T172102Z_11d5df5da13342789b9206f52bcf004a.xlsx",
+  "bytes": 19249,
+  "sha256": "a90cb4b8c24fd9082b2f4b897de64b4b0be4d995f24e057771d06a6fbde98a87",
+  "run_id": "11d5df5da13342789b9206f52bcf004a",
+  "report_audit": "PASS: independently recomputed source files, same fingerprint and manual sample totals",
+  "core_totals_minor": {
+    "order": 18000,
+    "payment": 18900
+  },
+  "data_rows_by_sheet": {
+    "运行说明": 79,
+    "业务结果": 5,
+    "异常明细": 3,
+    "数据问题": 6,
+    "源行账本": 14
+  },
+  "os_ipv4_ipv6_deny_probes": 2,
+  "browser_positive_control": "external image blocked by enforced CSP and reported",
+  "business_external_socket_or_dns_attempts": 0,
+  "business_csp_violations": 0,
+  "upload_204_count": 2,
+  "download_200_count": 2,
+  "static_200_count": 141
+}

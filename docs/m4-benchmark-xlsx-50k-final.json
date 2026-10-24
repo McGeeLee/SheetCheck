@@ -1,0 +1,77 @@
+{
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "measured_at_utc": "2026-10-24T04:51:20.837229+00:00",
+  "app_version": "1.0.0",
+  "rules_version": "v1",
+  "dependencies": {
+    "openpyxl": "3.1.5",
+    "defusedxml": "0.7.1",
+    "streamlit": "1.66.0"
+  },
+  "hardware": {
+    "logical_cpu_count": 10,
+    "processor": "arm"
+  },
+  "python": "3.12.14",
+  "format": "xlsx",
+  "variant": "mixed",
+  "rows_per_side": 50000,
+  "repeats": 1,
+  "successful_trials": 1,
+  "trials": [
+    {
+      "status": "passed",
+      "pid": 3603,
+      "read_seconds": 3.504879957999947,
+      "core_including_audit_seconds": 1.4725173750000522,
+      "export_including_builtin_readback_audit_seconds": 85.94618154099999,
+      "additional_standalone_readback_audit_seconds": 35.16975116699996,
+      "process_peak_rss_mib": 1951.328125,
+      "cumulative_peak_rss_mib": {
+        "after_fixture": 43.921875,
+        "after_read": 103.140625,
+        "after_core": 170.046875,
+        "after_export_with_builtin_audit": 1951.328125,
+        "after_additional_audit": 1951.328125
+      },
+      "stage_process_cpu_seconds": {
+        "read": 3.4924370000000002,
+        "core_including_audit": 1.468578,
+        "export_including_builtin_readback_audit": 84.700479,
+        "additional_standalone_readback_audit": 35.005286999999996
+      },
+      "input_bytes": {
+        "order": 527953,
+        "payment": 539073
+      },
+      "report_bytes": 27728560,
+      "report_sha256": "ac98538c147e2543298f88a50864a15844e7ef1616e6e1c772a91a2a1671000c",
+      "business_records": 35000,
+      "ledger_rows": 100000,
+      "status_counts": {
+        "EXACT_MATCH": 15000,
+        "AMOUNT_MISMATCH": 5000,
+        "ONLY_ORDER": 5000,
+        "ONLY_PAYMENT": 10000,
+        "DATA_ISSUE": 35000,
+        "SKIPPED_EMPTY": 10000
+      },
+      "trial": 1,
+      "child_wall_seconds": 127.40589254200017
+    }
+  ],
+  "child_timeout_seconds": 900.0,
+  "measurement": "Fresh sequential child process per trial. Fixture construction excluded from timings and included in whole-process peak RSS. Export includes its mandatory readback audit; standalone audit is a separate additional pass. Stage RSS values are cumulative process high-water marks, not per-stage deltas. All data synthetic; report bytes remain in memory.",
+  "median_read_seconds": 3.504879957999947,
+  "median_core_seconds": 1.4725173750000522,
+  "median_export_including_builtin_audit_seconds": 85.94618154099999,
+  "median_additional_standalone_audit_seconds": 35.16975116699996,
+  "max_process_peak_rss_mib": 1951.328125,
+  "target_assessment": {
+    "scope": "Blueprint suggested 10000 rows per side; other scales are observations only",
+    "applicable": false,
+    "all_successful_trials_core_within_3_seconds": true,
+    "all_successful_trials_whole_process_within_512_mib": false
+  }
+}

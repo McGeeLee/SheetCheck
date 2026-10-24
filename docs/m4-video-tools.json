@@ -1,0 +1,21 @@
+{
+  "purpose": "Optional demonstration encoding tool; not a SheetCheck application dependency",
+  "source": "Existing installed Android Studio bundled FFmpeg artifact; no network acquisition",
+  "checked_at_utc": "2026-10-23T17:17:58.933485+00:00",
+  "source_jar": "/Applications/Android Studio.app/Contents/plugins/android/lib/ffmpeg-7.1.1-1.5.12-macosx-arm64.jar",
+  "source_jar_sha256": "0734dba69b2a1c1467e539df561af86be5a694f92d544f47aa485ecd72d47951",
+  "components": {
+    "ffmpeg": {
+      "path": "/private/tmp/sheetcheck-m4-ffmpeg/ffmpeg",
+      "sha256": "99c28a9a61cd92d2fe6e6f835ff27df483eadb99f94575ee4d8baec7f4e45fc9",
+      "version_first_line": "ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers",
+      "exit_code": 0
+    },
+    "ffprobe": {
+      "path": "/private/tmp/sheetcheck-m4-ffmpeg/ffprobe",
+      "sha256": "59963c0b1ee7a073d837e6d0f12702a62685fb0ac4a82894b86ad29a1c9155b4",
+      "version_first_line": "ffprobe version 7.1.1 Copyright (c) 2007-2025 the FFmpeg developers",
+      "exit_code": 0
+    }
+  }
+}

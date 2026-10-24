@@ -1,0 +1,24 @@
+Input #0, concat, from '/var/folders/gb/5r4btw316zg1l5v_fpb61n1h0000gn/T/sheetcheck-demo-ijs6vi0w/ui.ffconcat':
+  Duration: N/A, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: mjpeg (Baseline), yuvj420p(pc, bt470bg/unknown/unknown), 1280x720 [SAR 1:1 DAR 16:9], 25 fps, 25 tbr, 25 tbn
+Input #1, concat, from '/var/folders/gb/5r4btw316zg1l5v_fpb61n1h0000gn/T/sheetcheck-demo-ijs6vi0w/captions.ffconcat':
+  Duration: N/A, start: 0.000000, bitrate: N/A
+  Stream #1:0: Video: png, rgb24(pc, gbr/unknown/unknown), 1280x96, 25 fps, 25 tbr, 25 tbn
+Stream mapping:
+  Stream #0:0 (mjpeg) -> scale:default
+  Stream #1:0 (png) -> overlay
+  setparams:default -> Stream #0:0 (libopenh264)
+[swscaler @ 0x794f5d4000] deprecated pixel format used, make sure you did set range correctly
+[libopenh264 @ 0x794f038000] [OpenH264] this = 0x0x794f010420, Warning:layerId(0) doesn't support profile(578), change to UNSPECIFIC profile
+[libopenh264 @ 0x794f038000] [OpenH264] this = 0x0x794f010420, Warning:bEnableFrameSkip = 0,bitrate can't be controlled for RC_QUALITY_MODE,RC_BITRATE_MODE and RC_TIMESTAMP_MODE without enabling skip frame.
+Output #0, mp4, to '/Users/mcgee/Documents/Codex Project/Project/SheetCheck/outputs/m4/video-smoke.mp4':
+  Metadata:
+    encoder         : Lavf61.7.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, bt470bg/unknown/unknown, progressive), 1280x800 [SAR 1:1 DAR 8:5], q=2-31, 3000 kb/s, 10 fps, 10240 tbn
+      Metadata:
+        encoder         : Lavc61.19.101 libopenh264
+      Side data:
+        cpb: bitrate max/min/avg: 3000000/0/3000000 buffer size: 0 vbv_delay: N/A
+[mp4 @ 0x794ec38a00] Starting second pass: moving the moov atom to the beginning of the file
+[out#0/mp4 @ 0x794f028600] video:62KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 1.446965%
+frame=   20 fps=0.0 q=-0.0 Lsize=      63KiB time=00:00:02.00 bitrate= 259.7kbits/s dup=19 drop=0 speed=47.9x    

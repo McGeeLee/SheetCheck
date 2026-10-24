@@ -1,0 +1,35 @@
+{
+  "recorded_at_utc": "2026-10-24T04:31:27.171097+00:00",
+  "benchmark_measured_at_utc": "2026-10-24T04:30:37.130085+00:00",
+  "benchmark_file": "m4-benchmark-xlsx-10k-postfix.json",
+  "benchmark_sha256": "fee555da03aef5f12b2e7915e5c7b7f3592bb7803886948b43f6a375468e0375",
+  "command": ".venv-m4-clean/bin/python scripts/benchmark_export.py --format xlsx --rows 10000 --repeats 1 --timeout 300",
+  "app_version": "0.3.0",
+  "source_sha256": {
+    "sheetcheck/report.py": "f21774f70f73720a9186e41cbc52724d5df389224e1e682f7502cfba9b88e128",
+    "scripts/benchmark_export.py": "48852eb81891a6e5afc6d265cc99ec2dedb3f59580dfc5d98317e2298ffc65f6",
+    "tests/test_capacity_acceptance.py": "6ab9350313c5486483e306b8d0091b9e3dbd7e615de93a2e63520958e04f8f10"
+  },
+  "hardware_read_only_sysctl": {
+    "cpu_model": "Apple M4",
+    "physical_memory_bytes": 25769803776,
+    "logical_cpu_count": 10
+  },
+  "preflight": {
+    "process_scan": "ps -axo pid,ppid,etime,%cpu,rss,command; filter benchmark|acceptance_capacity|pytest|ffmpeg|streamlit",
+    "matching_workload_processes": [],
+    "qualification": "No matching workloads were running at preflight. This does not establish an otherwise idle or isolated desktop. Parent paused UI, tests and encoding for this trial."
+  },
+  "change_under_test": "Writing workbook is scoped in _write_xlsx; export_xlsx calls gc.collect after helper return and before the unchanged mandatory audit_xlsx. Weakref test requires writer workbook collection even with automatic cyclic GC disabled, then runs the real audit.",
+  "interpretation": {
+    "single_postfix_trial_only": true,
+    "original_3_093815583_second_core_miss_retained": true,
+    "cpu_to_wall_ratio": {
+      "read_seconds": 0.9959595709407252,
+      "core_including_audit_seconds": 0.9930012763909883,
+      "export_including_builtin_readback_audit_seconds": 0.9864294317155934,
+      "additional_standalone_readback_audit_seconds": 0.9824310760854974
+    },
+    "caveat": "Not an A/B trial: run timing, desktop load and code differ from original trials. Peak RSS is higher than original XLSX 10k trials, so do not claim a measured peak-memory improvement or assign speedup to the release fix."
+  }
+}

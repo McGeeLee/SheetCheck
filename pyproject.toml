@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sheetcheck"
+version = "1.1.0"
+description = "Local, traceable reconciliation with safe static Excel reports"
+requires-python = ">=3.12,<3.13"
+dependencies = ["openpyxl==3.1.5", "defusedxml==0.7.1"]
+
+[project.optional-dependencies]
+ui = ["streamlit==1.66.0"]
+test = ["pytest==8.4.2"]
+
+[tool.setuptools.packages.find]
+include = ["sheetcheck*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+pythonpath = ["."]

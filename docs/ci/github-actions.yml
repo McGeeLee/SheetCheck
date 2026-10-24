@@ -1,0 +1,56 @@
+name: Tests and sample report
+
+"on":
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  macos-arm64:
+    runs-on: macos-15
+    timeout-minutes: 10
+    env:
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+      PYTHONHASHSEED: "0"
+    steps:
+      - name: Check out source without persisting credentials
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false
+      - name: Set up the published macOS arm64 Python build
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          # The official manifest has no macOS arm64 build for 3.12.14.
+          # This CI environment is distinct from the local M4 acceptance host.
+          python-version: "3.12.10"
+          architecture: arm64
+      - name: Confirm interpreter and runner architecture
+        run: |
+          python - <<'PY'
+          import platform
+          import sys
+          assert sys.version_info[:3] == (3, 12, 10), sys.version
+          assert platform.system() == "Darwin", platform.platform()
+          assert platform.machine() == "arm64", platform.machine()
+          print(sys.version)
+          print(platform.platform())
+          PY
+      - name: Install exact locked wheels in a clean environment
+        run: |
+          python -m venv .venv-ci
+          .venv-ci/bin/python -m pip install --only-binary=:all: --require-hashes -r requirements.lock
+          .venv-ci/bin/python -m pip install --no-build-isolation --no-deps -e '.[ui,test]'
+          .venv-ci/bin/python -m pip check
+      - name: Run the full regression suite
+        run: .venv-ci/bin/python -m pytest -q
+      - name: Export the fictional sample and independently audit its report
+        run: |
+          .venv-ci/bin/python scripts/acceptance_final_sample.py \
+            --output-dir "outputs/ci-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
