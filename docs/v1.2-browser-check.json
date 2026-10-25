@@ -1,0 +1,46 @@
+{
+  "checked_at_utc": "2026-10-25T17:41:29.103638+00:00",
+  "application_version": "1.2.0",
+  "status": "PASS_WITH_SCOPE",
+  "url": "http://127.0.0.1:8501/",
+  "browser": "Codex in-app browser",
+  "viewport": {
+    "width": 1124,
+    "height": 844
+  },
+  "data": "Repository fictional sample only",
+  "observed": [
+    "First-use hero, three workspace tabs, empty results and usage guide rendered",
+    "Loading sample selected Prepare data; ID/amount mappings populated and confirmations remained unchecked",
+    "Order preview expanded; A002 50.00 visible",
+    "Manual confirmations enabled reconciliation; successful run automatically selected Results",
+    "Final result metric labels fully visible: exact 2, mismatch 1, order-only 1, payment-only 1, issue source rows 6",
+    "Mismatch shortcut showed A002, 50.00 / 49.00 / -1.00",
+    "A002 source cards showed orders.csv and payments.csv, row 3 on both sides",
+    "Generated report, readback audit passed, download button visible but not clicked",
+    "Switching to Guide and back retained one-row mismatch filter, selected A002 source and generated report",
+    "Switching to Prepare data retained input mappings and confirmations",
+    "Changed fictional period; old report and result revoked; Results displayed empty state",
+    "Reset from Guide restored first-use hero, Prepare data and disabled reconciliation"
+  ],
+  "screenshots": [
+    "docs/v1.2-home.png",
+    "docs/v1.2-results.png",
+    "docs/v1.2-report-ready.png"
+  ],
+  "additional_browser_downloads": 0,
+  "additional_download_permission_requests": 0,
+  "not_performed": [
+    "Browser file upload",
+    "Browser multi-worksheet selection",
+    "Browser multi-page navigation (covered by AppTest)",
+    "Browser report download",
+    "Download recording",
+    "Native Excel",
+    "Mobile or other browser/platform acceptance"
+  ],
+  "limitations": [
+    "Automatic tab selection does not guarantee scrolling to the top of long content"
+  ],
+  "evidence_boundary": "Actual browser observations are distinct from AppTest state-driven navigation and in-memory file transfer tests"
+}

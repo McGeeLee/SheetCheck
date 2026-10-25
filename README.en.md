@@ -1,12 +1,14 @@
 # SheetCheck
 
-Compare order and payment exports, identify amount differences, unmatched IDs and data issues, then trace each finding to its original row. **Version 1.1.2 adds plain-language issue explanations, repair guidance, source cards and easier filtering and paging.** New users can start with the fictional sample; reconciliation rules and audited reports remain unchanged.
+Compare order and payment exports, identify amount differences, unmatched IDs and data issues, then trace each finding to its original row. **Version 1.2.0 reorganizes the page into a workbench with separate preparation, results and guide tabs.** The home screen explains the job with a fictional amount comparison; file inputs, sources and reports have dedicated cards. Reconciliation rules and audited reports remain unchanged.
 
-[Getting started (Chinese)](docs/getting-started.md) · [GitHub repository](https://github.com/McGeeLee/SheetCheck) · [Current verification](docs/v1.1.2-verification.md) · [Mapping-template guide](docs/mapping-templates.md) · [Development and CI](docs/development.md)
+![SheetCheck local workbench](docs/v1.2-home.png)
+
+[Getting started (Chinese)](docs/getting-started.md) · [GitHub repository](https://github.com/McGeeLee/SheetCheck) · [Current verification](docs/v1.2-verification.md) · [Mapping-template guide](docs/mapping-templates.md) · [Development and CI](docs/development.md)
 
 GitHub CI remains disabled as requested. Its configuration is retained as an [inactive template](docs/ci/github-actions.yml). Passing checks in the verification records were run locally; no additional authorization was requested and no successful GitHub CI run is claimed.
 
-v1.0 remains complete within its verified scope, including the user-accepted omission of the actual download from the demonstration. The [M4 acceptance record](docs/m4-verification.md), earlier successful download and native Excel observations remain historical evidence. v1.1 does not retry recording permissions or relabel historical performance/native-software observations as new runs. Compatibility claims remain bounded by actual evidence.
+v1.0 remains complete within its verified scope, including the user-accepted omission of the actual download from the demonstration. The [M4 acceptance record](docs/m4-verification.md), earlier successful download and native Excel observations remain historical evidence. This update does not retry recording permissions or relabel historical performance/native-software observations as new runs. Compatibility claims remain bounded by actual evidence.
 
 The project is independent of other projects in its parent directory, including Sirius. The core does not import Streamlit and remains callable through Python or the CLI. No account, database, API key or external business service is required. All bundled samples are fictional. Reconciliation differences are observations, not conclusions about debts, fraud or accounting errors.
 
@@ -15,12 +17,12 @@ The project is independent of other projects in its parent directory, including 
 For example, order A002 is 50.00 while the matching payment is 49.00. SheetCheck shows a difference of -1.00 and the original row in each file; it does not infer the business cause.
 
 1. Click **用虚构样例试一遍** (try the fictional sample) on the home screen; no files are needed.
-2. Check the previews, selected columns, currency and period. Tick both confirmations yourself, then click **开始核对** (reconcile).
-3. Use **先看数据问题** (review data issues) or **查看金额差异** (review amount differences). Read the issue explanations and suggested repairs, then select a result to inspect its source cards. Generate the report before downloading it.
+2. In **准备数据** (prepare data), expand each preview and check the selected columns, currency and period. Tick both confirmations yourself, then click **开始核对** (reconcile).
+3. The page opens **核对结果** (results) automatically. Review data issues or amount differences, select a record for its source cards, then generate and download the report. You can visit **使用指南** (guide) and return without losing mappings, results or the generated report.
 
 The checklist explains what is missing when reconciliation is disabled. Use **清空筛选** (clear filters) to return to the full business list, and **上一页 / 下一页** (previous / next page) for larger results. These controls do not recompute results or change the report. The [beginner guide](docs/getting-started.md) explains file preparation, interpretation and recovery.
 
-The full local suite passed **677 tests in 39.09 seconds**. The existing environment was reused to update the application, with 43 locked dependencies and the effective configuration rechecked; this was not a new clean installation. See the [verification record](docs/v1.1.2-verification.md) for scope.
+This update reuses the existing local environment rather than creating a new clean installation. See the [current verification record](docs/v1.2-verification.md) for test results, browser observations and the measured scope; historical test counts and compatibility observations are not relabelled as new runs.
 
 ## Install and run
 
@@ -51,14 +53,14 @@ For a reproducible CLI sample without starting the page:
 
 ## Page workflow
 
-1. Select **加载虚构样例** (load fictional sample). Inspect the order and payment inputs. Each preview contains at most 20 source records, preserving text IDs and source positions. Long preview fields are explicitly marked as shortened for display.
+1. Select **加载虚构样例** (load fictional sample) and work in **准备数据**. Each file card groups its file, reading options, preview and mappings. Expand the preview to inspect up to 20 records; long fields are marked as shortened. Once loaded, the uploader is kept under **更换订单文件 / 更换收款文件** (replace file).
 2. Check each ID and amount mapping. Options include the column number and original header; the same column cannot serve both roles. A single ordinary XLSX worksheet is selected and locked automatically. Multiple worksheets require an explicit choice, including hidden worksheets; an unselected worksheet is a pending step, not a read error. Reading options let you adjust the header row and CSV encoding/delimiter.
 3. Select the currency, enter the period and confirm both matching currency and matching period. Even the sample requires explicit confirmation. Click **开始核对** (reconcile). The program cannot establish the real business coverage of your inputs.
-4. Read the summaries, then switch among all business results, amount differences, order-only, payment-only and data issues. Issue rows retain their original codes alongside Chinese explanations and repair guidance. Use ID search, status filters and previous/next controls, with at most 100 rows per page. **清空筛选** restores all business results, an empty search, all statuses and page one, clearing the source selection.
+4. Successful reconciliation opens **核对结果** automatically. Five primary cards show status counts; expand **核对范围与金额口径** for input counts, eligible totals and skipped empty rows. Review categories, search IDs, filter statuses and page through up to 100 rows at a time. **清空筛选** restores the full business list. Issue rows retain Chinese explanations, repair guidance and original codes.
 5. Choose an item under **查看来源详情（当前页）** (source details for the current page). Source cards show the file, worksheet, original row, raw ID and amount. The full source table, CSV physical span, mapping columns, source/result IDs, SHA-256 and raw types are available in expanded details.
-6. Click **生成报告** (generate report), wait for export and mandatory readback auditing, then **下载核对报告** (download report). The report always contains the complete current run; category, search and pagination do not trim it.
+6. In the report card, click **生成报告** (generate report), wait for mandatory readback auditing, then **下载核对报告** (download report). The report contains the complete run; filters and paging do not trim it. Switching between the three workspaces preserves current inputs, mappings, results and the generated report.
 
-Replacing or removing either file, or changing the worksheet, header, encoding, delimiter, mapping, currency, period or either confirmation invalidates the old result and report. Run reconciliation and report generation again using the new choices. Late work from an older input version cannot replace the current state. Files already received or saved by the browser cannot be revoked.
+Replacing or removing either file, or changing the worksheet, header, encoding, delimiter, mapping, currency, period or either confirmation invalidates the old result and report and returns to **准备数据**. Run reconciliation and report generation again using the new choices. Late work from an older input version cannot replace the current state. Files already received or saved by the browser cannot be revoked.
 
 **重新开始** (start again) clears all current-session input selections, sample data, mappings, confirmations, filters, pagination, results and report references. Refreshing the browser may lose undownloaded work. Reset releases references; it does not securely erase RAM, swap or downloaded files. The [Chinese workflow and recovery guide](docs/m3-workflow.md) describes common import and export failures.
 
@@ -129,9 +131,9 @@ On 2026-10-24 (Asia/Singapore), the user explicitly waived a new download record
 
 The video shows application 1.0.0 loading the fictional sample, mapping fields, inspecting A002 and A005, tracing source rows, generating an audited report and displaying the download entry point. Earlier automation attempts repeatedly triggered download-approval loops, so the final recording did not click download; the caption states this explicitly. This recording limitation does not establish a product download failure. The earlier **0.3.0** real mixed-input UI download, independent recomputation/readback and Excel for Mac check are separate [network/download evidence](docs/m4-offline.md), not depicted as a new download in this video. The final 1.0.0 CLI sample was also independently checked; see the final acceptance record.
 
-[Current verification](docs/v1.1.2-verification.md) · [Current delivery status](docs/v1.1.2-release-status.json) · [Changelog](CHANGELOG.md)
+[Current verification](docs/v1.2-verification.md) · [Current delivery status](docs/v1.2-release-status.json) · [Changelog](CHANGELOG.md)
 
-The complete local package is `deliveries/SheetCheck-1.1.2.zip`, excluded from Git. Rebuild it from the project directory with `.venv/bin/python scripts/build_delivery.py`; package checks and scope are recorded in the current verification. Earlier packages, the [M4 delivery guide](docs/m4-delivery.md), [M4 verification](docs/m4-verification.md), [M3 page verification](docs/m3-verification.md), M2 and M0–M1 records retain their original versions and test counts. Overlapping counts must not be added to the current full-suite count.
+The complete local package is `deliveries/SheetCheck-1.2.0.zip`, excluded from Git. Rebuild it from the project directory with `.venv/bin/python scripts/build_delivery.py`; package checks and scope are recorded in the current verification. Earlier packages, the [M4 delivery guide](docs/m4-delivery.md), [M4 verification](docs/m4-verification.md), [M3 page verification](docs/m3-verification.md), M2 and M0–M1 records retain their original versions and test counts. Overlapping counts must not be added to the current full-suite count.
 
 ## Compatibility boundaries and untested areas
 

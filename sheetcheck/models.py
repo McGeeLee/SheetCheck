@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 from enum import StrEnum
 from typing import Any
 
-APP_VERSION = "1.1.2"
+APP_VERSION = "1.2.0"
 RULES_VERSION = "v1"
 MAX_AMOUNT_MINOR = 99_999_999_999
 COVERAGE_WARNING = "存在无法识别编号的问题行；缺项结果需要人工复核，坏行可能隐藏对方记录。"
