@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sheetcheck"
-version = "1.1.1"
+version = "1.1.2"
 description = "Local, traceable reconciliation with safe static Excel reports"
 requires-python = ">=3.12,<3.13"
 dependencies = ["openpyxl==3.1.5", "defusedxml==0.7.1"]

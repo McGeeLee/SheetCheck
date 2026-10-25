@@ -1,0 +1,36 @@
+{
+  "checked_at_utc": "2026-10-25T17:26:15.774682+00:00",
+  "application_version": "1.1.2",
+  "status": "PASS_WITH_SCOPE",
+  "url": "http://127.0.0.1:8501/",
+  "browser": "Codex in-app browser",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "data": "Repository fictional sample only",
+  "observed": [
+    "First-use sample entry visible; loaded both sample files",
+    "Confirmations initially unchecked and reconciliation disabled; checked currency and period to enable it",
+    "Reconciliation produced 5 business result rows and 6 data issue rows",
+    "Single-page previous/next controls disabled",
+    "Selected A006 payment source row 6: Chinese BLOCKED_ID explanation, repair advice, payments.csv / CSV / A006 / 12.00 card visible",
+    "Report generated and readback audit passed; download button visible but not clicked",
+    "NO-SUCH-ID search yielded 0 rows while report remained ready",
+    "Clear filters restored all 5 business results, blank search, page 1; report remained ready",
+    "Reset restored first-use sample entry and disabled reconciliation; download button and report-ready notice absent"
+  ],
+  "screenshot": "docs/v1.1.2-source-card.png",
+  "additional_browser_downloads": 0,
+  "additional_download_permission_requests": 0,
+  "not_performed": [
+    "Browser file upload",
+    "Browser multi-worksheet selection",
+    "Browser multi-page navigation (205-row paging covered by AppTest)",
+    "Browser report download",
+    "New download recording",
+    "Native Excel",
+    "Other platforms or browsers"
+  ],
+  "evidence_boundary": "Actual browser observations only; test-suite results are separately recorded in docs/v1.1.2-test-results.txt"
+}

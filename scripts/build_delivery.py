@@ -19,7 +19,7 @@ from zipfile import ZIP_DEFLATED, ZIP_STORED, ZipFile, ZipInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 PROJECT_VERSION = tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]["version"]
-EVIDENCE_PREFIX = {"1.0.0": "m4", "1.1.0": "v1.1", "1.1.1": "v1.1.1"}.get(PROJECT_VERSION)
+EVIDENCE_PREFIX = {"1.0.0": "m4", "1.1.0": "v1.1", "1.1.1": "v1.1.1", "1.1.2": "v1.1.2"}.get(PROJECT_VERSION)
 if EVIDENCE_PREFIX is None:
     raise SystemExit("Review this delivery allowlist for the new version first.")
 MANIFEST = Path(f"docs/{EVIDENCE_PREFIX}-delivery-manifest.json")
@@ -33,7 +33,7 @@ DIRECTORIES = (
     "outputs/m3", "outputs/m4",
     "outputs/01a1697b-f428-7902-ad2b-de29c9d339f8",
 )
-if PROJECT_VERSION in {"1.1.0", "1.1.1"}:
+if PROJECT_VERSION in {"1.1.0", "1.1.1", "1.1.2"}:
     DIRECTORIES += ("outputs/v1.1",)
 
 

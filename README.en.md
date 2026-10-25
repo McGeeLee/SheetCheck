@@ -1,8 +1,8 @@
 # SheetCheck
 
-Compare order and payment exports, identify amount differences, unmatched IDs and data issues, then trace each finding to its original row. **Version 1.1.1 adds a prominent first-use sample, an actionable checklist and guided result review.** Optional mapping templates, integer minor units, the source-row ledger and mandatory safe-report auditing remain in place.
+Compare order and payment exports, identify amount differences, unmatched IDs and data issues, then trace each finding to its original row. **Version 1.1.2 adds plain-language issue explanations, repair guidance, source cards and easier filtering and paging.** New users can start with the fictional sample; reconciliation rules and audited reports remain unchanged.
 
-[Getting started (Chinese)](docs/getting-started.md) · [GitHub repository](https://github.com/McGeeLee/SheetCheck) · [Onboarding verification](docs/v1.1.1-verification.md) · [Mapping-template guide](docs/mapping-templates.md) · [Development and CI](docs/development.md)
+[Getting started (Chinese)](docs/getting-started.md) · [GitHub repository](https://github.com/McGeeLee/SheetCheck) · [Current verification](docs/v1.1.2-verification.md) · [Mapping-template guide](docs/mapping-templates.md) · [Development and CI](docs/development.md)
 
 GitHub CI remains disabled as requested. Its configuration is retained as an [inactive template](docs/ci/github-actions.yml). Passing checks in the verification records were run locally; no additional authorization was requested and no successful GitHub CI run is claimed.
 
@@ -16,9 +16,11 @@ For example, order A002 is 50.00 while the matching payment is 49.00. SheetCheck
 
 1. Click **用虚构样例试一遍** (try the fictional sample) on the home screen; no files are needed.
 2. Check the previews, selected columns, currency and period. Tick both confirmations yourself, then click **开始核对** (reconcile).
-3. Use **先看数据问题** (review data issues) or **查看金额差异** (review amount differences), then select a result to inspect its original rows. Generate the report before downloading it.
+3. Use **先看数据问题** (review data issues) or **查看金额差异** (review amount differences). Read the issue explanations and suggested repairs, then select a result to inspect its source cards. Generate the report before downloading it.
 
-The checklist explains what is missing when reconciliation is disabled. Reading options and reusable mappings are collapsed by default. The [beginner guide](docs/getting-started.md) explains file preparation, result interpretation and recovery.
+The checklist explains what is missing when reconciliation is disabled. Use **清空筛选** (clear filters) to return to the full business list, and **上一页 / 下一页** (previous / next page) for larger results. These controls do not recompute results or change the report. The [beginner guide](docs/getting-started.md) explains file preparation, interpretation and recovery.
+
+The full local suite passed **677 tests in 39.09 seconds**. The existing environment was reused to update the application, with 43 locked dependencies and the effective configuration rechecked; this was not a new clean installation. See the [verification record](docs/v1.1.2-verification.md) for scope.
 
 ## Install and run
 
@@ -50,10 +52,10 @@ For a reproducible CLI sample without starting the page:
 ## Page workflow
 
 1. Select **加载虚构样例** (load fictional sample). Inspect the order and payment inputs. Each preview contains at most 20 source records, preserving text IDs and source positions. Long preview fields are explicitly marked as shortened for display.
-2. Check each ID and amount mapping. Options include the column number and original header, so empty or duplicate headers remain distinguishable. The same column cannot serve as both ID and amount. For your own XLSX, select the worksheet and header row; CSV also supports encoding, delimiter and logical header-record selection.
+2. Check each ID and amount mapping. Options include the column number and original header; the same column cannot serve both roles. A single ordinary XLSX worksheet is selected and locked automatically. Multiple worksheets require an explicit choice, including hidden worksheets; an unselected worksheet is a pending step, not a read error. Reading options let you adjust the header row and CSV encoding/delimiter.
 3. Select the currency, enter the period and confirm both matching currency and matching period. Even the sample requires explicit confirmation. Click **开始核对** (reconcile). The program cannot establish the real business coverage of your inputs.
-4. Inspect totals, then switch among all business results, amount mismatches, order-only, payment-only and data issues. Search uses case-sensitive ID substring matching. Business results also have status filters. Results are paginated on the server, at most 100 per page; changing a category, search or filter returns to page one.
-5. Choose an item under **查看来源详情（当前页）** (source details for the current page). Inspect both sides' file, worksheet, original row, CSV physical span, mapping columns and raw values. Expanded details include source/result IDs, SHA-256, raw types and repair suggestions.
+4. Read the summaries, then switch among all business results, amount differences, order-only, payment-only and data issues. Issue rows retain their original codes alongside Chinese explanations and repair guidance. Use ID search, status filters and previous/next controls, with at most 100 rows per page. **清空筛选** restores all business results, an empty search, all statuses and page one, clearing the source selection.
+5. Choose an item under **查看来源详情（当前页）** (source details for the current page). Source cards show the file, worksheet, original row, raw ID and amount. The full source table, CSV physical span, mapping columns, source/result IDs, SHA-256 and raw types are available in expanded details.
 6. Click **生成报告** (generate report), wait for export and mandatory readback auditing, then **下载核对报告** (download report). The report always contains the complete current run; category, search and pagination do not trim it.
 
 Replacing or removing either file, or changing the worksheet, header, encoding, delimiter, mapping, currency, period or either confirmation invalidates the old result and report. Run reconciliation and report generation again using the new choices. Late work from an older input version cannot replace the current state. Files already received or saved by the browser cannot be revoked.
@@ -127,9 +129,9 @@ On 2026-10-24 (Asia/Singapore), the user explicitly waived a new download record
 
 The video shows application 1.0.0 loading the fictional sample, mapping fields, inspecting A002 and A005, tracing source rows, generating an audited report and displaying the download entry point. Earlier automation attempts repeatedly triggered download-approval loops, so the final recording did not click download; the caption states this explicitly. This recording limitation does not establish a product download failure. The earlier **0.3.0** real mixed-input UI download, independent recomputation/readback and Excel for Mac check are separate [network/download evidence](docs/m4-offline.md), not depicted as a new download in this video. The final 1.0.0 CLI sample was also independently checked; see the final acceptance record.
 
-[Package access, rebuilding and reproduction guide](docs/m4-delivery.md) · [M4 verification](docs/m4-verification.md) · [Changelog](CHANGELOG.md) · [Machine-readable delivery status](docs/m4-release-status.json)
+[Current verification](docs/v1.1.2-verification.md) · [Current delivery status](docs/v1.1.2-release-status.json) · [Changelog](CHANGELOG.md)
 
-The delivery guide covers installation, startup, shutdown, samples, offline dependencies and evidence. Historical [M3 page verification](docs/m3-verification.md), M2 and M0–M1 records retain their own versions and test counts; overlapping targeted counts must not be added to the final full-suite count.
+The complete local package is `deliveries/SheetCheck-1.1.2.zip`, excluded from Git. Rebuild it from the project directory with `.venv/bin/python scripts/build_delivery.py`; package checks and scope are recorded in the current verification. Earlier packages, the [M4 delivery guide](docs/m4-delivery.md), [M4 verification](docs/m4-verification.md), [M3 page verification](docs/m3-verification.md), M2 and M0–M1 records retain their original versions and test counts. Overlapping counts must not be added to the current full-suite count.
 
 ## Compatibility boundaries and untested areas
 

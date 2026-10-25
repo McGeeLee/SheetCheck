@@ -16,7 +16,8 @@ from sheetcheck.readers import list_worksheets
 from sheetcheck.report_schema import SHEET_NAMES
 from sheetcheck.ui_state import InputSelection, Workflow
 from sheetcheck.ui_views import (PAGE_SIZE, STATUS_LABELS, VIEWS, business_rows, issue_rows,
-                                money, outcome, preview_rows, result_page, text_value)
+                                issue_explanation, issue_next_steps, money, outcome,
+                                preview_rows, result_page, text_value)
 from sheetcheck.validators import SUPPORTED_CURRENCIES
 
 ROOT = Path(__file__).resolve().parent
@@ -257,6 +258,10 @@ def _pending_steps(workflow):
         label = SIDE_LABELS[side]
         if workflow.selections.get(side) is None:
             pending.append(f"上传{label}表")
+        elif (workflow.selections[side].spec.filename.lower().endswith(".xlsx")
+              and workflow.selections[side].spec.sheet is None
+              and side in st.session_state.sheet_catalog):
+            pending.append(f"选择{label}工作表")
         elif side not in workflow.sources:
             pending.append(f"修复{label}表的读取问题：检查文件、工作表和读取选项")
         else:
@@ -278,6 +283,11 @@ def _show_result_view(view):
     st.session_state.query = ""
     st.session_state.status_filter = BUSINESS_LABELS.copy()
     _page_reset()
+
+
+def _move_page(offset):
+    st.session_state.page_number += offset
+    st.session_state.pop("detail_id", None)
 
 
 def _session_progress(workflow):
@@ -319,14 +329,14 @@ def _select_input(side):
                 st.session_state.sheet_catalog[side] = (identity, names)
             else:
                 names = catalog[1]
-            options = [None, *names]
+            options = names if len(names) == 1 else [None, *names]
             key = f"{side}_sheet"
-            if st.session_state.get(key) not in options:
-                st.session_state[key] = None
-            if key not in st.session_state:
+            if key not in st.session_state or st.session_state[key] not in options:
                 st.session_state[key] = names[0] if len(names) == 1 else None
             sheet = st.selectbox(f"{label}工作表", options, format_func=lambda value: "请选择工作表" if value is None else _literal_label(value),
-                                 key=key, on_change=_parse_changed, args=(side,))
+                                 key=key, on_change=_parse_changed, args=(side,), disabled=len(names) == 1)
+            st.caption("已选中此文件唯一的工作表。" if len(names) == 1
+                       else f"此文件有 {len(names)} 个工作表，请选择本次要核对的一张；隐藏工作表也列在选项中。")
         except Exception as exc:
             _show_error(exc, "IMPORT")
     encoding, delimiter = "utf-8-sig", ","
@@ -356,6 +366,11 @@ def _preview_mapping(side, workflow):
     if workflow.selections[side] is None:
         return None
     label = SIDE_LABELS[side]
+    selection = workflow.selections[side]
+    if (selection.spec.filename.lower().endswith(".xlsx") and selection.spec.sheet is None
+            and side in st.session_state.sheet_catalog):
+        st.info(f"请选择{label}工作表，再查看预览。")
+        return None
     try:
         source = workflow.get_source(side)
     except Exception as exc:
@@ -420,8 +435,25 @@ def _source_detail(result, item, issues):
             "文件角色", "文件名", "工作表", "原始行号", "CSV物理起始行", "CSV物理结束行", "编号列号", "金额列号",
             "原始编号", "原始金额", "金额（分）", "source_id")})
     st.caption("按下面的文件、工作表和原始行号回到源表检查。需要修改时，请修正源表并重新上传。")
-    st.dataframe(rows, hide_index=True, width="stretch", key="source_detail")
+    if issues:
+        st.warning(issue_explanation(item.problem_codes))
+        st.info("处理建议：" + issue_next_steps(item.problem_codes))
+    roles = [metadata[0]["文件角色"]] if issues else ["订单", "收款"]
+    for column, role in zip(st.columns(len(roles)), roles):
+        with column, st.container(border=True):
+            st.markdown(f"**{role}来源**")
+            detail = next((entry for entry in metadata if entry["文件角色"] == role), None)
+            if detail is None:
+                st.write("本次有效记录中未找到这一侧的配对；不代表金额为零。")
+                continue
+            st.text("文件：" + text_value(detail["文件名"], 160))
+            st.text("工作表：" + text_value(detail["工作表"], 100))
+            st.text(f"原始行号：{detail['原始行号']}")
+            st.text("原始编号：" + text_value(detail["原始编号"], 240))
+            st.text("原始金额：" + text_value(detail["原始金额"], 240))
+    st.caption("较长字段在上方注明显示已缩短；下方完整来源保留全部原值及 CSV 物理行范围。")
     with st.expander("完整来源、原始类型与问题修复建议"):
+        st.dataframe(rows, hide_index=True, width="stretch", key="source_detail")
         st.json(metadata, expanded=True)
         codes = dict.fromkeys(code for entry in entries.values() for code in entry.problem_codes)
         for code in codes:
@@ -492,16 +524,27 @@ def _results(workflow):
     left, right = st.columns(2)
     query = left.text_input("搜索业务编号（区分大小写，包含匹配）", max_chars=128, key="query", on_change=_page_reset)
     selected = right.multiselect("业务状态筛选", BUSINESS_LABELS, key="status_filter", disabled=view == "数据问题", on_change=_page_reset)
+    filtered = view != VIEWS[0] or bool(query) or set(selected) != set(BUSINESS_LABELS)
+    st.button("清空筛选", key="clear_filters", on_click=_show_result_view, args=(VIEWS[0],),
+              disabled=not filtered, help="恢复全部业务结果、清空搜索并回到第一页，不改变核对结果或报告。")
+    st.caption("筛选只改变当前显示，完整报告不受影响。" if not filtered
+               else "正在显示筛选后的记录；没有匹配项时，可点击「清空筛选」查看全部业务结果。")
     statuses = [status for status in tuple(Status)[:4] if STATUS_LABELS[status] in selected]
     page = result_page(result, view, query, statuses, int(st.session_state.page_number))
     if st.session_state.page_number != page.number:
         st.session_state.page_number = page.number
-    st.number_input("页码", min_value=1, max_value=page.pages, step=1, key="page_number",
-                    on_change=lambda: st.session_state.pop("detail_id", None))
+    previous, page_selector, following = st.columns([1, 2, 1], vertical_alignment="bottom")
+    previous.button("上一页", key="previous_page", on_click=_move_page, args=(-1,),
+                    disabled=page.number <= 1, width="stretch")
+    page_selector.number_input("页码", min_value=1, max_value=page.pages, step=1, key="page_number",
+                               on_change=lambda: st.session_state.pop("detail_id", None))
+    following.button("下一页", key="next_page", on_click=_move_page, args=(1,),
+                     disabled=page.number >= page.pages, width="stretch")
     st.caption(f"共 {page.total} 条 · 第 {page.number} / {page.pages} 页 · 每页 {PAGE_SIZE} 条")
     issues = view == "数据问题"
     st.dataframe(issue_rows(page.items) if issues else business_rows(page.items), hide_index=True,
-                 width="stretch", key="result_table")
+                 width="stretch", key="result_table",
+                 column_order=("业务编号", "问题说明", "文件角色", "原始行号", "原始金额", "处理建议", "全部问题码", "状态") if issues else None)
     if page.items:
         current = {item.source_id if issues else item.result_id: item for item in page.items}
         options = [None, *current]

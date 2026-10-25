@@ -1,0 +1,26 @@
+{
+  "checked_at_utc": "2026-10-25T17:27:02.335151+00:00",
+  "status": "PASS",
+  "application_version": "1.1.2",
+  "package": "deliveries/SheetCheck-1.1.2.zip",
+  "package_bytes": 115612480,
+  "package_sha256": "0353f0aa80f211cad708f085b9bd641b2f2bee9d6c17c0da4d14061676a907f0",
+  "manifest": "docs/v1.1.2-delivery-manifest.json",
+  "manifest_sha256": "151bc06e15d724fe34af84fac0e5d07ded47e646479e4f19e8f6f16030bb36eb",
+  "manifested_files": 528,
+  "archive_members_including_manifest": 529,
+  "checks": [
+    "exact member allowlist",
+    "unique relative member names",
+    "CRC",
+    "every archived file SHA-256",
+    "fresh extraction SHA-256",
+    "hidden configuration present",
+    "source unchanged while packaging"
+  ],
+  "application_tests": "Not rerun from extraction; see this version's local test and environment records.",
+  "blueprint_v1_complete": true,
+  "release_status": "COMPLETE_WITH_DOCUMENTED_SCOPE",
+  "release_status_record": "docs/v1.1.2-release-status.json",
+  "scope": "Package integrity only. Does not erase known acceptance limitations."
+}

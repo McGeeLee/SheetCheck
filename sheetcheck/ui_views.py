@@ -2,6 +2,7 @@
 from dataclasses import dataclass
 import unicodedata
 
+from .errors import PROBLEM_HELP
 from .models import Status
 
 PAGE_SIZE = 100
@@ -12,6 +13,33 @@ STATUS_LABELS = {
     Status.DATA_ISSUE: "数据问题", Status.SKIPPED_EMPTY: "空行跳过",
 }
 VIEWS = ("全部业务结果", "金额差异", "仅订单有", "仅收款有", "数据问题")
+PROBLEM_LABELS = {
+    "ID_MISSING": "编号为空",
+    "ID_NOT_TEXT": "编号不是文本",
+    "ID_WHITESPACE": "编号首尾含空白",
+    "ID_CONTROL_CHARACTER": "编号含控制或不可见字符",
+    "ID_TOO_LONG": "编号超过长度限制",
+    "AMOUNT_MISSING": "金额为空",
+    "AMOUNT_TYPE": "金额类型不支持",
+    "AMOUNT_FORMAT": "金额格式不符合要求",
+    "AMOUNT_PRECISION": "金额小数位超过两位",
+    "AMOUNT_LIMIT": "金额超过单笔上限",
+    "DUPLICATE_ID": "同编号在至少一张表中重复",
+    "BLOCKED_ID": "同编号关联行有问题，本行一并隔离",
+}
+
+
+def issue_explanation(codes):
+    """Describe issue codes without reflecting unknown codes or business data."""
+    labels = dict.fromkeys(PROBLEM_LABELS.get(code, "未识别的数据问题") for code in codes)
+    return "；".join(labels) if labels else "未提供问题说明，请查看问题码与来源详情。"
+
+
+def issue_next_steps(codes):
+    """Keep all distinct fixed repair suggestions in the source code order."""
+    fallback = "请查看全部问题码与来源详情，核实原始记录。"
+    suggestions = dict.fromkeys(PROBLEM_HELP.get(code, fallback) for code in codes)
+    return " ".join(suggestions) if suggestions else fallback
 
 
 def text_value(value, limit=None):
@@ -90,5 +118,8 @@ def business_rows(items):
 def issue_rows(items):
     return [{"状态": "数据问题", "文件角色": "订单" if entry.row.source.side == "order" else "收款",
              "业务编号": text_value(entry.row.id_raw, 240), "原始金额": text_value(entry.row.amount_raw, 240),
-             "原始行号": str(entry.row.source.position.row), "全部问题码": " · ".join(entry.problem_codes)}
+             "原始行号": str(entry.row.source.position.row),
+             "问题说明": issue_explanation(entry.problem_codes),
+             "处理建议": issue_next_steps(entry.problem_codes),
+             "全部问题码": " · ".join(dict.fromkeys(entry.problem_codes))}
             for entry in items]

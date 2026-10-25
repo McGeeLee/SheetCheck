@@ -1,0 +1,31 @@
+{
+  "recorded_at_utc": "2026-10-25T17:26:15.774682+00:00",
+  "application_version": "1.1.2",
+  "rules_version": "v1",
+  "report_format_version": "m2-v1",
+  "status": "COMPLETE_WITH_DOCUMENTED_SCOPE",
+  "v1_complete": true,
+  "scope": "Readable data issues and source cards, worksheet guidance, filter reset and page navigation; no rule, report format, dependency or capacity changes",
+  "verification": {
+    "full_local_suite": "677 passed in 39.09s; docs/v1.1.2-test-results.txt",
+    "new_issue_view_cases": 20,
+    "new_recovery_cases": 12,
+    "existing_cases": 645,
+    "initial_run": "1 failed, 676 passed; new test corrected to select A006 payment row rather than assuming BLOCKED_ID occurred once; retained in docs/v1.1.2-test-initial.txt",
+    "environment": "Reused .venv-v1.1; updated editable application without network; 43 locked wheel hashes, installed versions, pip check, configuration and 51 source hashes verified in docs/v1.1.2-environment.json",
+    "browser": "docs/v1.1.2-browser-check.json",
+    "prior_evidence": "16 evidence files pinned by docs/m4-closeout.json remain unchanged"
+  },
+  "ci_enabled": false,
+  "ci_reason": "User requested GitHub automatic tests remain disabled; docs/ci/github-actions.yml is an inactive template",
+  "additional_browser_downloads": 0,
+  "additional_download_permission_requests": 0,
+  "not_claimed": [
+    "New clean environment installation",
+    "New offline/capacity/performance/native Excel/browser-download acceptance",
+    "Browser upload/multi-worksheet/multi-page acceptance (covered locally by AppTest)",
+    "Windows/Linux/Intel Mac/mobile/other browser compatibility",
+    "Successful GitHub CI execution"
+  ],
+  "release_record": "docs/v1.1.2-verification.md"
+}

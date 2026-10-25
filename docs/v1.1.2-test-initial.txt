@@ -1,0 +1,29 @@
+........................................................................ [ 10%]
+......F................................................................. [ 21%]
+........................................................................ [ 31%]
+........................................................................ [ 42%]
+........................................................................ [ 53%]
+........................................................................ [ 63%]
+........................................................................ [ 74%]
+........................................................................ [ 85%]
+........................................................................ [ 95%]
+.............................                                            [100%]
+=================================== FAILURES ===================================
+_ test_issue_rows_explain_the_problem_and_preserve_the_original_codes_and_values _
+
+    def test_issue_rows_explain_the_problem_and_preserve_the_original_codes_and_values():
+        app = demo_run(export=True)
+        result, report = workflow(app).result, workflow(app).report_bytes
+        set_widget(app, "result_view", "数据问题")
+        table = frame(app, "result_table")
+        assert len(table) == 6
+        assert {"问题说明", "处理建议", "全部问题码", "原始金额", "原始行号"} <= set(table.columns)
+        blocked = table[(table["业务编号"] == "A006") & (table["文件角色"] == "收款")]
+>       assert len(blocked) == 1
+E       assert 5 == 1
+E        +  where 5 = len(     状态  ...                       全部问题码\n0  数据问题  ...   DUPLICATE_ID · BLOCKED_ID\n1  数据问题  ...   DUPLICATE_ID · BLOCKE...AT · BLOCKED_ID\n4  数据问题  ...   DUPLICATE_ID · BLOCKED_ID\n5  数据问题  ...                  BLOCKED_ID\n\n[5 rows x 8 columns])
+
+tests/test_app_recovery.py:198: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_app_recovery.py::test_issue_rows_explain_the_problem_and_preserve_the_original_codes_and_values
+1 failed, 676 passed in 38.40s
