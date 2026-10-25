@@ -4,6 +4,7 @@ import unicodedata
 
 from .errors import PROBLEM_HELP
 from .models import Status
+from .ui_i18n import translate
 
 PAGE_SIZE = 100
 PREVIEW_SIZE = 20
@@ -29,30 +30,30 @@ PROBLEM_LABELS = {
 }
 
 
-def issue_explanation(codes):
+def issue_explanation(codes, language="zh"):
     """Describe issue codes without reflecting unknown codes or business data."""
-    labels = dict.fromkeys(PROBLEM_LABELS.get(code, "未识别的数据问题") for code in codes)
-    return "；".join(labels) if labels else "未提供问题说明，请查看问题码与来源详情。"
+    labels = dict.fromkeys(translate(PROBLEM_LABELS.get(code, "未识别的数据问题"), language) for code in codes)
+    return ("; " if language == "en" else "；").join(labels) if labels else translate("未提供问题说明，请查看问题码与来源详情。", language)
 
 
-def issue_next_steps(codes):
+def issue_next_steps(codes, language="zh"):
     """Keep all distinct fixed repair suggestions in the source code order."""
-    fallback = "请查看全部问题码与来源详情，核实原始记录。"
-    suggestions = dict.fromkeys(PROBLEM_HELP.get(code, fallback) for code in codes)
+    fallback = translate("请查看全部问题码与来源详情，核实原始记录。", language)
+    suggestions = dict.fromkeys(translate(PROBLEM_HELP.get(code, fallback), language) for code in codes)
     return " ".join(suggestions) if suggestions else fallback
 
 
-def text_value(value, limit=None):
+def text_value(value, limit=None, language="zh"):
     if value is None:
-        return "（空值）"
+        return translate("（空值）", language)
     if value == "":
-        return "（空字符串）"
+        return translate("（空字符串）", language)
     text = str(value)
     # Render controls as visible escapes without changing the source. Arrow and
     # browser strings cannot carry unpaired Unicode surrogates.
     text = "".join(f"\\u{ord(char):04x}" if unicodedata.category(char) in {"Cc", "Cf", "Cs"}
                    and char not in "\n\t" else char for char in text)
-    return text if limit is None or len(text) <= limit else text[:limit] + "…（显示已缩短）"
+    return text if limit is None or len(text) <= limit else text[:limit] + translate("…（显示已缩短）", language)
 
 
 def money(minor):
@@ -98,28 +99,30 @@ def result_page(result, view, query="", statuses=None, number=1):
     return Page(tuple(matches[offset:offset + PAGE_SIZE]), len(matches), number, pages)
 
 
-def preview_rows(source):
-    names = [f"{i}: {text_value(cell.value, 64)}" for i, cell in enumerate(source.headers, 1)]
+def preview_rows(source, language="zh"):
+    names = [f"{i}: {text_value(cell.value, 64, language)}" for i, cell in enumerate(source.headers, 1)]
     result = []
     for row in source.rows[:PREVIEW_SIZE]:
         pos = row.position
-        values = {"原始行号": str(pos.row), "CSV物理行": f"{pos.physical_start}–{pos.physical_end}" if pos.sheet is None else "—"}
-        values.update({name: text_value(cell.value, 240) for name, cell in zip(names, row.cells)})
+        values = {translate("原始行号", language): str(pos.row), translate("CSV物理行", language): f"{pos.physical_start}–{pos.physical_end}" if pos.sheet is None else "—"}
+        values.update({name: text_value(cell.value, 240, language) for name, cell in zip(names, row.cells)})
         result.append(values)
     return result
 
 
-def business_rows(items):
-    return [{"状态": STATUS_LABELS[record.status], "业务编号": record.id,
+def business_rows(items, language="zh"):
+    rows = [{"状态": translate(STATUS_LABELS[record.status], language), "业务编号": record.id,
              "订单金额": money(record.order_minor), "收款金额": money(record.payment_minor),
              "差额：收款减订单": money(record.delta_minor)} for record in items]
+    return [{translate(key, language): value for key, value in row.items()} for row in rows]
 
 
-def issue_rows(items):
-    return [{"状态": "数据问题", "文件角色": "订单" if entry.row.source.side == "order" else "收款",
-             "业务编号": text_value(entry.row.id_raw, 240), "原始金额": text_value(entry.row.amount_raw, 240),
+def issue_rows(items, language="zh"):
+    rows = [{"状态": translate("数据问题", language), "文件角色": translate("订单" if entry.row.source.side == "order" else "收款", language),
+             "业务编号": text_value(entry.row.id_raw, 240, language), "原始金额": text_value(entry.row.amount_raw, 240, language),
              "原始行号": str(entry.row.source.position.row),
-             "问题说明": issue_explanation(entry.problem_codes),
-             "处理建议": issue_next_steps(entry.problem_codes),
+             "问题说明": issue_explanation(entry.problem_codes, language),
+             "处理建议": issue_next_steps(entry.problem_codes, language),
              "全部问题码": " · ".join(dict.fromkeys(entry.problem_codes))}
             for entry in items]
+    return [{translate(key, language): value for key, value in row.items()} for row in rows]

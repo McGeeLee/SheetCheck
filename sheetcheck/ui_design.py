@@ -259,6 +259,10 @@ STYLES = """<style>
   font-weight: 650;
   min-height: 2.65rem;
 }
+[data-testid="stMain"] button[kind="primary"]:not(:disabled),
+[data-testid="stMain"] button[kind="primary"]:not(:disabled) p {
+  color: #ffffff;
+}
 [data-testid="stMain"] button[kind="secondary"] {
   border-radius: 10px;
 }
@@ -306,7 +310,7 @@ STYLES = """<style>
   gap: 12px;
 }
 .sc-example-value {
-  padding: .9rem 1rem;
+  padding: .9rem .75rem;
   background: #ffffff;
   border: 1px solid #dbe6df;
   border-radius: 9px;
@@ -318,7 +322,8 @@ STYLES = """<style>
 .sc-example-number {
   margin-top: 4px;
   color: #173d3c;
-  font-size: 1.7rem;
+  font-size: clamp(1.1rem, 2vw, 1.7rem);
+  white-space: nowrap;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   letter-spacing: -.045em;
@@ -412,7 +417,7 @@ STYLES = """<style>
   [data-testid="stTabs"] [role="tablist"] { gap: .85rem; }
   [data-testid="stTabs"] [role="tab"] p { font-size: .85rem; }
   .sc-example { padding: 1rem; }
-  .sc-example-number { font-size: 1.5rem; }
+  .sc-example-number { font-size: clamp(1.1rem, 4vw, 1.5rem); }
   .sc-empty { padding: 2rem .25rem; }
 }
 </style>"""
@@ -438,3 +443,322 @@ EMPTY_RESULTS_HTML = """<div class="sc-empty" role="status">
 <div class="sc-empty-copy">先在「准备数据」中导入文件、选择编号与金额列，确认核对范围后点击「开始核对」。结果会显示在这里。</div>
 <div class="sc-empty-steps">比较金额 · 找到缺项 · 追溯原行 · 保存报告</div>
 </div>"""
+
+# These are application-owned translations, not transformations of uploaded text.
+BRAND_HTML_EN = """<div class="sc-brand">
+<div class="sc-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div><div class="sc-brand-name">SheetCheck</div><div class="sc-brand-caption">Local reconciliation workbench</div></div>
+</div>"""
+
+EXAMPLE_HTML_EN = """<div class="sc-example" role="group" aria-label="Fictional example: A002 amount difference">
+<div class="sc-example-heading"><span>Same ID · <strong>A002</strong></span><span class="sc-example-badge">FICTIONAL EXAMPLE</span></div>
+<div class="sc-example-values">
+<div class="sc-example-value"><div class="sc-example-label">Order amount</div><div class="sc-example-number">50.00</div></div>
+<div class="sc-example-value"><div class="sc-example-label">Payment received</div><div class="sc-example-number">49.00</div></div>
+</div>
+<div class="sc-example-difference"><span>Difference · payment minus order</span><strong>-1.00</strong></div>
+<div class="sc-example-note">Find the difference, then trace its original rows.</div>
+</div>"""
+
+EMPTY_RESULTS_HTML_EN = """<div class="sc-empty" role="status">
+<div class="sc-empty-mark" aria-hidden="true"><div class="sc-empty-sheet"></div><div class="sc-empty-sheet"></div></div>
+<div class="sc-empty-title">Two tables are all you need to get started</div>
+<div class="sc-empty-copy">In “Prepare data”, import both files, select the ID and amount columns, and confirm the scope. Click “Reconcile” to see the results here.</div>
+<div class="sc-empty-steps">Compare amounts · Find missing pairs · Trace source rows · Save a report</div>
+</div>"""
+
+# Streamlit's public theme API is read-only per session. Keep these preferences
+# local to this page rather than changing the process-wide configuration, which
+# could affect another session. Native dataframe cells are painted on a canvas:
+# the scoped display filter below adapts their palette only when it differs from
+# the selected appearance. It never transforms values, tables or report bytes.
+DARK_STYLES = """<style>
+:root {
+  color-scheme: dark;
+  --sc-canvas: #101b22;
+  --sc-paper: #192932;
+  --sc-ink: #e4eef0;
+  --sc-muted: #a7bcc3;
+  --sc-line: #36505c;
+  --sc-teal: #76d1be;
+  --sc-navy: #0c1921;
+  --sc-soft: #203a40;
+  --sc-field: #223640;
+}
+[data-testid="stHeader"] { background: rgba(16, 27, 34, .96); }
+[data-testid="stMain"] [data-testid="stMarkdownContainer"],
+[data-testid="stMain"] [data-testid="stText"],
+[data-testid="stMain"] [data-testid="stText"] pre,
+[data-testid="stMain"] [data-testid="stText"] span,
+[data-testid="stMain"] [data-testid="stText"] code,
+[data-testid="stWidgetLabel"] p,
+[data-testid="stMain"] label {
+  color: var(--sc-ink);
+}
+[data-testid="stMain"] [data-testid="stCaptionContainer"],
+[data-testid="stMain"] [data-testid="stCaptionContainer"] p {
+  color: var(--sc-muted);
+}
+[data-testid="stMain"] a { color: #8cddcd; }
+[data-testid="stMain"] hr { border-color: var(--sc-line); }
+[data-testid="stMain"] [data-testid="stVerticalBlockBorderWrapper"] > div {
+  border-color: var(--sc-line);
+}
+.st-key-confirmation, .st-key-report_card { background: #182f32; border-color: #3d635e; }
+.st-key-guidance { background: #1a2d36; }
+[data-testid="stExpander"] details { background: #182932; border-color: var(--sc-line); }
+[data-testid="stExpander"] summary { color: var(--sc-muted); }
+[data-testid="stExpander"] summary p { color: var(--sc-muted); }
+[data-testid="stExpander"] summary svg { color: var(--sc-muted); }
+[data-testid="stTabs"] [role="tab"],
+[data-testid="stTabs"] [role="tab"] p { color: var(--sc-muted); }
+[data-testid="stTabs"] [role="tab"][aria-selected="true"],
+[data-testid="stTabs"] [role="tab"][aria-selected="true"] p { color: #89dfcc; }
+.st-key-result_summary [data-testid="stMetricValue"],
+[data-testid="stMetricValue"] { color: #e0f3ed; }
+[data-testid="stMetricLabel"], [data-testid="stMetricLabel"] p { color: var(--sc-muted); }
+.st-key-result_summary [data-testid="stColumn"]:nth-child(2) [data-testid="stMetricValue"] { color: #ecc18b; }
+.st-key-result_summary [data-testid="stColumn"]:nth-child(5) [data-testid="stMetricValue"] { color: #eeaaa0; }
+.sc-example { background: #203a3d; border-color: #3b5c5a; }
+.sc-example-heading, .sc-example-label, .sc-example-note { color: #b1cac6; }
+.sc-example-badge { background: #30534f; color: #c2e7da; }
+.sc-example-value { background: #182b32; border-color: #3d5b5b; }
+.sc-example-number { color: #e5f7ef; }
+.sc-example-difference { color: #b1cac6; border-color: #456763; }
+.sc-example-difference strong { color: #edc58e; }
+.sc-empty-mark { background: #29453f; border-color: #46685b; }
+.sc-empty-sheet { border-color: #96b9a8; background: repeating-linear-gradient(to bottom, #223e36 0px, #223e36 7px, #46685b 7px, #46685b 9px); }
+.sc-empty-steps { color: #bdd1c7; background: #20372f; border-color: #466052; }
+[data-testid="stFileUploaderDropzone"] { background: #20343a; border-color: #60877d; color: var(--sc-ink); }
+[data-testid="stFileUploaderDropzone"] small,
+[data-testid="stFileUploaderDropzone"] [data-testid="stMarkdownContainer"] { color: var(--sc-muted); }
+[data-testid="stMain"] button[kind="secondary"]:not(:disabled) { background: #223a44; border-color: #54717b; color: #e3eef0; }
+[data-testid="stMain"] button[kind="secondary"]:not(:disabled) p { color: inherit; }
+[data-testid="stMain"] button[kind="secondary"]:hover:not(:disabled) { background: #2c4c54; border-color: #82c6b8; }
+[data-testid="stMain"] button[kind="primary"]:not(:disabled) { background: #197d70; border-color: #79c8b8; color: #ffffff; }
+[data-testid="stMain"] button[kind="primary"]:not(:disabled) p { color: #ffffff; }
+[data-testid="stMain"] button:disabled { background: #26353d; color: #a4b2b8; border-color: #42535c; }
+[data-testid="stMain"] button:disabled p { color: #a4b2b8; }
+[data-testid="stMain"] button[kind="headerNoPadding"],
+[data-testid="stMain"] [data-testid="stTooltipIcon"],
+[data-testid="stMain"] [data-testid="stTooltipIcon"] svg { color: #bbced3; }
+[data-testid="stMain"] button:focus-visible { outline-color: #8ddccb; }
+[data-testid="stTextInput"] [data-baseweb="input"],
+[data-testid="stTextArea"] [data-baseweb="textarea"],
+[data-testid="stNumberInput"] [data-baseweb="input"],
+[data-testid="stSelectbox"] [data-baseweb="select"] > div,
+[data-testid="stMultiSelect"] [data-baseweb="select"] > div {
+  background: var(--sc-field);
+  border-color: #526c77;
+  color: var(--sc-ink);
+}
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea,
+[data-testid="stNumberInput"] input,
+[data-testid="stSelectbox"] input,
+[data-testid="stMultiSelect"] input {
+  color: var(--sc-ink);
+  -webkit-text-fill-color: var(--sc-ink);
+  caret-color: #b8e8d9;
+  background: transparent;
+}
+[data-testid="stMain"] input::placeholder,
+[data-testid="stMain"] textarea::placeholder { color: #a7bbc2; opacity: 1; }
+/* Streamlit 1.66 uses React Aria for these widgets. Select only its documented
+   roles and stable test IDs, not generated Emotion class names. */
+[data-testid="stTextInputRootElement"],
+[data-testid="stTextArea"] .react-aria-TextField,
+[data-testid="stTextArea"] textarea,
+[data-testid="stNumberInputContainer"],
+[data-testid="stSelectbox"] .react-aria-ComboBox > [role="group"],
+[data-testid="stMultiSelect"] .react-aria-ComboBox > [role="group"] {
+  background: var(--sc-field);
+  border-color: #526c77;
+  color: var(--sc-ink);
+}
+[data-testid="stTextInputField"],
+[data-testid="stNumberInputField"],
+[data-testid="stSelectbox"] input[role="combobox"],
+[data-testid="stMultiSelect"] input[role="combobox"] {
+  color: var(--sc-ink);
+  -webkit-text-fill-color: var(--sc-ink);
+  caret-color: #b8e8d9;
+  background: transparent;
+}
+[data-testid="stTextInputRootElement"]:focus-within,
+[data-testid="stNumberInputContainer"]:focus-within,
+[data-testid="stSelectbox"] [role="group"][data-focus-within],
+[data-testid="stMultiSelect"] [role="group"][data-focus-within] { border-color: #8bd5c5; }
+[data-testid="stSelectbox"] input::placeholder,
+[data-testid="stMultiSelect"] input::placeholder { color: #a7bbc2; opacity: 1; }
+[data-testid="stSelectbox"] button,
+[data-testid="stMultiSelect"] button,
+[data-testid="stTextInputRootElement"] button,
+[data-testid="stNumberInputContainer"] button {
+  color: #d7e8ed;
+  background: transparent;
+}
+[data-testid="stSelectbox"] button svg,
+[data-testid="stMultiSelect"] button svg,
+[data-testid="stTextInputRootElement"] button svg,
+[data-testid="stNumberInputContainer"] [data-testid="stIconMaterial"] { color: inherit; }
+[data-testid="stSelectbox"] [data-disabled],
+[data-testid="stMultiSelect"] [data-disabled],
+[data-testid="stTextInputField"]:disabled,
+[data-testid="stNumberInputField"]:disabled {
+  color: #a0b4bc;
+  -webkit-text-fill-color: #a0b4bc;
+}
+[data-testid="stSelectbox"] .react-aria-ComboBox[data-disabled] > [role="group"],
+[data-testid="stMultiSelect"] .react-aria-ComboBox[data-disabled] > [role="group"],
+[data-testid="stTextInputRootElement"]:has(input:disabled),
+[data-testid="stNumberInputContainer"]:has(input:disabled) { background: #26353d; border-color: #42535c; }
+[data-testid="stMultiSelectTagsContainer"] [data-tag] { background: #28695f; color: #f0fbf6; }
+[data-testid="stMultiSelect"] .react-aria-ComboBox[data-disabled] [data-tag] { background: #3c5057; color: #b9c9ce; }
+[data-testid="stSelectboxVirtualDropdown"],
+[data-testid="stMultiSelectDropdown"],
+.react-aria-Popover, .react-aria-ListBox { background: #20333d; color: #e4eef0; border-color: #526c77; }
+.react-aria-ListBoxItem { background: #20333d; color: #e4eef0; }
+.react-aria-ListBoxItem[data-focused],
+.react-aria-ListBoxItem[data-selected] { background: #355b60; color: #f5fffc; }
+[data-testid="stRadioOption"], [data-testid="stRadioCaption"],
+[data-testid="stCheckbox"] label { color: var(--sc-ink); }
+[data-testid="stRadioOption"][data-disabled],
+[data-testid="stRadioGroup"][aria-disabled="true"] [data-testid="stMarkdownContainer"],
+[data-testid="stCheckbox"][data-disabled] [data-testid="stMarkdownContainer"] { color: #a0b4bc; }
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p { color: #e4eef0; }
+[data-testid="stNumberInput"] button { background: #29424c; color: #d5e5e9; border-color: #526c77; }
+[data-testid="stNumberInput"] button:disabled { color: #8eabb5; background: #26353d; }
+[data-baseweb="select"] [role="combobox"],
+[data-baseweb="select"] [role="combobox"] ~ div,
+[data-baseweb="select"] svg { color: var(--sc-ink); }
+[data-testid="stCheckbox"] label,
+[data-testid="stRadio"] label { color: var(--sc-ink); }
+[data-testid="stCheckbox"] input,
+[data-testid="stRadio"] input { accent-color: #72c8b6; }
+[data-baseweb="popover"], [data-baseweb="popover"] > div,
+[role="listbox"], [role="listbox"] ul, [role="listbox"] li {
+  color: var(--sc-ink);
+  background: #20333d;
+  border-color: #526c77;
+}
+[role="option"] { color: #e4eef0; background: #20333d; }
+[role="option"][aria-selected="true"], [role="option"]:hover { color: #f5fffc; background: #355b60; }
+[data-baseweb="tooltip"], [role="tooltip"] { color: #e7f0f2; background: #293f48; }
+[data-testid="stAlert"] { color: #daeaf0; background: #233d49; border: 1px solid #466574; }
+[data-testid="stAlert"] [data-testid="stAlertContainer"] { color: inherit; background: inherit; border-color: inherit; }
+[data-testid="stAlert"] [data-testid^="stAlertContent"] { color: inherit; background: transparent; }
+[data-testid="stAlert"] [data-testid="stMarkdownContainer"],
+[data-testid="stAlert"] [data-testid="stMarkdownContainer"] p { color: inherit; }
+[data-testid="stAlert"]:has([data-testid="stAlertContentWarning"]) { color: #f0dcb0; background: #433b24; border-color: #7a6840; }
+[data-testid="stAlert"]:has([data-testid="stAlertContentError"]) { color: #ffd2cc; background: #472f34; border-color: #875560; }
+[data-testid="stAlert"]:has([data-testid="stAlertContentSuccess"]) { color: #c1eed4; background: #243e32; border-color: #4a745c; }
+[data-testid="stAlert"]:has([data-testid="stAlertContentInfo"]) { color: #c8e5f0; background: #233d49; border-color: #466574; }
+[data-testid="stJson"] { background: #182932; border-radius: 10px; }
+[data-testid="stJson"] .react-json-view { background: #182932 !important; color: #dce9ed !important; }
+[data-testid="stJson"] .object-key,
+[data-testid="stJson"] .node-ellipsis,
+[data-testid="stJson"] .object-size,
+[data-testid="stJson"] .data-type-label { color: #c3d4da !important; }
+[data-testid="stJson"] .string-value { color: #b9e4c9 !important; }
+[data-testid="stJson"] .variable-value { color: #cfe3ed !important; }
+[data-testid="stJson"] svg { color: #afc5cc !important; }
+[data-testid="stMarkdownContainer"] table th { background: #263f48; color: #e4eef0; border-color: #526c77; }
+[data-testid="stMarkdownContainer"] table td { color: #d6e5e9; border-color: #425d68; }
+[data-testid="stMarkdownContainer"] code,
+[data-testid="stCode"] { color: #c9e8df; background: #233a40; }
+</style>"""
+
+# Native dark themes are an optional user preference in Streamlit's own menu.
+# If that menu is set to dark while SheetCheck selects light, keep forms readable
+# rather than only switching the surrounding app canvas back to white.
+LIGHT_NATIVE_OVERRIDES = """<style>
+:root { color-scheme: light; }
+[data-testid="stMain"] [data-testid="stMarkdownContainer"],
+[data-testid="stMain"] [data-testid="stText"],
+[data-testid="stMain"] [data-testid="stText"] span,
+[data-testid="stMain"] [data-testid="stText"] pre,
+[data-testid="stMain"] [data-testid="stText"] code,
+[data-testid="stMain"] label { color: #172f37; }
+[data-testid="stTextInput"] [data-baseweb="input"],
+[data-testid="stTextArea"] [data-baseweb="textarea"],
+[data-testid="stNumberInput"] [data-baseweb="input"],
+[data-testid="stSelectbox"] [data-baseweb="select"] > div,
+[data-testid="stMultiSelect"] [data-baseweb="select"] > div { background: #f1f4f3; border-color: #a1b4b6; color: #172f37; }
+[data-testid="stMain"] input,
+[data-testid="stMain"] textarea { color: #172f37; -webkit-text-fill-color: #172f37; caret-color: #172f37; }
+[data-testid="stMain"] input::placeholder,
+[data-testid="stMain"] textarea::placeholder { color: #62747a; }
+[data-testid="stTextInputRootElement"],
+[data-testid="stTextArea"] .react-aria-TextField,
+[data-testid="stTextArea"] textarea,
+[data-testid="stNumberInputContainer"],
+[data-testid="stSelectbox"] .react-aria-ComboBox > [role="group"],
+[data-testid="stMultiSelect"] .react-aria-ComboBox > [role="group"] { background: #f1f4f3; border-color: #a1b4b6; color: #172f37; }
+[data-testid="stTextInputField"], [data-testid="stNumberInputField"],
+[data-testid="stSelectbox"] input[role="combobox"],
+[data-testid="stMultiSelect"] input[role="combobox"] { color: #172f37; -webkit-text-fill-color: #172f37; background: transparent; caret-color: #172f37; }
+[data-testid="stSelectbox"] input::placeholder,
+[data-testid="stMultiSelect"] input::placeholder { color: #62747a; opacity: 1; }
+[data-testid="stSelectbox"] button, [data-testid="stMultiSelect"] button,
+[data-testid="stTextInputRootElement"] button, [data-testid="stNumberInputContainer"] button { color: #34535d; background: transparent; }
+[data-testid="stSelectbox"] button svg, [data-testid="stMultiSelect"] button svg,
+[data-testid="stTextInputRootElement"] button svg,
+[data-testid="stNumberInputContainer"] [data-testid="stIconMaterial"] { color: inherit; }
+[data-testid="stSelectbox"] [data-disabled], [data-testid="stMultiSelect"] [data-disabled],
+[data-testid="stTextInputField"]:disabled, [data-testid="stNumberInputField"]:disabled { color: #667b80; -webkit-text-fill-color: #667b80; }
+[data-testid="stSelectbox"] .react-aria-ComboBox[data-disabled] > [role="group"],
+[data-testid="stMultiSelect"] .react-aria-ComboBox[data-disabled] > [role="group"],
+[data-testid="stTextInputRootElement"]:has(input:disabled),
+[data-testid="stNumberInputContainer"]:has(input:disabled) { background: #e7edeb; border-color: #bdccc6; }
+[data-testid="stSelectboxVirtualDropdown"], [data-testid="stMultiSelectDropdown"],
+.react-aria-Popover, .react-aria-ListBox, .react-aria-ListBoxItem { background: #ffffff; color: #172f37; border-color: #a1b4b6; }
+.react-aria-ListBoxItem[data-focused], .react-aria-ListBoxItem[data-selected] { background: #deeee6; color: #173c35; }
+[data-testid="stMultiSelectTagsContainer"] [data-tag] { background: #0f766e; color: #ffffff; }
+[data-testid="stMultiSelect"] .react-aria-ComboBox[data-disabled] [data-tag] { background: #d6e2dc; color: #536b64; }
+[data-testid="stRadioOption"], [data-testid="stRadioCaption"],
+[data-testid="stCheckbox"] label { color: #172f37; }
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p { color: #e4eef0; }
+[data-testid="stMain"] button[kind="secondary"]:not(:disabled) { color: #172f37; }
+[data-testid="stMain"] button[kind="primary"]:not(:disabled),
+[data-testid="stMain"] button[kind="primary"]:not(:disabled) [data-testid="stMarkdownContainer"],
+[data-testid="stMain"] button[kind="primary"]:not(:disabled) p { color: #ffffff; }
+[data-testid="stMain"] button:disabled { color: #667b80; background: #edf2ef; border-color: #cbd6d0; }
+[data-testid="stMain"] button:disabled p { color: #667b80; }
+[data-baseweb="popover"], [data-baseweb="popover"] > div,
+[role="listbox"], [role="option"] { background: #ffffff; color: #172f37; }
+[role="option"][aria-selected="true"], [role="option"]:hover { background: #deeee6; color: #173c35; }
+[data-testid="stMetricValue"] { color: #173e41; }
+</style>"""
+
+
+def get_styles(appearance="light", native_dark=False):
+    """Return only local presentation CSS; preferences never reach core data."""
+    if appearance not in ("light", "dark"):
+        raise ValueError("Unknown appearance")
+    # Emit one style element: adjacent wrappers can be retained as CSS text by
+    # Streamlit's Markdown parser, preventing later theme rules from applying.
+    def css_body(block):
+        return block.removeprefix("<style>").removesuffix("</style>").strip()
+
+    blocks = [css_body(STYLES)]
+    if appearance == "dark":
+        blocks.append(css_body(DARK_STYLES))
+    elif native_dark:
+        blocks.append(css_body(LIGHT_NATIVE_OVERRIDES))
+    if (appearance == "dark") != bool(native_dark):
+        # Scope to native grid canvases, never business text, images or the app.
+        amount = ".9" if appearance == "dark" else "1"
+        blocks.append('[data-testid="stDataFrame"] canvas '
+                      '{filter: invert(' + amount + ') hue-rotate(180deg);}')
+    return "<style>\n" + "\n".join(blocks) + "\n</style>"
+
+
+def get_html(kind, language="zh"):
+    """Select complete static text; no source values are accepted or inserted."""
+    variants = {
+        "brand": (BRAND_HTML, BRAND_HTML_EN),
+        "example": (EXAMPLE_HTML, EXAMPLE_HTML_EN),
+        "empty": (EMPTY_RESULTS_HTML, EMPTY_RESULTS_HTML_EN),
+    }
+    return variants[kind][language == "en"]

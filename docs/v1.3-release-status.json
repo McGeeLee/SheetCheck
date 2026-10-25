@@ -1,0 +1,32 @@
+{
+  "recorded_at_utc": "2026-10-25T18:05:45.513311+00:00",
+  "application_version": "1.3.0",
+  "rules_version": "v1",
+  "report_format_version": "m2-v1",
+  "status": "COMPLETE_WITH_DOCUMENTED_SCOPE",
+  "v1_complete": true,
+  "scope": "Chinese/English local interface and light/dark appearance, state-preserving preferences and native widget synchronization; reconciliation rules, report schema, dependency lock and security limits unchanged",
+  "verification": {
+    "full_local_suite": "698 passed in 47.81s; docs/v1.3-test-results.txt",
+    "new_preference_cases": 14,
+    "existing_cases": 684,
+    "environment": "Reused .venv-v1.1; offline editable application update, 43 locked wheel hashes, installed versions, pip check, local configuration and 55 source file hashes checked in docs/v1.3-environment.json",
+    "browser": "docs/v1.3-browser-check.json",
+    "translations": "369 entries; placeholder equality and literal UI text coverage checked; raw business values remain untranslated",
+    "prior_evidence": "16 evidence files pinned by docs/m4-closeout.json remain unchanged"
+  },
+  "ci_enabled": false,
+  "ci_reason": "User requested GitHub automatic tests remain disabled; docs/ci/github-actions.yml remains inactive",
+  "additional_browser_downloads": 0,
+  "additional_download_permission_requests": 0,
+  "not_claimed": [
+    "New clean installation or new full offline/capacity/performance/native Excel acceptance",
+    "Browser upload/multi-worksheet/multi-page/download acceptance",
+    "Persistent cross-session preferences",
+    "English Excel reports",
+    "Native Streamlit dark-theme setting branch acceptance",
+    "Mobile, other browsers, Windows, Linux or Intel Mac compatibility",
+    "Successful GitHub CI execution"
+  ],
+  "release_record": "docs/v1.3-verification.md"
+}
